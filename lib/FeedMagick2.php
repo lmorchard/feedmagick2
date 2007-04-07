@@ -158,7 +158,8 @@ class FeedMagick2 {
         }
 
         // Attempt to parse the pipeline.
-        $pipeline_opts = json_decode($pipeline_src, TRUE);
+        // $pipeline_opts = json_decode($pipeline_src, TRUE);
+        $pipeline_opts = $this->json->decode($pipeline_src, TRUE);
         if (!$pipeline_opts) die("Error parsing pipeline definition.");
 
         // Build the root pipeline and run it.
