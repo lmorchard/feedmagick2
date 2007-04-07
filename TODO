@@ -27,7 +27,9 @@ auto-extracted from source using bin/update-todo.sh
             * Turn RSS into Atom and vice versa
         * hAtom
             * Turn hAtom into Atom.
-        * Feed Stretcher
+        * Blender
+            * Mix multiple feeds into one feed.  (How to handle varied formats?)
+        * Stretcher
             * Keep a local cache of feed items, keep them in the feed longer than original
         * JSON
             * Output feed as raw JSON, with JSONP callback

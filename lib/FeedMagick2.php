@@ -146,7 +146,7 @@ class FeedMagick2 {
         // Get the pipeline URL, defaulting to index.json
         $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'index.json';
 
-        if (strpos($pipeline_url, 'http://') === 0 && strpos($pipeline_url, 'https://') === 0) {
+        if (strpos($pipeline_url, 'http://') === 0 || strpos($pipeline_url, 'https://') === 0) {
             // If the URL starts with http:// or https://, do a web fetch.
             $req =& new HTTP_Request($pipeline_url);
             $rv = $req->sendRequest();
