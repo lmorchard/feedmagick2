@@ -102,7 +102,7 @@ class Summarizer extends FeedMagick2_SAXBasePipeModule {
             
             // Determine the actual length and constrained length for the text.
             $actual_len = strlen($data);
-            $limit_len  = ($_GET['char_limit']) ? $_GET['char_limit'] : 150;
+            $limit_len  = isset($_GET['char_limit']) ? $_GET['char_limit'] : 150;
             $final_len  = min($actual_len, $limit_len);
             
             if ($final_len < $actual_len) {

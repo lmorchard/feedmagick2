@@ -124,7 +124,7 @@ class FeedMagick2_BasePipeModule {
      * Parse output from fetchOutput_Raw() and return a DOM doc
      * @return array($headers, $doc) - headers and a DOM doc
      */
-    public function &fetchOutput_DOM_XML() {
+    public function fetchOutput_DOM_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();
         $doc = new DOMDocument();
         $doc->loadXML($body);
@@ -135,7 +135,7 @@ class FeedMagick2_BasePipeModule {
      * Parse output from fetchOutput_Raw() and return a SAX parser
      * @return array($headers, $parser) - headers and a SAX parser
      */
-    public function &fetchOutput_SAX_XML() {
+    public function fetchOutput_SAX_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();
         $parser = XML_SaxFilters_createParser('expat','string',$body);
         $sax_filter = new XML_SaxFilters_AbstractFilter();
