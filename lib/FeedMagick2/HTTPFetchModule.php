@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -14,7 +12,9 @@ require_once 'FeedMagick2/BasePipeModule.php';
 require_once 'HTTP/Request.php';
 
 /**
- *
+ * Fetches feeds and data via HTTP.
+ * @todo Honor more HTTP caching mechanics.
+ * @todo Do some local disk-based caching.
  */
 class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
 
@@ -31,11 +31,6 @@ class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
         return array(
             'url' => self::PARAM_STRING | self::PARAM_REQUIRED
         ); 
-    }
-
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
     }
 
     /** 

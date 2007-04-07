@@ -1,0 +1,39 @@
+[
+    {
+        "class" : "FeedMagick2_HTTPFetchModule",
+        "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+    },
+    {
+        "class" : "TitleMunger",
+        "parameters" : {"munge":"MAGIC"}
+    },
+    {
+        "class" : "SAXPassthrough",
+        "parameters" : {}
+    },
+    {
+        "class" : "FeedMagick2_Pipeline",
+        "parameters" : [
+            {
+                "class" : "Summarizer",
+                "parameters" : {"munge":"MAGIC"}
+            },
+            {
+                "class" : "SAXPassthrough",
+                "parameters" : {}
+            },
+            {
+                "class" : "TitleMunger",
+                "parameters" : {"munge":"keerak"}
+            },
+            {
+                "class" : "RawPassthrough",
+                "parameters" : {}
+            }
+        ]
+    },
+    {
+        "class" : "DOMPassthrough",
+        "parameters" : {}
+    }
+]

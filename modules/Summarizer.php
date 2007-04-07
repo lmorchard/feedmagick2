@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -54,11 +52,6 @@ class Summarizer extends FeedMagick2_SAXBasePipeModule {
         '&#174;'   => '(R)',
         '&#10084;' => '(heart)'
     );
-
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
 
     /**
      * For tags subject to summarizing, save up all character data 

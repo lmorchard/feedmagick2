@@ -1,7 +1,6 @@
 <?php
 /**
  * @package FeedMagick2
- * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
@@ -26,14 +25,11 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
     public function getSupportedInputs() 
         { return array( 'DOM_XML' ); }
 
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
-
     /**
      * Perform any needed modifications on the DOMDocument.
+     * @param $headers - feed headers
      * @param $doc - a DOMDocument ready for processing
+     * @return array($headers, $doc)
      */
     function processDoc($headers, $doc) {
         // No-op in abstract class.
@@ -42,7 +38,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
 
     /**
      * Hook this object up in-line with other SAX filters
-     * @return list($headers, $sax_filter) - Raw headers and this object as a sax filter.
+     * @return array($headers, $doc)
      */
     function fetchOutput_DOM_XML() {
         list($headers, $doc) = $this->getInputModule()->fetchOutput_DOM_XML();
@@ -52,7 +48,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
     
     /** 
      * Simply fetch and pass through raw data from input module.
-     * @return list($headers, $body) - Raw headers and body data.
+     * @return array($headers, $body)
      */
     public function fetchOutput_Raw() {
         list($headers, $dom) = $this->fetchOutput_DOM_XML();

@@ -1,9 +1,6 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
- * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
@@ -130,12 +127,6 @@ class FeedMagick2_SAXBasePipeModule extends FeedMagick2_BasePipeModule {
      * @access public
      */
     var $item_data      = array();
-
-
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
 
     /**
      * Hook this object up in-line with other SAX filters
@@ -500,7 +491,6 @@ class FeedMagick2_SAXBasePipeModule extends FeedMagick2_BasePipeModule {
      * @param array namespace URI
      * @return void
      * @access public
-     * LMO
      */
     function startNS(& $qname,& $uri) {
         if ( isset($this->child) ) {
@@ -514,7 +504,6 @@ class FeedMagick2_SAXBasePipeModule extends FeedMagick2_BasePipeModule {
      * @param array namespace URI
      * @return void
      * @access public
-     * LMO
      */
     function endNS(& $qname,& $uri) {
         if ( isset($this->child) ) {

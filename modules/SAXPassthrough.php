@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -13,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/SAXBasePipeModule.php';
 
 /**
- *
+ * A module that uses SAX to parse and pass feeds through unchanged.
  */
 class SAXPassthrough extends FeedMagick2_SAXBasePipeModule {
 
@@ -27,11 +25,6 @@ class SAXPassthrough extends FeedMagick2_SAXBasePipeModule {
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 
         { return array( 'SAX_XML' ); }
-
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
 
 }
 

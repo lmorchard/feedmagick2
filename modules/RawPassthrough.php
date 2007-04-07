@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -13,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/BasePipeModule.php';
 
 /**
- *
+ * A module that passes raw content through unchanged.
  */
 class RawPassthrough extends FeedMagick2_BasePipeModule {
 
@@ -27,11 +25,6 @@ class RawPassthrough extends FeedMagick2_BasePipeModule {
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 
         { return array( 'Raw' ); }
-
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
 
     /** 
      * Simply fetch and pass through raw data from input module.

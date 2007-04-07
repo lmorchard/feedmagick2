@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -13,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/DOMBasePipeModule.php';
 
 /**
- *
+ * A module that uses DOM to parse and pass feeds through unchanged.
  */
 class DOMPassthrough extends FeedMagick2_DOMBasePipeModule {
 

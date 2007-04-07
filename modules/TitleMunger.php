@@ -36,11 +36,6 @@ class TitleMunger extends FeedMagick2_SAXBasePipeModule {
         'http://purl.org/rss/1.0/:title',
     );
 
-    /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
-        parent::__construct($id, $options);
-    }
-
     /**
      * For tags subject to summarizing, save up all character data 
      * before emitting/queueing up events.

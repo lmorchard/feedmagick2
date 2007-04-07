@@ -1,7 +1,5 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
@@ -13,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/DOMBasePipeModule.php';
 
 /**
- *
+ * Use XSL to process feed content.
  */
 class XSLFilter extends FeedMagick2_DOMBasePipeModule {
 
@@ -22,7 +20,7 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
     public function getTitle()
         { return "XSLFilter"; }
     public function getDescription() 
-        { return 'XSL processing of DOM parsed XML'; }
+        { return 'Use XSL to process feed content.'; }
     public function getAuthor()
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 
@@ -34,7 +32,8 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
     }
 
     /**
-     * 
+     *
+     * @todo Need to accept arbitrary parameters for XSL.
      */
     public function processDoc($headers, $doc) {
         // Instantiate an XSLT processor
@@ -49,7 +48,7 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
         $xsl_doc = DOMDocument::loadXML($req->getResponseBody());
         $xslt->importStyleSheet($xsl_doc);
 
-        /* TODO: Need to accept arbitrary parameters for XSL.
+        /*
         foreach ($_GET as $param => $value) {
             $xslt->setParameter('', $param, $value);
         }

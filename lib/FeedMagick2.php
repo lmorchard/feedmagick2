@@ -1,7 +1,5 @@
 <?php
 /**
- * Main driver class for FeedMagick2
- *
  * @package FeedMagick2
  * @author l.m.orchard@pobox.com
  * @version 0.1
@@ -13,10 +11,11 @@ require_once 'Cache/Lite.php';
 require_once 'HTTP/Request.php';
 require_once 'Services/JSON.php';
 require_once 'FeedMagick2/BasePipeModule.php';
+require_once 'FeedMagick2/Pipeline.php';
 require_once 'FeedMagick2/HTTPFetchModule.php';
 
 /**
- *
+ * Main driver framework for FeedMagick2
  */
 class FeedMagick2 {
 
@@ -111,8 +110,7 @@ class FeedMagick2 {
     public function &instantiateModule($class_name, $id, $options) {
         if (!in_array($class_name, self::$module_registry)) return NULL;
         $rc = new ReflectionClass($class_name);
-        $obj = $rc->newInstance($id, $options);
-        $obj->log = $this->getLogger("{$class_name}[{$id}]");
+        $obj = $rc->newInstance($this, $id, $options);
         return $obj;
     }
 
@@ -139,74 +137,37 @@ class FeedMagick2 {
     }
 
     /**
-     *
+     * @todo Carry headers along as a property of this object?
+     * @todo Jail / constrain local path in file_get_contents below.
+     * @todo Need better error handling here.
      */
     public function dispatch() {
 
-        $opts1 = array(
-            array(
-                'class' => 'FeedMagick2_HTTPFetchModule',
-                'parameters' => array( 'url' => 'http://decafbad.com/blog/feed/')
-            ),
-            array(
-                'class' => 'TitleMunger',
-                'parameters' => array('munge'=>'MAGIC')
-            ),
-            array(
-                'class' => 'SAXPassthrough',
-                'parameters' => array()
-            ),
-            array(
-                'class' => 'Summarizer',
-                'parameters' => array('munge'=>'MAGIC')
-            ),
-            array(
-                'class' => 'SAXPassthrough',
-                'parameters' => array()
-            ),
-            array(
-                'class' => 'TitleMunger',
-                'parameters' => array('munge'=>'horta')
-            ),
-            array(
-                'class' => 'RawPassthrough',
-                'parameters' => array()
-            ),
-            array(
-                'class' => 'DOMPassthrough',
-                'parameters' => array()
-            )
-        );
+        // Get the pipeline URL, defaulting to index.json
+        $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'index.json';
 
-        $opts2 = array(
-            array(
-                'class' => 'FeedMagick2_HTTPFetchModule',
-                'parameters' => array( 'url' => 'http://ficlets.com/feeds/author/l_m_orchard')
-            ),
-            array(
-                'class' => 'XSLFilter',
-                'parameters' => array('xsl'=>'http://decafbad.com/2007/04/ficlets.xsl')
-            )
-        );
-
-
-        /*
-        $meta = $this->getMetaForModules();
-        var_dump($meta);
-         */
-
-        list($i, $prev_m, $m, $segs) = array(0, NULL, NULL, array());
-        foreach ($opts1 as &$seg) {
-            $m = $this->instantiateModule($seg['class'], 'seg'.($i++), $seg['parameters']);
-            if ($prev_m) $m->setInputModule($prev_m);
-            array_push($segs, $prev_m = $m);
+        if (strpos($pipeline_url, 'http://') === 0 && strpos($pipeline_url, 'https://') === 0) {
+            // If the URL starts with http:// or https://, do a web fetch.
+            $req =& new HTTP_Request($pipeline_url);
+            $rv = $req->sendRequest();
+            $pipeline_src = $req->getResponseBody();
+        } else {
+            // Otherwise, treat this as a path to a local pipeline
+            $pipelines_path = $this->getConfig('pipelines_path', 'pipelines');
+            $pipeline_src = file_get_contents("$pipelines_path/$pipeline_url");
         }
-        if ($m) {
-            list($headers, $body) = $m->fetchOutput_Raw();
-            echo $body;
-        }
+
+        // Attempt to parse the pipeline.
+        $pipeline_opts = json_decode($pipeline_src, TRUE);
+        if (!$pipeline_opts) die("Error parsing pipeline definition.");
+
+        // Build the root pipeline and run it.
+        $pipe = new FeedMagick2_Pipeline($this, 'pipeline', $pipeline_opts);
+        list($headers, $body) = $pipe->fetchOutput_Raw();
+        // TODO: Output the modified headers here.
+        /* foreach ($headers as $name=>$value) { header("$name: $value"); } */
+        echo $body;
 
     }
 
 }
-

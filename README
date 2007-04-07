@@ -1,0 +1,20 @@
+= FeedMagick2: A swiss-army knife for web feeds =
+
+http://decafbad.com/trac/wiki/FeedMagick
+l.m.orchard@pobox.com
+Share and Enjoy
+
+== Overview ==
+
+== Requirements ==
+
+    * PHP 5.2.1
+    * PEAR modules in extlib/
+
+== Installation ==
+
+    cp conf/config.php-dist conf/config.php
+    chmod a+w logs
+
+== Configuration ==
+

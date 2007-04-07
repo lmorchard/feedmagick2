@@ -1,0 +1,10 @@
+[
+    {
+        "class" : "FeedMagick2_HTTPFetchModule",
+        "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/l_m_orchard"}
+    },
+    {
+        "class" : "XSLFilter",
+        "parameters" : {"xsl":"http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
+    }
+]

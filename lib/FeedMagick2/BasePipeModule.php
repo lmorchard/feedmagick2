@@ -1,25 +1,24 @@
 <?php
 /**
- *
- *
  * @package FeedMagick2
- * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
 
+/** */
 require_once 'XML/SaxFilters.php';
 require_once 'XML/SaxFilters/IO/StringWriter.php';
 require_once 'XML/SaxFilters/IO/StringReader.php';
 
 /**
- *
+ * Abstract base class for all pipe modules.
  */
 class FeedMagick2_BasePipeModule {
 
     const PARAM_STRING   = 1;
     const PARAM_REQUIRED = 256;
 
+    private $_parent;
     private $_id;
     private $_options;
     private $_input;
@@ -45,11 +44,14 @@ class FeedMagick2_BasePipeModule {
         { return array(); }
 
     /** Construct an instance of the pipe module. */
-    public function __construct($id=NULL, $options=array()) {
+    public function __construct($parent, $id=NULL, $options=array()) {
+        $this->_parent  = $parent;
         $this->_id      = $id;
         $this->_options = $options;
         $this->_input   = NULL;
         $this->_params  = array();
+
+        $this->log = $parent->getLogger("$id");
     }
 
     /** Fetch the current ID for this module instance. */
