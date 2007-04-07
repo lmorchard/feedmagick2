@@ -1,0 +1,14 @@
+<?php
+$config = array(
+    
+    'cache' => array(
+        'cacheDir' => 'data/cache',
+        'lifeTime' => '3600'
+    ),
+
+    'log' => array(
+        'path'  => 'logs/feedmagick2-debug-'.date('Ymd', time()).'.log',
+        'level' => PEAR_LOG_DEBUG
+    )
+
+);

@@ -1,0 +1,29 @@
+= TODO =
+
+This is a list of TODOs for this package.  At the end of the file, TODOs are
+auto-extracted from source using bin/update-todo.sh
+
+== Bugs ==
+
+== Features ==
+
+  * Use a template placeholder system in parameters in pipe spec to accept GET parameters
+     * ie. array( 'xsl' => '{xsl}' )
+  * Stick headers into FeedMagick2 global, rather than pass along from call to call
+  * Date-rotating logs (date in a conf default?)
+
+== Wishlist ==
+
+== Blue Sky ==
+
+== Extracted ==
+
+./lib/FeedMagick2/BasePipeModule.php:103:     * @todo Honor GET parameters here?
+./lib/FeedMagick2/BasePipeModule.php:109:            /** @todo Honor GET parameters here. */
+./lib/FeedMagick2/HTTPFetchModule.php:43:     * @todo Implement some HTTP-aware caching here.
+./lib/FeedMagick2.php:107:     * @todo Do some more verification of available modules.
+./lib/FeedMagick2.php:108:     * @todo Wrap module loading in a try/catch and report bum modules.
+./lib/FeedMagick2.php:109:     * @todo Find a way to autoload these?
+./bin/update-todo.sh:2:# TODO: Make this suck less.
+./lib/FeedMagick2/XMLGeneratorFilter.php:49:            // TODO: Need to build a proper XML declaration here with respect to encoding, charset
+./lib/FeedMagick2/XMLGeneratorFilter.php:73:            // TODO: Not sure about the parameters of namespace end handler.

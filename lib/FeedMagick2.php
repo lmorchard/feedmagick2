@@ -1,0 +1,212 @@
+<?php
+/**
+ * Main driver class for FeedMagick2
+ *
+ * @package FeedMagick2
+ * @author l.m.orchard@pobox.com
+ * @version 0.1
+ */
+
+/** */
+require_once 'Log.php';
+require_once 'Cache/Lite.php';
+require_once 'HTTP/Request.php';
+require_once 'Services/JSON.php';
+require_once 'FeedMagick2/BasePipeModule.php';
+require_once 'FeedMagick2/HTTPFetchModule.php';
+
+/**
+ *
+ */
+class FeedMagick2 {
+
+    protected static $module_registry;
+
+    /** Current pipeline for the instance */
+    protected $pipeline;
+    protected $config;
+    protected $log;
+    protected $cache;
+    public $headers;
+
+    /**
+     * Initialize the web framework
+     * @param $config - Configuration array
+     * @todo Try to replace Services_JSON with the PHP binary extension, but not working on my laptop.
+     */
+    public function __construct($config) {
+        $this->config = $config;
+        $this->log = $this->getLogger('main');
+        $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
+        $this->pipeline = array();
+        $this->cache = new Cache_Lite($this->getConfig('cache', array(
+            'cacheDir' => 'data/cache', 'lifeTime' => '3600'
+        )));
+        $this->json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+        $this->headers = array();
+        $this->loadModules();
+    }
+
+    /**
+     * Return a usable logger given a name.
+     * @param $name - Name to be used in identifying log messages.
+     */
+    public function getLogger($name) {
+        $log_conf = $this->getConfig('log', array(
+            'path' => 'logs/main.log', 'level' => PEAR_LOG_INFO
+        ));
+        return Log::singleton(
+            'file', $log_conf['path'], $name, array(), $log_conf['level']
+        );
+    }
+
+    /**
+     * Fetch a configuration setting value.
+     * @param $name - name of the configuration setting
+     * @param $default - default config value if setting not set
+     */
+    function getConfig($name, $default=NULL) {
+        return isset($this->config[$name]) ? $this->config[$name] : $default;
+    }
+
+    /**
+     * Register a loaded and known pipe module.
+     * @param $class_name - Name of a pipe module class to register.
+     */
+    public static function registerModule($class_name) {
+        if (!isset(self::$module_registry)) 
+            self::$module_registry = array();
+        array_push(self::$module_registry, $class_name);
+    }
+
+    /**
+     * Collect the metadata from a pipe module.
+     * @param $class_name - Name of the pipe module class
+     * @return an array of metadata properties.
+     */
+    public function &getMetaForModule($class_name) {
+        $obj =& $this->instantiateModule($class_name, NULL, NULL);
+        return $obj->getMetadata();
+    }
+    
+    /**
+     * Collect metadata from all registered pipe modules.
+     * @return an associative array of module metadata
+     */
+    public function &getMetaForModules() {
+        $metas = array();
+        foreach (self::$module_registry as $class_name) {
+            $metas[$class_name] = $this->getMetaForModule($class_name);
+        }
+        return $metas;
+    }
+
+    /**
+     * Create a new object instance of a pipe module.
+     * @param $module_name - Name of the module to be instantiated
+     * @param $id - ID string for the instance
+     * @param $options - array of options for the instance
+     * @return a new instance of the requested pipe module.
+     */
+    public function &instantiateModule($class_name, $id, $options) {
+        if (!in_array($class_name, self::$module_registry)) return NULL;
+        $rc = new ReflectionClass($class_name);
+        $obj = $rc->newInstance($id, $options);
+        $obj->log = $this->getLogger("{$class_name}[{$id}]");
+        return $obj;
+    }
+
+    /**
+     * Scan the modules path and load available modules.
+     * @todo Do some more verification of available modules.
+     * @todo Wrap module loading in a try/catch and report bum modules.
+     * @todo Find a way to autoload these?
+     */
+    public function loadModules() {
+        $modules_path = $this->getConfig('modules_path', './modules');
+        if (is_dir($modules_path)) {
+            if ($dh = opendir($modules_path)) {
+                while (($name = readdir($dh)) !== FALSE) {
+                    $file = "$modules_path/$name";
+                    if (is_file($file) && strpos(substr($file, -4, 4), '.php') !== FALSE) {
+                        $this->log->debug("Loading module '$file'...");
+                        require_once $file;
+                    }
+                }
+                closedir($dh);
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public function dispatch() {
+
+        $opts1 = array(
+            array(
+                'class' => 'FeedMagick2_HTTPFetchModule',
+                'parameters' => array( 'url' => 'http://decafbad.com/blog/feed/')
+            ),
+            array(
+                'class' => 'TitleMunger',
+                'parameters' => array('munge'=>'MAGIC')
+            ),
+            array(
+                'class' => 'SAXPassthrough',
+                'parameters' => array()
+            ),
+            array(
+                'class' => 'Summarizer',
+                'parameters' => array('munge'=>'MAGIC')
+            ),
+            array(
+                'class' => 'SAXPassthrough',
+                'parameters' => array()
+            ),
+            array(
+                'class' => 'TitleMunger',
+                'parameters' => array('munge'=>'horta')
+            ),
+            array(
+                'class' => 'RawPassthrough',
+                'parameters' => array()
+            ),
+            array(
+                'class' => 'DOMPassthrough',
+                'parameters' => array()
+            )
+        );
+
+        $opts2 = array(
+            array(
+                'class' => 'FeedMagick2_HTTPFetchModule',
+                'parameters' => array( 'url' => 'http://ficlets.com/feeds/author/l_m_orchard')
+            ),
+            array(
+                'class' => 'XSLFilter',
+                'parameters' => array('xsl'=>'http://decafbad.com/2007/04/ficlets.xsl')
+            )
+        );
+
+
+        /*
+        $meta = $this->getMetaForModules();
+        var_dump($meta);
+         */
+
+        list($i, $prev_m, $m, $segs) = array(0, NULL, NULL, array());
+        foreach ($opts1 as &$seg) {
+            $m = $this->instantiateModule($seg['class'], 'seg'.($i++), $seg['parameters']);
+            if ($prev_m) $m->setInputModule($prev_m);
+            array_push($segs, $prev_m = $m);
+        }
+        if ($m) {
+            list($headers, $body) = $m->fetchOutput_Raw();
+            echo $body;
+        }
+
+    }
+
+}
+
