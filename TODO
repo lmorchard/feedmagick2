@@ -18,7 +18,7 @@ auto-extracted from source using bin/update-todo.sh
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
         * Cache
-            * Cache output of earlier pipe modules, shortcircuit execution
+            * Cache output of earlier pipe modules, shortcircuit execution of earlier pipe modules
         * Tidy
             * Turn tag-soup raw input into parseable DOM or SAX output
         * Normalize/Repair

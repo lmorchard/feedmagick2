@@ -52,6 +52,49 @@ class FeedMagick2_BasePipeModule {
         $this->_params  = array();
 
         $this->log = $parent->getLogger("$id");
+
+        $this->populateOptionPlaceholders();
+    }
+
+    /**
+     * Any parameter to a pipe module may contain {key} placeholders.  This 
+     * method replaces {key} with the value of $_GET('key')
+     * 
+     * @todo Find a more efficient way to do this.
+     */
+    public function populateOptionPlaceholders() {
+
+        // Cycle through all the options for this module
+        foreach ($this->_options as $opt_name => $opt_value)  {
+
+            // Do nothing with this option if it's not a string and doesn't contain { and }
+            if (is_string($opt_value) && strpos($opt_value, '{') !== FALSE && strpos($opt_value, '}') !== FALSE) {
+
+                // Scoop out the {placeholders} from the value.
+                $slots = array();
+                preg_match_all("({[^}]+})", $opt_value, $slots);
+                
+                // Process the placeholders.
+                foreach ($slots[0] as $slot) {
+
+                    // Extract the name from the slot specification, along with options.
+                    $slot_parts = explode("|", substr($slot, 1, strlen($slot)-2));
+                    $slot_name  = array_shift($slot_parts);
+                    $slot_opt   = ($slot_parts) ? array_shift($slot_parts) : NULL;
+
+                    // Try to get a value for this slot.
+                    $value = isset($_GET[$slot_name]) ? $_GET[$slot_name] : NULL;
+                    if ($value) {
+                        // {slot|u} - URL encode the value.
+                        if ($slot_opt == 'u') $value = urlencode($value);
+                        $opt_value = str_replace($slot, $value, $opt_value);
+                    }
+                }
+
+                // Replace the original option value with the placeholder-populated version.
+                $this->_options[$opt_name] = $opt_value;
+            }
+        }
     }
 
     /** Fetch the current ID for this module instance. */

@@ -5,7 +5,7 @@
     },
     {
         "class" : "TitleMunger",
-        "parameters" : {"munge":"MAGIC"}
+        "parameters" : {"munge":"{munge1}"}
     },
     {
         "class" : "SAXPassthrough",
@@ -13,7 +13,7 @@
     },
     {
         "class" : "Summarizer",
-        "parameters" : {"munge":"MAGIC"}
+        "parameters" : {"munge":"Another thing is {munge2|u} and {munge3}"}
     },
     {
         "class" : "SAXPassthrough",
@@ -21,7 +21,7 @@
     },
     {
         "class" : "TitleMunger",
-        "parameters" : {"munge":"horta"}
+        "parameters" : {"munge":"Another thing is {munge2|u} -- {munge2} and {munge3}"}
     },
     {
         "class" : "RawPassthrough",

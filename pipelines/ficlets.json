@@ -1,7 +1,7 @@
 [
     {
         "class" : "FeedMagick2_HTTPFetchModule",
-        "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/l_m_orchard"}
+        "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/{author|u}"}
     },
     {
         "class" : "XSLFilter",
