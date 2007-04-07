@@ -130,7 +130,7 @@ class FeedMagick2_SAXBasePipeModule extends FeedMagick2_BasePipeModule {
 
     /**
      * Hook this object up in-line with other SAX filters
-     * @return list($headers, $sax_filter) - Raw headers and this object as a sax filter.
+     * @return array ($headers, $sax_filter) - Raw headers and this object as a sax filter.
      */
     function fetchOutput_SAX_XML() {
         list($headers, $sax_filter) = $this->getInputModule()->fetchOutput_SAX_XML();
@@ -141,7 +141,7 @@ class FeedMagick2_SAXBasePipeModule extends FeedMagick2_BasePipeModule {
     
     /** 
      * Simply fetch and pass through raw data from input module.
-     * @return list($headers, $body) - Raw headers and body data.
+     * @return array ($headers, $body) - Raw headers and body data.
      */
     public function fetchOutput_Raw() {
         list($headers, $sax_filter) = $this->fetchOutput_SAX_XML();

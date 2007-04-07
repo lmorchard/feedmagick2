@@ -81,7 +81,7 @@ class FeedMagick2 {
     /**
      * Collect the metadata from a pipe module.
      * @param $class_name - Name of the pipe module class
-     * @return an array of metadata properties.
+     * @return array of metadata properties.
      */
     public function &getMetaForModule($class_name) {
         $obj =& $this->instantiateModule($class_name, NULL, NULL);
@@ -90,7 +90,7 @@ class FeedMagick2 {
     
     /**
      * Collect metadata from all registered pipe modules.
-     * @return an associative array of module metadata
+     * @return array of module metadata
      */
     public function &getMetaForModules() {
         $metas = array();
@@ -105,7 +105,7 @@ class FeedMagick2 {
      * @param $module_name - Name of the module to be instantiated
      * @param $id - ID string for the instance
      * @param $options - array of options for the instance
-     * @return a new instance of the requested pipe module.
+     * @return BasePipeModule a new instance of the requested pipe module.
      */
     public function &instantiateModule($class_name, $id, $options) {
         if (!in_array($class_name, self::$module_registry)) return NULL;

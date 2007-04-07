@@ -116,7 +116,7 @@ class FeedMagick2_BasePipeModule {
 
     /**
      * Return raw content, NULL in abstract base class.
-     * @return array($headers, $data) - headers and raw data
+     * @return array ($headers, $data) - headers and raw data
      */
     public function fetchOutput_Raw() {
         return array(NULL, NULL);
@@ -124,7 +124,7 @@ class FeedMagick2_BasePipeModule {
 
     /**
      * Parse output from fetchOutput_Raw() and return a DOM doc
-     * @return array($headers, $doc) - headers and a DOM doc
+     * @return array ($headers, $doc) - headers and a DOM doc
      */
     public function fetchOutput_DOM_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();
@@ -135,7 +135,7 @@ class FeedMagick2_BasePipeModule {
 
     /**
      * Parse output from fetchOutput_Raw() and return a SAX parser
-     * @return array($headers, $parser) - headers and a SAX parser
+     * @return array ($headers, $parser) - headers and a SAX parser
      */
     public function fetchOutput_SAX_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();

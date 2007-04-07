@@ -28,7 +28,7 @@ class RawPassthrough extends FeedMagick2_BasePipeModule {
 
     /** 
      * Simply fetch and pass through raw data from input module.
-     * @return list($headers, $body) - Raw headers and body data.
+     * @return array ($headers, $body) - Raw headers and body data.
      */
     public function fetchOutput_Raw() {
         list($headers, $body) = $this->getInputModule()->fetchOutput_Raw();

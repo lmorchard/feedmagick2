@@ -1,6 +1,7 @@
 <?php
 /**
  * @package FeedMagick2
+ * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
@@ -80,7 +81,7 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
 
     /** 
      * Fetch raw output from tail of the pipe.
-     * @return array($headers, $body) - Raw headers and body data.
+     * @return array Raw headers and body data.
      */
     public function fetchOutput_Raw() {
         return $this->getTail()->fetchOutput_Raw();
@@ -88,7 +89,7 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
 
     /** 
      * Fetch DOM parsed output from tail of the pipe.
-     * @return array($headers, $doc) - Raw headers and DOM doc
+     * @return array Raw headers and DOM doc
      */
     public function fetchOutput_DOM_XML() {
         return $this->getTail()->fetchOutput_DOM_XML();
@@ -96,7 +97,7 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
 
     /** 
      * Fetch SAX filter from tail of the pipe.
-     * @return array($headers, $sax_filter) - Raw headers and SAX filter
+     * @return array Raw headers and SAX filter
      */
     public function fetchOutput_SAX_XML() {
         return $this->getTail()->fetchOutput_SAX_XML();

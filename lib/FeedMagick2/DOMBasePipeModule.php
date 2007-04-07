@@ -29,7 +29,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
      * Perform any needed modifications on the DOMDocument.
      * @param $headers - feed headers
      * @param $doc - a DOMDocument ready for processing
-     * @return array($headers, $doc)
+     * @return array ($headers, $doc)
      */
     function processDoc($headers, $doc) {
         // No-op in abstract class.
@@ -38,7 +38,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
 
     /**
      * Hook this object up in-line with other SAX filters
-     * @return array($headers, $doc)
+     * @return array ($headers, $doc)
      */
     function fetchOutput_DOM_XML() {
         list($headers, $doc) = $this->getInputModule()->fetchOutput_DOM_XML();
@@ -48,7 +48,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
     
     /** 
      * Simply fetch and pass through raw data from input module.
-     * @return array($headers, $body)
+     * @return array ($headers, $body)
      */
     public function fetchOutput_Raw() {
         list($headers, $dom) = $this->fetchOutput_DOM_XML();
