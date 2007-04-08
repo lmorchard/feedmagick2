@@ -108,7 +108,8 @@ class FeedMagick2 {
      * @return BasePipeModule a new instance of the requested pipe module.
      */
     public function &instantiateModule($class_name, $id, $options) {
-        if (!in_array($class_name, self::$module_registry)) return NULL;
+        if (!in_array($class_name, self::$module_registry)) 
+            die("No such pipe module named '$class_name'");
         $rc = new ReflectionClass($class_name);
         $obj = $rc->newInstance($this, $id, $options);
         return $obj;
@@ -166,7 +167,7 @@ class FeedMagick2 {
         $pipe = new FeedMagick2_Pipeline($this, 'pipeline', $pipeline_opts);
         list($headers, $body) = $pipe->fetchOutput_Raw();
         // TODO: Output the modified headers here.
-        /* foreach ($headers as $name=>$value) { header("$name: $value"); } */
+        foreach ($headers as $name=>$value) { header("$name: $value"); }
         echo $body;
 
     }

@@ -18,6 +18,15 @@ require_once 'HTTP/Request.php';
  */
 class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
 
+    /**
+     * Most headers from the requested feed are passed along, but these are 
+     * not.  All are lower-case to help in case-insensitive compare.
+     */
+    public $HEADERS_IGNORED = array(
+        'etag', 'last-modified', 'date', 'content-location', 'vary', 
+        'transfer-encoding', 'connection'
+    );
+
     public function getTitle()
         { return "HTTP Fetch"; }
     public function getVersion()
@@ -42,6 +51,7 @@ class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
         $rv = $req->sendRequest();
         $headers = array();
         foreach ($req->getResponseHeader() as $name => $value) {
+            if (in_array(strtolower($name), $this->HEADERS_IGNORED)) continue;
             $headers[$name] = $value;
         }
         return array($headers, $req->getResponseBody());

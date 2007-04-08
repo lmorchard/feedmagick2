@@ -7,8 +7,8 @@ auto-extracted from source using bin/update-todo.sh
 
 == Features ==
 
-    * Use a template placeholder system in parameters in pipe spec to accept GET parameters
-        * ie. array( 'xsl' => '{xsl}' )
+    * Stick the definition-via-url logic into the pipeline class itself.
+       * Allow sub-pipelines to be pulled in via URL as well.
     * Enforce required parameters in pipeline definition, and in URL params
     * Stick headers into FeedMagick2 global, rather than pass along from call to call
 
@@ -27,12 +27,11 @@ auto-extracted from source using bin/update-todo.sh
             * Turn RSS into Atom and vice versa
         * hAtom
             * Turn hAtom into Atom.
+            * Render any feed as hAtom
         * Blender
             * Mix multiple feeds into one feed.  (How to handle varied formats?)
         * Stretcher
             * Keep a local cache of feed items, keep them in the feed longer than original
-        * JSON
-            * Output feed as raw JSON, with JSONP callback
         * Subject / Tag Filter
             * Filter feed items on category or dc:subject
 

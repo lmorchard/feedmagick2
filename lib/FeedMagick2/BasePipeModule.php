@@ -110,7 +110,7 @@ class FeedMagick2_BasePipeModule {
      * Return a list of outputs offered by this object, by default introspected 
      * from 'fetchOutput_'-prefixed methods.
      */
-    public function &getSupportedOutputs() { 
+    public function getSupportedOutputs() { 
         $outputs = array();
         $ro = new ReflectionObject($this);
         $methods = $ro->getMethods();
@@ -124,7 +124,7 @@ class FeedMagick2_BasePipeModule {
     }
 
     /** Gather metadata for this instance in one convenient array. */
-    public function &getMetadata() {
+    public function getMetadata() {
         $meta = array();
         $methods = array( 
             'version'     => 'getVersion', 
