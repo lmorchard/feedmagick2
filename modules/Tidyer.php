@@ -11,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/BasePipeModule.php';
 
 /**
- * A module that passes raw content through unchanged.
+ * Use HTML Tidy to attempt to get parseable XML out of tag soup input.
  */
 class Tidyer extends FeedMagick2_BasePipeModule {
 
@@ -47,8 +47,8 @@ class Tidyer extends FeedMagick2_BasePipeModule {
             'quiet'=>1, 
             'numeric-entities'=>1
         );
-        if ($this->getOptions()) {
-            $opts = array_merge($opts, $this->getOptions());
+        if ($this->getParameters()) {
+            $opts = array_merge($opts, $this->getParameters());
         }
         $body = tidy_repair_string($body, $opts);
         return array($headers, $body);

@@ -11,16 +11,16 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/SAXBasePipeModule.php';
 
 /**
- *
+ * Enforce a character limit on item content and perform some entity replacements.
  */
 class Summarizer extends FeedMagick2_SAXBasePipeModule {
 
     public function getVersion()     
         { return '0.0'; }
     public function getTitle()
-        { return "SAX Passthrough"; }
+        { return "Summarizer"; }
     public function getDescription() 
-        { return 'Passthrough of SAX parsed XML.'; }
+        { return 'Enforce a character limit on item content / summary / description / title and perform some entity replacements.'; }
     public function getAuthor()
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 
@@ -45,12 +45,10 @@ class Summarizer extends FeedMagick2_SAXBasePipeModule {
     );
 
     var $ENTITY_REPLACEMENTS = array(
-        'feed' => 'slurpee',
         '&ldquo;'  => '"',
         '&rdquo;'  => '"',
         '&reg;'    => '(R)',
         '&#174;'   => '(R)',
-        '&#10084;' => '(heart)'
     );
 
     /**
@@ -95,7 +93,7 @@ class Summarizer extends FeedMagick2_SAXBasePipeModule {
             
             // Determine the actual length and constrained length for the text.
             $actual_len = strlen($data);
-            $limit_len  = isset($_GET['char_limit']) ? $_GET['char_limit'] : 150;
+            $limit_len  = $this->getParameter('char_limit', 150);
             $final_len  = min($actual_len, $limit_len);
             
             if ($final_len < $actual_len) {

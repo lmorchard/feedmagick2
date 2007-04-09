@@ -48,7 +48,7 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
         $xsl_doc = DOMDocument::loadXML($req->getResponseBody());
         $xslt->importStyleSheet($xsl_doc);
 
-        $opts = $this->getOptions();
+        $opts = $this->getParameters();
         foreach ($opts as $param => $value) {
             $xslt->setParameter('', $param, $value);
         }

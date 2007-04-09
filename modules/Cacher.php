@@ -9,6 +9,7 @@
 /** */
 require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/BasePipeModule.php';
+require_once 'Cache/Lite.php';
 
 /**
  * A module that passes raw content through unchanged.
@@ -37,7 +38,7 @@ class Cacher extends FeedMagick2_BasePipeModule {
             "Cacher-".
             $_SERVER['REQUEST_URI']."\n".
             $input->getId()."\n".
-            var_export($input->getOptions(), TRUE)
+            var_export($input->getParameters(), TRUE)
         );
     }
 
@@ -46,7 +47,13 @@ class Cacher extends FeedMagick2_BasePipeModule {
      * @return array ($headers, $body) - Raw headers and body data.
      */
     public function fetchOutput_Raw() {
-        $cache = $this->getParent()->cache;
+        // Layer defaults with parent config with module config for Cache_Lite
+        $cache = new Cache_Lite(array_merge(
+            array('cacheDir' => './data/cache/', 'lifeTime' => '3600'),
+            $this->getParent()->getConfig('cache', array()),
+            $this->getParameters()
+        ));
+
         $key = $this->calculateCacheId();
         if ($data = $cache->get($key)) {
             $this->log->debug("Cache HIT for $key");
@@ -63,4 +70,3 @@ class Cacher extends FeedMagick2_BasePipeModule {
 
 /** Register this module with the system. */
 FeedMagick2::registerModule('Cacher');
-

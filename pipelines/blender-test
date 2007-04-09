@@ -18,12 +18,21 @@
                         "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
                     },
                     { 
-                        "module" : "XSLFilter", 
-                        "parameters" : {"xsl":"xsl/normalizer.xsl","format":"rss"} 
+                        "module" : "TitleMunger", 
+                        "parameters" : { "title_prefix" : "[journal] "} 
+                    }
+                ]
+            },
+            {
+                "module" : "FeedMagick2_Pipeline",
+                "parameters" : [
+                    {
+                        "module" : "Fetcher",
+                        "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
                     },
                     { 
                         "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[journal] "} 
+                        "parameters" : { "title_prefix" : "[music] "} 
                     }
                 ]
             },
@@ -49,11 +58,7 @@
                 "parameters" : [
                     {
                         "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/friends_timeline\/8882.rss" }
-                    },
-                    { 
-                        "module" : "XSLFilter", 
-                        "parameters" : {"xsl":"xsl/normalizer.xsl","format":"rss"} 
+                        "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/user_timeline\/8882.rss" }
                     },
                     { 
                         "module" : "TitleMunger", 
@@ -63,7 +68,14 @@
             }
         ]
     },
+    {
+        "module" : "Summarizer"
+    },
     { 
-        "module":"Cacher" 
+        "module" : "XSLFilter", 
+        "parameters" : {"xsl":"xsl/sort-rss-by-pubdate.xsl"} 
+    },
+    {
+        "module" : "Cacher"
     }
 ]

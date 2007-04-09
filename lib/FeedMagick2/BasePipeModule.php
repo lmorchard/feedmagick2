@@ -108,9 +108,6 @@ class FeedMagick2_BasePipeModule {
     /** Get the FeedMagick2 parent object */
     public function getParent() { return $this->_parent; }
 
-    /** Get all options for this module */
-    public function getOptions() { return $this->_options; }
-
     /** Connect another module instance as this instance's input */
     public function setInputModule($input) { return $this->_input = $input; } 
 
@@ -167,6 +164,9 @@ class FeedMagick2_BasePipeModule {
             return $default;
         }
     }
+
+    /** Get all options for this module */
+    public function getParameters() { return $this->_options; }
 
     /**
      * Return raw content, NULL in abstract base class.

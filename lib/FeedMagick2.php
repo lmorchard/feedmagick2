@@ -70,6 +70,7 @@ class FeedMagick2 {
     /**
      * Register a loaded and known pipe module.
      * @param string Name of a pipe module class to register.
+     * @todo Allow modules to register aliases, ie. FeedMagic2_Pipeline => Pipeline
      */
     public static function registerModule($class_name) {
         if (!isset(self::$module_registry)) 

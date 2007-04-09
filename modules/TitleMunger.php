@@ -13,7 +13,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/SAXBasePipeModule.php';
 
 /**
- *
+ * Performs manipulations on feed entry titles.
  */
 class TitleMunger extends FeedMagick2_SAXBasePipeModule {
 
@@ -22,7 +22,7 @@ class TitleMunger extends FeedMagick2_SAXBasePipeModule {
     public function getTitle()
         { return "Title Munger"; }
     public function getDescription() 
-        { return 'Titles munged via SAX'; }
+        { return 'Performs manipulations on feed entry titles.'; }
     public function getAuthor()
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 
