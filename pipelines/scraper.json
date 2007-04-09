@@ -1,0 +1,5 @@
+[
+    { "module":"Fetcher", "parameters":{"url":"{url}"} },
+    { "module":"Tidyer" },
+    { "module":"XSLFilter", "parameters":{"xsl":"xsl\/scrapers\/{scraper}.xsl"} }
+]

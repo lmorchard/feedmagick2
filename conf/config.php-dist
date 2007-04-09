@@ -2,8 +2,11 @@
 $config = array(
     
     'cache' => array(
-        'cacheDir' => 'data/cache',
-        'lifeTime' => '3600'
+        'caching' => TRUE,
+        'lifeTime' => '10',
+        'cacheDir' => './data/cache/',
+        'automaticCleaningFactor' => 20,
+        'hashedDirectoryLevel' => 2
     ),
 
     'log' => array(

@@ -12,7 +12,6 @@ require_once 'HTTP/Request.php';
 require_once 'Services/JSON.php';
 require_once 'FeedMagick2/BasePipeModule.php';
 require_once 'FeedMagick2/Pipeline.php';
-require_once 'FeedMagick2/HTTPFetchModule.php';
 
 /**
  * Main driver framework for FeedMagick2
@@ -110,6 +109,7 @@ class FeedMagick2 {
     public function &instantiateModule($class_name, $id, $options) {
         if (!in_array($class_name, self::$module_registry)) 
             die("No such pipe module named '$class_name'");
+        $this->log->debug("$id instantiated as module $class_name");
         $rc = new ReflectionClass($class_name);
         $obj = $rc->newInstance($this, $id, $options);
         return $obj;
@@ -148,11 +148,13 @@ class FeedMagick2 {
         $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'index.json';
 
         if (strpos($pipeline_url, 'http://') === 0 || strpos($pipeline_url, 'https://') === 0) {
+            $this->log->debug("Fetching pipeline via HTTP from $pipeline_url");
             // If the URL starts with http:// or https://, do a web fetch.
             $req =& new HTTP_Request($pipeline_url);
             $rv = $req->sendRequest();
             $pipeline_src = $req->getResponseBody();
         } else {
+            $this->log->debug("Fetching pipeline from local file from $pipeline_url");
             // Otherwise, treat this as a path to a local pipeline
             $pipelines_path = $this->getConfig('pipelines_path', 'pipelines');
             $pipeline_src = file_get_contents("$pipelines_path/$pipeline_url");
@@ -164,9 +166,11 @@ class FeedMagick2 {
         if (!$pipeline_opts) die("Error parsing pipeline definition.");
 
         // Build the root pipeline and run it.
-        $pipe = new FeedMagick2_Pipeline($this, 'pipeline', $pipeline_opts);
+        $pipe = new FeedMagick2_Pipeline($this, 'main', $pipeline_opts);
+        $this->log->debug("Fetching output from pipeline.");
         list($headers, $body) = $pipe->fetchOutput_Raw();
-        // TODO: Output the modified headers here.
+
+        $this->log->debug("Sending output.");
         foreach ($headers as $name=>$value) { header("$name: $value"); }
         echo $body;
 

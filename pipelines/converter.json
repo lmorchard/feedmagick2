@@ -1,0 +1,4 @@
+[
+    { "module":"Fetcher", "parameters":{"url":"{url}"} },
+    { "module":"XSLFilter", "parameters":{"xsl":"xsl\/normalizer.xsl", "format":"{format}"} }
+]

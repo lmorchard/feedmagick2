@@ -105,10 +105,10 @@ class FeedMagick2_BasePipeModule {
     /** Fetch the current ID for this module instance. */
     public function getId() { return $this->_id; }
 
-    /** */
+    /** Get the FeedMagick2 parent object */
     public function getParent() { return $this->_parent; }
 
-    /** */
+    /** Get all options for this module */
     public function getOptions() { return $this->_options; }
 
     /** Connect another module instance as this instance's input */

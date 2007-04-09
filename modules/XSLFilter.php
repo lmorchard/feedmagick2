@@ -48,11 +48,10 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
         $xsl_doc = DOMDocument::loadXML($req->getResponseBody());
         $xslt->importStyleSheet($xsl_doc);
 
-        /*
-        foreach ($_GET as $param => $value) {
+        $opts = $this->getOptions();
+        foreach ($opts as $param => $value) {
             $xslt->setParameter('', $param, $value);
         }
-        */
 
         // Process the XSL and retrn the modified document.
         $this->log->debug("Processing XSL...");
