@@ -40,6 +40,9 @@ class FeedMagick2_XMLGeneratorFilter extends XML_SaxFilters_AbstractFilter {
         $this->curr_ns   = Array('http://www.w3.org/XML/1998/namespace'=>'xml');
         $this->output_ns = Array('http://www.w3.org/XML/1998/namespace'=>'xml');
 
+        // Start with this flag true in order to prevent erroneous leading '>'
+        $this->finished_start_tag = true;
+
         // TODO: Need to build a proper XML declaration here with respect to encoding, charset
         $this->writer->write('<?xml version="1.0" encoding="utf-8"?'.">\n");
     }
@@ -89,6 +92,12 @@ class FeedMagick2_XMLGeneratorFilter extends XML_SaxFilters_AbstractFilter {
      */
     function open(&$tag, &$attribs) {
         list($ns_uri, $ns_name, $ns_tag) = $this->splitNS($tag);
+
+        if (!$this->finished_start_tag) {
+            // If a previously started tag wasn't done being written, do so.
+            $this->finished_start_tag = true;
+            $this->writer->write(">");
+        }
 
         // Write the start of the tag
         $this->writer->write("<");
