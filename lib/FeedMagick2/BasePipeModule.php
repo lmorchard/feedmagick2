@@ -43,7 +43,12 @@ class FeedMagick2_BasePipeModule {
     public function getSupportedInputs()
         { return array(); }
 
-    /** Construct an instance of the pipe module. */
+    /** 
+     * Construct an instance of the pipe module. 
+     * @param BasePipeModule Parent pipe module
+     * @param string ID for this module
+     * @param array An array of module definitions
+     */
     public function __construct($parent, $id=NULL, $options=array()) {
         $this->_parent  = $parent;
         $this->_id      = $id;
@@ -100,6 +105,12 @@ class FeedMagick2_BasePipeModule {
     /** Fetch the current ID for this module instance. */
     public function getId() { return $this->_id; }
 
+    /** */
+    public function getParent() { return $this->_parent; }
+
+    /** */
+    public function getOptions() { return $this->_options; }
+
     /** Connect another module instance as this instance's input */
     public function setInputModule($input) { return $this->_input = $input; } 
 
@@ -143,8 +154,8 @@ class FeedMagick2_BasePipeModule {
 
     /** 
      * Return a pipe module parameters.
-     * @param $name - Parameter name
-     * @param $default - Parameter default to return if none set.
+     * @param string Parameter name
+     * @param string Parameter default to return if none set.
      * @todo Honor GET parameters here?
      */
     public function getParameter($name, $default=NULL) {

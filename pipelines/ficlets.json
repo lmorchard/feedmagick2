@@ -1,10 +1,10 @@
 [
     {
-        "class" : "FeedMagick2_HTTPFetchModule",
+        "module" : "Fetcher",
         "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/{author|u}"}
     },
     {
-        "class" : "XSLFilter",
+        "module" : "XSLFilter",
         "parameters" : {"xsl":"http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
     }
 ]

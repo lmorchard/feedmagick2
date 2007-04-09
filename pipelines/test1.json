@@ -1,34 +1,34 @@
 [
     {
-        "class" : "FeedMagick2_HTTPFetchModule",
+        "module" : "Fetcher",
         "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
     },
     {
-        "class" : "TitleMunger",
+        "module" : "TitleMunger",
         "parameters" : {"munge":"{munge1}"}
     },
     {
-        "class" : "SAXPassthrough",
+        "module" : "SAXPassthrough",
         "parameters" : {}
     },
     {
-        "class" : "Summarizer",
+        "module" : "Summarizer",
         "parameters" : {"munge":"Another thing is {munge2|u} and {munge3}"}
     },
     {
-        "class" : "SAXPassthrough",
+        "module" : "SAXPassthrough",
         "parameters" : {}
     },
     {
-        "class" : "TitleMunger",
+        "module" : "TitleMunger",
         "parameters" : {"munge":"Another thing is {munge2|u} -- {munge2} and {munge3}"}
     },
     {
-        "class" : "RawPassthrough",
+        "module" : "RawPassthrough",
         "parameters" : {}
     },
     {
-        "class" : "DOMPassthrough",
+        "module" : "DOMPassthrough",
         "parameters" : {}
     }
 ]

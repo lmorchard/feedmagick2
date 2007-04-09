@@ -22,15 +22,15 @@ class FeedMagick2 {
     protected static $module_registry;
 
     /** Current pipeline for the instance */
-    protected $pipeline;
-    protected $config;
-    protected $log;
-    protected $cache;
+    public $pipeline;
+    public $config;
+    public $log;
+    public $cache;
     public $headers;
 
     /**
      * Initialize the web framework
-     * @param $config - Configuration array
+     * @param array Configuration array
      * @todo Try to replace Services_JSON with the PHP binary extension, but not working on my laptop.
      */
     public function __construct($config) {
@@ -39,7 +39,7 @@ class FeedMagick2 {
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
         $this->pipeline = array();
         $this->cache = new Cache_Lite($this->getConfig('cache', array(
-            'cacheDir' => 'data/cache', 'lifeTime' => '3600'
+            'cacheDir' => './data/cache/', 'lifeTime' => '3600'
         )));
         $this->json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
         $this->headers = array();
@@ -48,7 +48,7 @@ class FeedMagick2 {
 
     /**
      * Return a usable logger given a name.
-     * @param $name - Name to be used in identifying log messages.
+     * @param string Name to be used in identifying log messages.
      */
     public function getLogger($name) {
         $log_conf = $this->getConfig('log', array(
@@ -61,8 +61,8 @@ class FeedMagick2 {
 
     /**
      * Fetch a configuration setting value.
-     * @param $name - name of the configuration setting
-     * @param $default - default config value if setting not set
+     * @param string Name of the configuration setting
+     * @param string Default config value if setting not set
      */
     function getConfig($name, $default=NULL) {
         return isset($this->config[$name]) ? $this->config[$name] : $default;
@@ -70,7 +70,7 @@ class FeedMagick2 {
 
     /**
      * Register a loaded and known pipe module.
-     * @param $class_name - Name of a pipe module class to register.
+     * @param string Name of a pipe module class to register.
      */
     public static function registerModule($class_name) {
         if (!isset(self::$module_registry)) 
@@ -80,7 +80,7 @@ class FeedMagick2 {
 
     /**
      * Collect the metadata from a pipe module.
-     * @param $class_name - Name of the pipe module class
+     * @param string Name of the pipe module class
      * @return array of metadata properties.
      */
     public function &getMetaForModule($class_name) {
@@ -102,9 +102,9 @@ class FeedMagick2 {
 
     /**
      * Create a new object instance of a pipe module.
-     * @param $module_name - Name of the module to be instantiated
-     * @param $id - ID string for the instance
-     * @param $options - array of options for the instance
+     * @param string Name of the module to be instantiated
+     * @param string ID string for the instance
+     * @param array Options for the instance, may be indexed or associative array
      * @return BasePipeModule a new instance of the requested pipe module.
      */
     public function &instantiateModule($class_name, $id, $options) {

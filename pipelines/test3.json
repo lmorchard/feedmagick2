@@ -35,5 +35,9 @@
     {
         "module" : "DOMPassthrough",
         "parameters" : {}
+    },
+    {
+        "module" : "MagpieJSON",
+        "parameters" : { "callback" : "{callback}" }
     }
 ]

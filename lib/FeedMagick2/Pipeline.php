@@ -48,9 +48,9 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
             list($i, $prev_mod, $mod) = array(0, NULL, NULL);
             foreach ($options as $opt) {
                 $mod = $parent->instantiateModule(
-                    $opt['class'], 
+                    $opt['module'], 
                     isset($opt['id']) ? $opt['id'] : 'seg'.($i++), 
-                    $opt['parameters']
+                    isset($opt['parameters']) ? $opt['parameters'] : array()
                 );
                 if ($prev_mod) $mod->setInputModule($prev_mod);
                 array_push($this->_pipe, $prev_mod = $mod);

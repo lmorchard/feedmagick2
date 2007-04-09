@@ -17,23 +17,30 @@ auto-extracted from source using bin/update-todo.sh
     * Builder
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
-        * Cache
-            * Cache output of earlier pipe modules, shortcircuit execution of earlier pipe modules
+        * Convert
+            * Turn RSS into Atom and vice versa
+        * Blank
+            * Start with a blank RSS or Atom feed
+        * Regex Filter
+            * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
+        * Sorter
+            * Sort feed items by an element's contents
+        * Limiter
+            * Limit feed to an arbitrary number of items
+        * XPath filter
+            * Specify items by xpath
+        * Subject / Tag Filter
+            * Filter feed items on category or dc:subject
         * Tidy
             * Turn tag-soup raw input into parseable DOM or SAX output
         * Normalize/Repair
             * Use Magpie to liberally parse broken feed, rebuild into working feed
-        * Convert
-            * Turn RSS into Atom and vice versa
         * hAtom
             * Turn hAtom into Atom.
             * Render any feed as hAtom
-        * Blender
-            * Mix multiple feeds into one feed.  (How to handle varied formats?)
         * Stretcher
             * Keep a local cache of feed items, keep them in the feed longer than original
-        * Subject / Tag Filter
-            * Filter feed items on category or dc:subject
+            * Good for piling up items from a single entry feed
 
 == Blue Sky ==
 

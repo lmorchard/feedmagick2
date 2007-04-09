@@ -1,0 +1,44 @@
+[
+    {
+        "module" : "Fetcher",
+        "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+    },
+    {
+        "module" : "Blender",
+        "parameters" : [
+            {
+                "module" : "Fetcher",
+                "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
+            },
+            {
+                "module" : "FeedMagick2_Pipeline",
+                "parameters" : [
+                    {
+                        "module" : "Fetcher",
+                        "parameters" : { "url" : "http:\/\/del.icio.us\/rss\/deusx" }
+                    },
+                    {
+                        "module" : "Summarizer",
+                        "parameters" : {"munge":"MAGIC"}
+                    },
+                    {
+                        "module" : "SAXPassthrough",
+                        "parameters" : {}
+                    },
+                    {
+                        "module" : "TitleMunger",
+                        "parameters" : {"munge":"keerak"}
+                    },
+                    {
+                        "module" : "RawPassthrough",
+                        "parameters" : {}
+                    }
+                ]
+            },
+            {
+                "module" : "Fetcher",
+                "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/friends_timeline\/8882.rss" }
+            }
+        ]
+    }
+]

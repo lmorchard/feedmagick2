@@ -1,14 +1,10 @@
 [
     {
         "module" : "Fetcher",
-        "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+        "parameters" : { "url" : "{url}"}
     },
     {
         "module" : "SAXPassthrough",
-        "parameters" : {}
-    },
-    {
-        "module" : "RawPassthrough",
         "parameters" : {}
     },
     {
@@ -16,7 +12,15 @@
         "parameters" : {}
     },
     {
-        "module" : "Cacher"
+        "module" : "RawPassthrough",
+        "parameters" : {}
+    },
+    {
+        "module" : "SAXPassthrough",
+        "parameters" : {}
+    },
+    {
+        "module" : "DOMPassthrough",
+        "parameters" : {}
     }
 ]
-

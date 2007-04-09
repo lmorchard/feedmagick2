@@ -27,8 +27,8 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
 
     /**
      * Perform any needed modifications on the DOMDocument.
-     * @param $headers - feed headers
-     * @param $doc - a DOMDocument ready for processing
+     * @param array feed headers
+     * @param DOMDocument a DOM document ready for processing
      * @return array ($headers, $doc)
      */
     function processDoc($headers, $doc) {

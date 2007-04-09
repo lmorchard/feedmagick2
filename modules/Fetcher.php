@@ -16,7 +16,7 @@ require_once 'HTTP/Request.php';
  * @todo Honor more HTTP caching mechanics.
  * @todo Do some local disk-based caching.
  */
-class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
+class Fetcher extends FeedMagick2_BasePipeModule {
 
     /**
      * Most headers from the requested feed are passed along, but these are 
@@ -47,17 +47,30 @@ class FeedMagick2_HTTPFetchModule extends FeedMagick2_BasePipeModule {
      * @todo Implement some HTTP-aware caching here.
      */
     public function fetchOutput_Raw() {
-        $req =& new HTTP_Request($this->getParameter('url'));
-        $rv = $req->sendRequest();
+        $url = $this->getParameter('url');
         $headers = array();
-        foreach ($req->getResponseHeader() as $name => $value) {
-            if (in_array(strtolower($name), $this->HEADERS_IGNORED)) continue;
-            $headers[$name] = $value;
+
+        if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
+            // If the URL starts with http:// or https://, do a web fetch.
+            $this->log->debug("Fetching via HTTP: $url");
+            $req =& new HTTP_Request($url);
+            $rv = $req->sendRequest();
+            $data = $req->getResponseBody();
+            foreach ($req->getResponseHeader() as $name => $value) {
+                if (in_array(strtolower($name), $this->HEADERS_IGNORED)) continue;
+                $headers[$name] = $value;
+            }
+        } else {
+            // Otherwise, treat this as a path to a local file
+            $this->log->debug("Fetching via local file: $url");
+            $path = $this->getParent()->getConfig('fetch_path', '.');
+            $data = file_get_contents("$path/$url");
         }
-        return array($headers, $req->getResponseBody());
+
+        return array($headers, $data);
     }
 
 }
 
 /** Register this module with the system. */
-FeedMagick2::registerModule('FeedMagick2_HTTPFetchModule');
+FeedMagick2::registerModule('Fetcher');
