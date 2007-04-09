@@ -20,8 +20,9 @@ class BadgerFish {
             $xpath = new DOMXPath($node);
         }
         
+        $r = array();
+
         if ($node->childNodes) {
-            $r = array();
             $text = '';
             foreach ($node->childNodes as $child) {
                 $idx = $child->nodeName;
