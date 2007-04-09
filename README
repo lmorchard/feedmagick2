@@ -8,7 +8,9 @@ Share and Enjoy
 
 == Requirements ==
 
-    * PHP 5.2.1
+    * PHP 5.2.1 with...
+        * HTML Tidy for Tidyer module
+        * libxslt for XSLTFilter
     * PEAR modules in extlib/
 
 == Installation ==

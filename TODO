@@ -10,15 +10,15 @@ auto-extracted from source using bin/update-todo.sh
     * Stick the definition-via-url logic into the pipeline class itself.
        * Allow sub-pipelines to be pulled in via URL as well.
     * Enforce required parameters in pipeline definition, and in URL params
-    * Stick headers into FeedMagick2 global, rather than pass along from call to call
+    * Use Services_JSON when json_encode / json_decode not available?
 
 == Wishlist ==
 
     * Builder
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
-        * Convert
-            * Turn RSS into Atom and vice versa
+        * Feed Header Munger
+            * Replace the feed title / link / description / etc with parameters
         * Regex Filter
             * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
         * XPath filter

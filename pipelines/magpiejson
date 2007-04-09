@@ -1,0 +1,4 @@
+[
+    { "module":"Fetcher", "parameters":{"url":"{url}"} },
+    { "module":"MagpieJSON" }
+]
