@@ -67,7 +67,7 @@ class Blender extends FeedMagick2_DOMBasePipeModule {
             foreach ($options as $opt) {
                 $mod = $parent->instantiateModule(
                     $opt['module'], 
-                    isset($opt['id']) ? $opt['id'] : $id.'_seg'.($i++), 
+                    isset($opt['id']) ? $opt['id'] : $id.'-seg'.($i++), 
                     $opt['parameters']
                 );
                 array_push($this->_modules, $mod);
