@@ -69,8 +69,9 @@ class TitleMunger extends FeedMagick2_SAXBasePipeModule {
             $data = $this->getCDATA();
             
             // Strip any HTML tags from this data.
-            $munge = $this->getParameter('munge', 'gort');
-            $data = "MUNGEY[$munge]: $data";
+            $pre  = $this->getParameter('title_prefix', NULL);
+            $post = $this->getParameter('title_suffix', NULL);
+            $data = ($pre?$pre:'')."$data".($post?$post:'');
 
             // Finally, queue up an event for this pent-up data.
             $this->queueData($data);
