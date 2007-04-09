@@ -18,15 +18,6 @@ require_once 'HTTP/Request.php';
  */
 class Fetcher extends FeedMagick2_BasePipeModule {
 
-    /**
-     * Most headers from the requested feed are passed along, but these are 
-     * not.  All are lower-case to help in case-insensitive compare.
-     */
-    public $HEADERS_IGNORED = array(
-        'etag', 'last-modified', 'date', 'content-location', 'vary', 
-        'transfer-encoding', 'connection'
-    );
-
     public function getTitle()
         { return "HTTP Fetch"; }
     public function getVersion()
@@ -38,7 +29,8 @@ class Fetcher extends FeedMagick2_BasePipeModule {
 
     public function getExpectedParameters() { 
         return array(
-            'url' => self::PARAM_STRING | self::PARAM_REQUIRED
+            'url' => self::PARAM_STRING | self::PARAM_REQUIRED,
+            'headers_whitelist' => 0 // TODO: Need to define these constants.
         ); 
     }
 
@@ -51,15 +43,24 @@ class Fetcher extends FeedMagick2_BasePipeModule {
         $headers = array();
 
         if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
+
             // If the URL starts with http:// or https://, do a web fetch.
             $this->log->debug("Fetching via HTTP: $url");
             $req =& new HTTP_Request($url);
             $rv = $req->sendRequest();
             $data = $req->getResponseBody();
+
+            // Use the 
+            $headers_whitelist = array_merge(
+                array( 'content-type' ),
+                $this->getParameter('headers_whitelist', array())
+            );
             foreach ($req->getResponseHeader() as $name => $value) {
-                if (in_array(strtolower($name), $this->HEADERS_IGNORED)) continue;
-                $headers[$name] = $value;
+                if (in_array(strtolower($name), $headers_whitelist)) {
+                    $headers[$name] = $value;
+                }
             }
+
         } else {
             // Otherwise, treat this as a path to a local file
             $this->log->debug("Fetching via local file: $url");

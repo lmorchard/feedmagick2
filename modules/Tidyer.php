@@ -50,9 +50,7 @@ class Tidyer extends FeedMagick2_BasePipeModule {
         if ($this->getOptions()) {
             $opts = array_merge($opts, $this->getOptions());
         }
-
         $body = tidy_repair_string($body, $opts);
-       
         return array($headers, $body);
     }
 
