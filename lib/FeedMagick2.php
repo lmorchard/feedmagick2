@@ -145,7 +145,7 @@ class FeedMagick2 {
     public function dispatch() {
 
         // Get the pipeline URL, defaulting to index.json
-        $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'index.json';
+        $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'default';
 
         if (strpos($pipeline_url, 'http://') === 0 || strpos($pipeline_url, 'https://') === 0) {
             $this->log->debug("Fetching pipeline via HTTP from $pipeline_url");
