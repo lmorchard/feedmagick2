@@ -5,6 +5,6 @@
     },
     {
         "module" : "XSLFilter",
-        "parameters" : {"xsl":"http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
+        "parameters" : {"xsl" : "http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
     }
 ]

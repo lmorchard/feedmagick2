@@ -36,16 +36,16 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
      * @todo Need to accept arbitrary parameters for XSL.
      */
     public function processDoc($headers, $doc) {
+        
         // Instantiate an XSLT processor
         $xslt = new XSLTProcessor();
 
-        $xsl_url = $this->getParameter('xsl');
-        $this->log->debug("Fetching XSL at $xsl_url...");
-
         // Load up and parse the XSL from URL.
-        $req =& new HTTP_Request($xsl_url);
-        $rv = $req->sendRequest();
-        $xsl_doc = DOMDocument::loadXML($req->getResponseBody());
+        list($xsl_headers, $xsl_body) = $this->getParent()->fetchFileOrWeb(
+            $this->getParent()->getConfig('xsl_path', './xsl'),
+            ($xsl_url = $this->getParameter('xsl'))
+        );
+        $xsl_doc = DOMDocument::loadXML($xsl_body);
         $xslt->importStyleSheet($xsl_doc);
 
         $opts = $this->getParameters();

@@ -39,36 +39,26 @@ class Fetcher extends FeedMagick2_BasePipeModule {
      * @todo Implement some HTTP-aware caching here.
      */
     public function fetchOutput_Raw() {
-        $url = $this->getParameter('url');
-        $headers = array();
+        
+        // Grab the desired data by local file or URL.
+        list($headers, $body) = $this->getParent()->fetchFileOrWeb(
+            $this->getParent()->getConfig('web_path', '.'),
+            ($url = $this->getParameter('url'))
+        );
 
-        if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
-
-            // If the URL starts with http:// or https://, do a web fetch.
-            $this->log->debug("Fetching via HTTP: $url");
-            $req =& new HTTP_Request($url);
-            $rv = $req->sendRequest();
-            $data = $req->getResponseBody();
-
-            // Use the 
-            $headers_whitelist = array_merge(
-                array( 'content-type' ),
-                $this->getParameter('headers_whitelist', array())
-            );
-            foreach ($req->getResponseHeader() as $name => $value) {
-                if (in_array(strtolower($name), $headers_whitelist)) {
-                    $headers[$name] = $value;
-                }
+        // Pass along only whitelisted headers.
+        $headers_out = array();
+        $headers_whitelist = array_merge(
+            array( 'content-type' ),
+            $this->getParameter('headers_whitelist', array())
+        );
+        foreach ($headers as $name => $value) {
+            if (in_array(strtolower($name), $headers_whitelist)) {
+                $headers_out[$name] = $value;
             }
-
-        } else {
-            // Otherwise, treat this as a path to a local file
-            $this->log->debug("Fetching via local file: $url");
-            $path = $this->getParent()->getConfig('fetch_path', '.');
-            $data = file_get_contents("$path/$url");
         }
 
-        return array($headers, $data);
+        return array($headers_out, $body);
     }
 
 }

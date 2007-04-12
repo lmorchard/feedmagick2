@@ -45,7 +45,7 @@
                     },
                     { 
                         "module" : "XSLFilter", 
-                        "parameters" : {"xsl":"xsl/normalizer.xsl","format":"rss"} 
+                        "parameters" : {"xsl":"normalizer.xsl","format":"rss"} 
                     },
                     { 
                         "module" : "TitleMunger", 
@@ -86,7 +86,7 @@
     },
     { 
         "module" : "XSLFilter", 
-        "parameters" : {"xsl":"xsl/sort-rss-by-pubdate.xsl"} 
+        "parameters" : {"xsl":"sort-rss-by-pubdate.xsl"} 
     },
     {
         "module" : "Cacher"

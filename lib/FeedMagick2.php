@@ -139,33 +139,54 @@ class FeedMagick2 {
     }
 
     /**
+     * Fetch data from a local file if available, or try from the web if the 
+     * path appears not valid for local access.
+     * @param string Path to desired data
+     * @param string Base root path to which access should be restricted
+     * @return array $header, $data
+     * @todo Figure out if any file system based headers make sense here. (modified, etc)
+     */
+    public function fetchFileOrWeb($base, $path) {
+        
+        // Get the full path from the absolute base path.        
+        $realbase = realpath($base);
+        $fullpath = "$realbase/$path";
+
+        if ( $fullpath == ($realpath = realpath($fullpath)) ) {
+            // If the realpath and the derived fullpath are the same, then the 
+            // path is valid and usable for local access.
+            $this->log->debug("Fetching locally: $realpath");
+            $headers = array();
+            $body    = file_get_contents($realpath);
+        } else {
+            // Assume any other path not matching local file system is a URL.
+            $this->log->debug("Fetching via HTTP: $path");
+            $req     =& new HTTP_Request($path);
+            $rv      = $req->sendRequest();
+            $headers = $req->getResponseHeader();
+            $body    = $req->getResponseBody();
+        }
+
+        return array($headers, $body);
+    }
+
+    /**
      * @todo Carry headers along as a property of this object?
-     * @todo Jail / constrain local path in file_get_contents below.
      * @todo Need better error handling here.
      */
     public function dispatch() {
 
-        // Get the pipeline URL, defaulting to index.json
-        $pipeline_url = isset($_GET['pipeline']) ? $_GET['pipeline'] : 'default';
-
-        if (strpos($pipeline_url, 'http://') === 0 || strpos($pipeline_url, 'https://') === 0) {
-            $this->log->debug("Fetching pipeline via HTTP from $pipeline_url");
-            // If the URL starts with http:// or https://, do a web fetch.
-            $req =& new HTTP_Request($pipeline_url);
-            $rv = $req->sendRequest();
-            $pipeline_src = $req->getResponseBody();
-        } else {
-            $this->log->debug("Fetching pipeline from local file from $pipeline_url");
-            // Otherwise, treat this as a path to a local pipeline
-            $pipelines_path = $this->getConfig('pipelines_path', 'pipelines');
-            $pipeline_src = file_get_contents("$pipelines_path/$pipeline_url");
-        }
+        // Grab the desired pipeline by local file or URL.
+        list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
+            $this->getConfig('pipelines_path', './pipelines'),
+            isset($_GET['pipeline']) ? $_GET['pipeline'] : 'default'
+        );
 
         // Attempt to parse the pipeline.
         // $pipeline_opts = json_decode($pipeline_src, TRUE);
         $pipeline_opts = $this->json->decode($pipeline_src, TRUE);
         if (!$pipeline_opts) {
-            $this->log->error("Error parsing pipeline definition.");
+            $this->log->err("Error parsing pipeline definition.");
             die("Error parsing pipeline definition.");
         }
 

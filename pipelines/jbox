@@ -1,5 +1,5 @@
 [
     { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
     { "module":"Tidyer" },
-    { "module":"XSLFilter", "parameters":{"xsl":"xsl\/scrapers\/jbox.xsl"} }
+    { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} }
 ]

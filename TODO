@@ -11,9 +11,27 @@ auto-extracted from source using bin/update-todo.sh
        * Allow sub-pipelines to be pulled in via URL as well.
     * Enforce required parameters in pipeline definition, and in URL params
     * Use Services_JSON when json_encode / json_decode not available?
+    * Explore more functional bits 
+        * ie. a module that accepts POSTs and shortcircuits the whole pipeline.
+            * write-able feeds.
     * Cacher / Fetcher
         * Obey and produce HTTP caching semantics
         * Store and use ETag and Last-Modified in Fetcher
+    * Pipeline parameters
+        * Spec
+            * id
+            * type
+            * required
+            * default
+            * label
+        * Types
+            * string
+            * url
+            * url-encoded
+            * int
+            * boolean
+            * enum
+            * json / user defined
 
 == Wishlist ==
 
@@ -32,14 +50,25 @@ auto-extracted from source using bin/update-todo.sh
             * Sort feed items by an element's contents
         * Limiter
             * Limit feed to an arbitrary number of items
+        * Auto-tagger
+            * Auto add dc:subject and/or category tags based on certain patterns
         * Normalize/Repair
             * Use Magpie to liberally parse broken feed, rebuild into working feed
-        * hAtom
-            * Turn hAtom into Atom.
+        * From hAtom
             * Render any feed as hAtom
+        * To hAtom
+            * Turn hAtom into Atom.
         * Stretcher
             * Keep a local cache of feed items, keep them in the feed longer than original
             * Good for piling up items from a single entry feed
+        * Item Inbox
+            * Simple POST interface to add items to a feed, stored locally in small file buffer
+               * Good for logging, simple status updates
+            * Possibly offer Atom Publishing Protocol compliance
+            * Possibly accept posts from mailhook.org
+            * Should be passworded / keyed
+        * Favicon Sprinkler
+            * For blended feeds, drop in an img ref to the original site's favicon
         * Blank
             * Start with a blank RSS or Atom feed
             * Pair with Feed Header Munger and Blender to make a feed from scratch almost
