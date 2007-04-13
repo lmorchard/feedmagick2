@@ -48,6 +48,7 @@ class FeedMagick2 {
     /**
      * Return a usable logger given a name.
      * @param string Name to be used in identifying log messages.
+     * @return Log an instance of the logger
      */
     public function getLogger($name) {
         $log_conf = $this->getConfig('log', array(
@@ -62,6 +63,7 @@ class FeedMagick2 {
      * Fetch a configuration setting value.
      * @param string Name of the configuration setting
      * @param string Default config value if setting not set
+     * @return mixed configuration value
      */
     function getConfig($name, $default=NULL) {
         return isset($this->config[$name]) ? $this->config[$name] : $default;
@@ -143,7 +145,7 @@ class FeedMagick2 {
      * path appears not valid for local access.
      * @param string Path to desired data
      * @param string Base root path to which access should be restricted
-     * @return array $header, $data
+     * @return array headers and body
      * @todo Figure out if any file system based headers make sense here. (modified, etc)
      */
     public function fetchFileOrWeb($base, $path) {

@@ -5,7 +5,7 @@ auto-extracted from source using bin/update-todo.sh
 
 == Bugs ==
 
-== Features ==
+== Improvements ==
 
     * Stick the definition-via-url logic into the pipeline class itself.
        * Allow sub-pipelines to be pulled in via URL as well.
@@ -17,6 +17,7 @@ auto-extracted from source using bin/update-todo.sh
     * Cacher / Fetcher
         * Obey and produce HTTP caching semantics
         * Store and use ETag and Last-Modified in Fetcher
+    * Options for Fetcher / XSLFilter / Pipeline to pull only from local files.
     * Pipeline parameters
         * Spec
             * id
@@ -38,14 +39,15 @@ auto-extracted from source using bin/update-todo.sh
     * Builder
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
+        * External Pipeline
+            * POST feed data to a URL, accept response body as output.
+            * Conversely, given a certain switch parameter, accept POST data and respond with feed data.
+            * Pluggable variant of Fetcher?  Rather than fetching, it accepts POSTed data.
+            * Pure pipeline, no local storage of data.
         * Feed Header Munger
             * Replace the feed title / link / description / etc with parameters
         * Regex Filter
             * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
-        * XPath filter
-            * Specify items by xpath
-        * Subject / Tag Filter
-            * Filter feed items on category or dc:subject
         * Sorter
             * Sort feed items by an element's contents
         * Limiter
@@ -86,9 +88,9 @@ auto-extracted from source using bin/update-todo.sh
 ./lib/FeedMagick2.php:121:     * @todo Do some more verification of available modules.
 ./lib/FeedMagick2.php:122:     * @todo Wrap module loading in a try/catch and report bum modules.
 ./lib/FeedMagick2.php:123:     * @todo Find a way to autoload these?
-./lib/FeedMagick2.php:142:     * @todo Carry headers along as a property of this object?
-./lib/FeedMagick2.php:143:     * @todo Jail / constrain local path in file_get_contents below.
-./lib/FeedMagick2.php:144:     * @todo Need better error handling here.
+./lib/FeedMagick2.php:147:     * @todo Figure out if any file system based headers make sense here. (modified, etc)
+./lib/FeedMagick2.php:174:     * @todo Carry headers along as a property of this object?
+./lib/FeedMagick2.php:175:     * @todo Need better error handling here.
 ./modules/BadgerFishJSON.php:43:     * @todo Whitelist the callback character set in BasePipeModule with an option slot modifier.
 ./modules/Blender.php:18: * @todo Auto-convert sub-module feeds into format of input feed?
 ./modules/Cacher.php:32:     * @todo Find a better way to calculate cache key
@@ -99,8 +101,8 @@ auto-extracted from source using bin/update-todo.sh
 ./modules/MagpieJSON.php:42:     * @todo Whitelist the callback character set in BasePipeModule with an option slot modifier.
 ./modules/XSLFilter.php:36:     * @todo Need to accept arbitrary parameters for XSL.
 ./bin/update-todo.sh:2:# TODO: Make this suck less.
-./lib/FeedMagick2/XMLGeneratorFilter.php:43:        // TODO: Need to build a proper XML declaration here with respect to encoding, charset
-./lib/FeedMagick2/XMLGeneratorFilter.php:67:        // TODO: Not sure about the parameters of namespace end handler.
+./lib/FeedMagick2/XMLGeneratorFilter.php:46:        // TODO: Need to build a proper XML declaration here with respect to encoding, charset
+./lib/FeedMagick2/XMLGeneratorFilter.php:70:        // TODO: Not sure about the parameters of namespace end handler.
 ./modules/Fetcher.php:33:            'headers_whitelist' => 0 // TODO: Need to define these constants.
 ./xsl/ficlets-extended.xsl:64:                            <!-- TODO: Could find the date, but would need to spider another page level deep -->
 ./xsl/ficlets-extended.xsl:79:                            <!-- TODO: Could find the date, but would need to spider another page level deep -->

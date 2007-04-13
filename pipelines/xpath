@@ -1,0 +1,14 @@
+[
+    {
+        "module" : "Fetcher",
+        "parameters" : { "url" : "{url}"}
+    },
+    {
+        "module" : "XPathFilter",
+        "parameters" : {
+            "include" : [
+                "category[text()='{category}'] | dc:subject[contains(text(), '{category}')]"
+            ]
+        }
+    }
+]

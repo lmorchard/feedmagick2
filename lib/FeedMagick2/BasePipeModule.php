@@ -56,9 +56,9 @@ class FeedMagick2_BasePipeModule {
         $this->_input   = NULL;
         $this->_params  = array();
 
-        $this->log = $parent->getLogger("$id");
+        $this->log = $parent->getLogger($id);
 
-        $this->populateOptionPlaceholders();
+        $this->populatePlaceholders($this->_options);
     }
 
     /**
@@ -66,11 +66,12 @@ class FeedMagick2_BasePipeModule {
      * method replaces {key} with the value of $_GET('key')
      * 
      * @todo Find a more efficient way to do this.
+     * @todo Make the slot options (ie. {foo|u}) more modular and sophisticated.
      */
-    public function populateOptionPlaceholders() {
+    public function populatePlaceholders(&$options) {
 
         // Cycle through all the options for this module
-        foreach ($this->_options as $opt_name => $opt_value)  {
+        foreach ($options as $opt_name => $opt_value)  {
 
             // Do nothing with this option if it's not a string and doesn't contain { and }
             if (is_string($opt_value) && strpos($opt_value, '{') !== FALSE && strpos($opt_value, '}') !== FALSE) {
@@ -97,7 +98,7 @@ class FeedMagick2_BasePipeModule {
                 }
 
                 // Replace the original option value with the placeholder-populated version.
-                $this->_options[$opt_name] = $opt_value;
+                $options[$opt_name] = $opt_value;
             }
         }
     }
@@ -150,19 +151,18 @@ class FeedMagick2_BasePipeModule {
     }
 
     /** 
-     * Return a pipe module parameters.
+     * Return a named module parameter.  If it's an array, it'll get 
+     * populatePlaceholders() applied before being returned.
      * @param string Parameter name
      * @param string Parameter default to return if none set.
-     * @todo Honor GET parameters here?
+     * @return mixed
      */
     public function getParameter($name, $default=NULL) {
-        if (isset($this->_options[$name])) {
-            return $this->_options[$name];
-            /* } else { */
-            /** @todo Honor GET parameters here. */
-        } else {
-            return $default;
-        }
+        $val = isset($this->_options[$name]) ? 
+            $this->_options[$name] : $default;
+        if (is_array($val)) 
+            $this->populatePlaceholders($val);
+        return $val;
     }
 
     /** Get all options for this module */
