@@ -34,6 +34,7 @@ class FeedMagick2 {
      */
     public function __construct($config) {
         $this->config = $config;
+        $this->base_dir = $this->getConfig('base_dir', '.');
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
         $this->pipeline = array();
@@ -60,13 +61,23 @@ class FeedMagick2 {
     }
 
     /**
-     * Fetch a configuration setting value.
+     * Fetch a configuration setting value.  Arrays of arrays can be navigated 
+     * with '/' delimited keys.
      * @param string Name of the configuration setting
      * @param string Default config value if setting not set
      * @return mixed configuration value
      */
     function getConfig($name, $default=NULL) {
-        return isset($this->config[$name]) ? $this->config[$name] : $default;
+        $parts = explode('/', $name);
+        $curr  = $this->config;
+        foreach ($parts as $part) {
+            if (array_key_exists($part, $curr)) {
+                $curr = $curr[$part];
+            } else {
+                return $default;
+            }
+        }
+        return $curr;
     }
 
     /**
@@ -125,7 +136,7 @@ class FeedMagick2 {
      * @todo Find a way to autoload these?
      */
     public function loadModules() {
-        $modules_path = $this->getConfig('modules_path', './modules');
+        $modules_path = $this->getConfig('paths/modules', "{$this->base_dir}/modules");
         if (is_dir($modules_path)) {
             if ($dh = opendir($modules_path)) {
                 while (($name = readdir($dh)) !== FALSE) {
@@ -180,7 +191,7 @@ class FeedMagick2 {
 
         // Grab the desired pipeline by local file or URL.
         list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
-            $this->getConfig('pipelines_path', './pipelines'),
+            $this->getConfig('paths/pipelines', "{$this->base_dir}/pipelines"),
             isset($_GET['pipeline']) ? $_GET['pipeline'] : 'default'
         );
 

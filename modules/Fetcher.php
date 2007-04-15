@@ -42,7 +42,7 @@ class Fetcher extends FeedMagick2_BasePipeModule {
         
         // Grab the desired data by local file or URL.
         list($headers, $body) = $this->getParent()->fetchFileOrWeb(
-            $this->getParent()->getConfig('web_path', '.'),
+            $this->getParent()->getConfig('paths/web', $this->getParent()->base_dir."/pipelines"),
             ($url = $this->getParameter('url'))
         );
 

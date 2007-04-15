@@ -11,7 +11,7 @@ require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/DOMBasePipeModule.php';
 require_once 'Services/JSON.php';
 
-define('MAGPIE_DIR', 'extlib/magpierss/');
+define('MAGPIE_DIR', dirname(__FILE__).'/../extlib/magpierss/');
 require_once 'magpierss/rss_parse.inc';
 
 /**

@@ -42,7 +42,7 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
 
         // Load up and parse the XSL from URL.
         list($xsl_headers, $xsl_body) = $this->getParent()->fetchFileOrWeb(
-            $this->getParent()->getConfig('xsl_path', './xsl'),
+            $this->getParent()->getConfig('paths/xsl', $this->getParent()->base_dir."/xsl"),
             ($xsl_url = $this->getParameter('xsl'))
         );
         $xsl_doc = DOMDocument::loadXML($xsl_body);

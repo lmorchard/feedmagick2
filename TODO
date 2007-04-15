@@ -36,6 +36,16 @@ auto-extracted from source using bin/update-todo.sh
 
 == Wishlist ==
 
+    * Index page
+        * List available modules and describe them
+        * List available pipelines and describe them
+    * Pipelines
+        * Add metadata
+            * Title
+            * Description
+            * Author
+            * Link
+            * Available query parameters
     * Builder
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
@@ -44,14 +54,13 @@ auto-extracted from source using bin/update-todo.sh
             * Conversely, given a certain switch parameter, accept POST data and respond with feed data.
             * Pluggable variant of Fetcher?  Rather than fetching, it accepts POSTed data.
             * Pure pipeline, no local storage of data.
-        * Feed Header Munger
-            * Replace the feed title / link / description / etc with parameters
+        * Sorter / Limiter
+            * Sort feed items by an element's contents
+            * Limit feed to an arbitrary number of items
         * Regex Filter
             * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
-        * Sorter
-            * Sort feed items by an element's contents
-        * Limiter
-            * Limit feed to an arbitrary number of items
+        * Feed Header Munger
+            * Replace the feed title / link / description / etc with parameters
         * Auto-tagger
             * Auto add dc:subject and/or category tags based on certain patterns
         * Normalize/Repair
