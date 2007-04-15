@@ -22,8 +22,8 @@
   xmlns:dyn="http://exslt.org/dynamic"
   xmlns:str="http://exslt.org/strings">
   
-  <xsl:import href="xsl/scrapers/lib/scraper.xsl" />
-  <xsl:import href="xsl/scrapers/lib/str.replace.template.xsl" />
+  <xsl:import href="www/xsl/scrapers/lib/scraper.xsl" />
+  <xsl:import href="www/xsl/scrapers/lib/str.replace.template.xsl" />
 
   <xsl:variable name="base">http://www.jbox.com/</xsl:variable>
   <xsl:variable name="title.path">/html:html/html:head/html:title</xsl:variable>  

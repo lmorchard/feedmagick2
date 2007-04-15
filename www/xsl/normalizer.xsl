@@ -21,7 +21,7 @@
     xmlns:date="http://exslt.org/dates-and-times"
     extension-element-prefixes="date">
 
-    <xsl:import href="xsl/lib/date.format-date.function.xsl" />
+    <xsl:import href="www/xsl/lib/date.format-date.function.xsl" />
 
     <xsl:output method="xml" indent="yes" encoding="utf-8" />
 

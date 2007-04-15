@@ -35,8 +35,11 @@ class FeedMagick2 {
     public function __construct($config) {
         $this->config = $config;
         $this->base_dir = $this->getConfig('base_dir', '.');
+        chdir($this->base_dir);
+
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
+
         $this->pipeline = array();
         $this->cache = new Cache_Lite($this->getConfig('cache', array(
             'cacheDir' => './data/cache/', 'lifeTime' => '3600'
@@ -184,10 +187,28 @@ class FeedMagick2 {
     }
 
     /**
+     *
+     */
+    public function clidispatch() {
+        $argv = $_SERVER['argv'];
+
+        $script_name = array_shift($argv);
+
+        // Convert --options into $_GET values.
+        while ($opt = array_shift($argv)) {
+            if (substr($opt, 0, 2) == '--') {
+                $_GET[substr($opt, 2)] = array_shift($argv);
+            }
+        }
+
+        $this->webdispatch();
+    }
+    
+    /**
      * @todo Carry headers along as a property of this object?
      * @todo Need better error handling here.
      */
-    public function dispatch() {
+    public function webdispatch() {
 
         // Grab the desired pipeline by local file or URL.
         list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
