@@ -37,14 +37,31 @@ class Fetcher extends FeedMagick2_BasePipeModule {
     /** 
      * Fetch HTTP content at the URL given in parameters.
      * @todo Implement some HTTP-aware caching here.
+     * @todo support headers from CLI
+     * @todo support headers from POST
      */
     public function fetchOutput_Raw() {
-        
-        // Grab the desired data by local file or URL.
-        list($headers, $body) = $this->getParent()->fetchFileOrWeb(
-            $this->getParent()->getConfig('paths/web', $this->getParent()->base_dir."/pipelines"),
-            ($url = $this->getParameter('url'))
-        );
+        list($headers, $body) = array(array(), '');
+
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method=='CLI') {
+            if ($_GET['stdin']) {
+                $headers = array();
+                $body    = file_get_contents('php://stdin');
+            }
+        } elseif ($method=='POST') {
+            $headers = array();
+            $body    = file_get_contents('php://input');
+        }
+
+        if (!$body) {
+            // Grab the desired data by local file or URL.
+            list($headers, $body) = $this->getParent()->fetchFileOrWeb(
+                $this->getParent()->getConfig('paths/web', $this->getParent()->base_dir."/www"),
+                $this->getParameter('url')
+            );
+        }
 
         // Pass along only whitelisted headers.
         $headers_out = array();

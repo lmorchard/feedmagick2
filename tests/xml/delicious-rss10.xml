@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:cc="http://web.resource.org/cc/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+>
+
+<channel rdf:about="http://del.icio.us/deusx">
+<title>del.icio.us/deusx</title>
+<link>http://del.icio.us/deusx</link>
+<description></description>
+<cc:license rdf:resource="http://creativecommons.org/licenses/by/2.5/" />
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="http://www.steve-olson.com/when-did-america-become-a-nation-of-frightened-wimps/" />
+  <rdf:li rdf:resource="http://www.modchipstore.com/NDS-Nintendo-DS-Lite-M3-Lite-and-passcard-3-combo-Adapter-micros-16403.html" />
+  <rdf:li rdf:resource="http://www.modchipstore.com/R4-DS-R4DS-Slot-1-solution-homebrew-backups-microsd-16424.html" />
+  <rdf:li rdf:resource="http://www.365tomorrows.com/04/14/failsafe/" />
+  <rdf:li rdf:resource="http://www.socialtext.net/stoss/index.cgi?chris_dent_2007_04_10" />
+  <rdf:li rdf:resource="http://www.frozenreality.co.uk/comic/bunny/index.php?id=873" />
+  <rdf:li rdf:resource="http://www.warrenellis.com/?p=4135" />
+  <rdf:li rdf:resource="http://rakaz.nl/item/make_your_pages_load_faster_by_combining_and_compressing_javascript_and_css_files" />
+  <rdf:li rdf:resource="http://advogato.org/person/fzort/diary.html?start=62" />
+  <rdf:li rdf:resource="http://code.google.com/p/modwsgi/" />
+  <rdf:li rdf:resource="http://www.cs.stevens.edu/~dlong/software/kamen/index.php" />
+  <rdf:li rdf:resource="http://machinetags.org/" />
+  <rdf:li rdf:resource="http://ejohn.org/apps/jquery2/" />
+  <rdf:li rdf:resource="http://news.independent.co.uk/world/science_technology/article2444462.ece" />
+  <rdf:li rdf:resource="http://willnorris.com/projects/wpopenid/" />
+  <rdf:li rdf:resource="http://adactio.com/journal/1277" />
+  <rdf:li rdf:resource="http://www.phpunit.de/" />
+  <rdf:li rdf:resource="http://qa.php.net/write-test.php" />
+  <rdf:li rdf:resource="http://www.caucho.com/resin-3.0/quercus/" />
+  <rdf:li rdf:resource="http://www.newscientisttech.com/article.ns?id=dn11590" />
+  <rdf:li rdf:resource="http://www.ibelieveinscience.com/" />
+  <rdf:li rdf:resource="http://joi.ito.com/archives/2007/04/12/mindfulness_and_deferred_yak_shaving.html" />
+  <rdf:li rdf:resource="http://www.digital-web.com/articles/html5_xhtml2_and_the_future_of_the_web/" />
+  <rdf:li rdf:resource="http://www.orlandoweekly.com/artsculture/story.asp?id=11477" />
+  <rdf:li rdf:resource="http://news.bostonherald.com/localRegional/view.bg?articleid=194044" />
+  <rdf:li rdf:resource="http://scienceblogs.com/developingintelligence/2007/03/why_the_brain_is_not_like_a_co.php" />
+  <rdf:li rdf:resource="http://www.sveinbjorn.org/sloth" />
+  <rdf:li rdf:resource="http://www.fidothemovie.com/" />
+  <rdf:li rdf:resource="http://aws.typepad.com/aws/2007/04/mysql_interface.html" />
+  <rdf:li rdf:resource="http://www.cs.cmu.edu/~marekm/projects/beatbots/" />
+  <rdf:li rdf:resource="http://www.tokyomango.com/tokyo_mango/2007/04/video_cosplayer.html" />
+ </rdf:Seq>
+</items>
+</channel>
+
+<item rdf:about="http://www.steve-olson.com/when-did-america-become-a-nation-of-frightened-wimps/">
+<title>When did America become a nation of frightened wimps? | steve-olson.com</title>
+<link>http://www.steve-olson.com/when-did-america-become-a-nation-of-frightened-wimps/</link>
+<description>&#x26;quot;When did America become a nation of frightened wimps? When did we cross the line from courage to cowardice?&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T23:13:10Z</dc:date>
+<dc:subject>911 america americans politics</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/america" />
+    <rdf:li resource="http://del.icio.us/tag/americans" />
+    <rdf:li resource="http://del.icio.us/tag/politics" />
+    <rdf:li resource="http://del.icio.us/tag/911" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.modchipstore.com/NDS-Nintendo-DS-Lite-M3-Lite-and-passcard-3-combo-Adapter-micros-16403.html">
+<title>M3 Lite 1GB All-in-One Combo (M3 lite, Passcard 3, 1GB MicroSD, Reader) for Nintendo DS Lite / GBA / ModChipStore.com</title>
+<link>http://www.modchipstore.com/NDS-Nintendo-DS-Lite-M3-Lite-and-passcard-3-combo-Adapter-micros-16403.html</link>
+<description>&#x26;quot;It is a full blown M3 adapter that will perfectly fit into your Nintendo DS Lite GBA cartrige slot without sticking out, and with all the functions of the M3 Adapter.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T21:14:21Z</dc:date>
+<dc:subject>ds gadgets homebrew nintendo wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ds" />
+    <rdf:li resource="http://del.icio.us/tag/homebrew" />
+    <rdf:li resource="http://del.icio.us/tag/nintendo" />
+    <rdf:li resource="http://del.icio.us/tag/gadgets" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.modchipstore.com/R4-DS-R4DS-Slot-1-solution-homebrew-backups-microsd-16424.html">
+<title>R4 DS Slot-1 Solution (MicroSD) for Nintendo DS (Lite) / ModChipStore.com</title>
+<link>http://www.modchipstore.com/R4-DS-R4DS-Slot-1-solution-homebrew-backups-microsd-16424.html</link>
+<description>&#x26;quot;The R4 is your Slot 1 solution for running homebrew applications, DS backups, and more!! This Slot 1 solution boasts &#x26;quot;drag and drop&#x26;quot; functionality for your backups removing the dreaded patching system before adding backups to your microSD card.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T21:14:01Z</dc:date>
+<dc:subject>ds gadgets homebrew nintendo wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ds" />
+    <rdf:li resource="http://del.icio.us/tag/homebrew" />
+    <rdf:li resource="http://del.icio.us/tag/nintendo" />
+    <rdf:li resource="http://del.icio.us/tag/gadgets" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.365tomorrows.com/04/14/failsafe/">
+<title>365 tomorrows &#xBB; Failsafe</title>
+<link>http://www.365tomorrows.com/04/14/failsafe/</link>
+<description>&#x26;quot;Do: Leave at least one hatch interlock open while on EVA.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T21:11:02Z</dc:date>
+<dc:subject>fiction scifi stories wormholes</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/scifi" />
+    <rdf:li resource="http://del.icio.us/tag/fiction" />
+    <rdf:li resource="http://del.icio.us/tag/stories" />
+    <rdf:li resource="http://del.icio.us/tag/wormholes" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.socialtext.net/stoss/index.cgi?chris_dent_2007_04_10">
+<title>Chris Dent, 2007-04-10 / Socialtext Open Source Wiki</title>
+<link>http://www.socialtext.net/stoss/index.cgi?chris_dent_2007_04_10</link>
+<description>&#x26;quot;Earlier today cwest asked me (cdent) to write something about my experience using Turbogears, so here's a start. I've given the page a generic title so other people might chime in about other frameworks and experiences.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T21:07:31Z</dc:date>
+<dc:subject>python webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/python" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.frozenreality.co.uk/comic/bunny/index.php?id=873">
+<title>Bunny - woo-wee woooooo. weee woooo. woo woo woo. woo wo wo. - by anne</title>
+<link>http://www.frozenreality.co.uk/comic/bunny/index.php?id=873</link>
+<description>&#x26;quot;Something had gone awfully wrong with this regeneration.</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T20:47:17Z</dc:date>
+<dc:subject>bunny comics doctorwho</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/doctorwho" />
+    <rdf:li resource="http://del.icio.us/tag/bunny" />
+    <rdf:li resource="http://del.icio.us/tag/comics" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.warrenellis.com/?p=4135">
+<title>warrenellis.com &#xBB; Blog Archive &#xBB; Won&#x2019;t Keelhaul Your Nethers</title>
+<link>http://www.warrenellis.com/?p=4135</link>
+<description>&#x26;quot;fer pluggin' th' bloody hole afore th' sharks smell ye&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T08:33:53Z</dc:date>
+<dc:subject>funny shirts tampons</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/funny" />
+    <rdf:li resource="http://del.icio.us/tag/tampons" />
+    <rdf:li resource="http://del.icio.us/tag/shirts" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://rakaz.nl/item/make_your_pages_load_faster_by_combining_and_compressing_javascript_and_css_files">
+<title>rakaz - Make your pages load faster by combining and compressing javascript and css files</title>
+<link>http://rakaz.nl/item/make_your_pages_load_faster_by_combining_and_compressing_javascript_and_css_files</link>
+<description>&#x26;quot;The script will intercept the attempt to retrieve something from the javascript directory and will notice that you want to fetch multiple files at once. It will then concatenate the requested files, compress it and send it as one to the browser.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T04:57:12Z</dc:date>
+<dc:subject>css js php webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/php" />
+    <rdf:li resource="http://del.icio.us/tag/js" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://advogato.org/person/fzort/diary.html?start=62">
+<title>Blog for fzort - More GNU and FSF News</title>
+<link>http://advogato.org/person/fzort/diary.html?start=62</link>
+<description>&#x26;quot;After much laughing at this xkcd comic, a friend and I had the silly idea of sending rms a katana (via Amazon, to the FSF office address). Amazingly, not only did rms let us know it was received, but someone at FSF even posted pictures!&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T04:24:38Z</dc:date>
+<dc:subject>comics fsf funny gnu katana rms xkcd</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/gnu" />
+    <rdf:li resource="http://del.icio.us/tag/fsf" />
+    <rdf:li resource="http://del.icio.us/tag/rms" />
+    <rdf:li resource="http://del.icio.us/tag/xkcd" />
+    <rdf:li resource="http://del.icio.us/tag/katana" />
+    <rdf:li resource="http://del.icio.us/tag/funny" />
+    <rdf:li resource="http://del.icio.us/tag/comics" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://code.google.com/p/modwsgi/">
+<title>modwsgi - Google Code</title>
+<link>http://code.google.com/p/modwsgi/</link>
+<description>&#x26;quot;The mod_wsgi adapter is an Apache module that provides a WSGI compliant interface for hosting Python based web applications within Apache.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-14T04:07:59Z</dc:date>
+<dc:subject>nifty omg python webdev wsgi</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/python" />
+    <rdf:li resource="http://del.icio.us/tag/omg" />
+    <rdf:li resource="http://del.icio.us/tag/nifty" />
+    <rdf:li resource="http://del.icio.us/tag/wsgi" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.cs.stevens.edu/~dlong/software/kamen/index.php">
+<title>Dustin Long's homepage - Kamen Lisp</title>
+<link>http://www.cs.stevens.edu/~dlong/software/kamen/index.php</link>
+<description>&#x26;quot;allowing web pages to operate with pure, standard compliant Common Lisp. This Firefox extension uses ECL to host a lisp environment, interfacing with the existing Javascript engine only when necessary.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:55:43Z</dc:date>
+<dc:subject>crazy firefox lisp nifty webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/lisp" />
+    <rdf:li resource="http://del.icio.us/tag/firefox" />
+    <rdf:li resource="http://del.icio.us/tag/crazy" />
+    <rdf:li resource="http://del.icio.us/tag/nifty" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://machinetags.org/">
+<title>machine tags</title>
+<link>http://machinetags.org/</link>
+<description>&#x26;quot;A website dedicated to machine tags&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:52:40Z</dc:date>
+<dc:subject>machinetagging tagging tags</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/tags" />
+    <rdf:li resource="http://del.icio.us/tag/tagging" />
+    <rdf:li resource="http://del.icio.us/tag/machinetagging" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://ejohn.org/apps/jquery2/">
+<title>jquery ^ 2</title>
+<link>http://ejohn.org/apps/jquery2/</link>
+<description>Not the sequel to jQuery, but a Ruby-esque domain-specific language demo for constructing jQuery calls.</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:51:13Z</dc:date>
+<dc:subject>dom javascript jquery js webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/jquery" />
+    <rdf:li resource="http://del.icio.us/tag/js" />
+    <rdf:li resource="http://del.icio.us/tag/dom" />
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/javascript" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://news.independent.co.uk/world/science_technology/article2444462.ece">
+<title>The prospect of all-female conception - Independent Online Edition &#x26;gt; Science &#x26;amp; Technology</title>
+<link>http://news.independent.co.uk/world/science_technology/article2444462.ece</link>
+<description>&#x26;quot;Scientists are seeking ethical permission to produce synthetic sperm cells from a woman's bone marrow tissue after showing that it possible to produce rudimentary sperm cells from male bone-marrow tissue.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:48:40Z</dc:date>
+<dc:subject>biology medicine reproduction</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/biology" />
+    <rdf:li resource="http://del.icio.us/tag/medicine" />
+    <rdf:li resource="http://del.icio.us/tag/reproduction" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://willnorris.com/projects/wpopenid/">
+<title>Wordpress OpenID Plugin+ at willnorris.com</title>
+<link>http://willnorris.com/projects/wpopenid/</link>
+<description>&#x26;quot;wpopenid is a Wordpress plugin by Alan Castonguay that enables commenters to authenticate using their OpenID.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:46:38Z</dc:date>
+<dc:subject>metablogging openid webdev wordpress</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/wordpress" />
+    <rdf:li resource="http://del.icio.us/tag/openid" />
+    <rdf:li resource="http://del.icio.us/tag/metablogging" />
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://adactio.com/journal/1277">
+<title>Adactio: Journal - Machine Tags of Loving Grace</title>
+<link>http://adactio.com/journal/1277</link>
+<description>&#x26;quot;I&#x2019;ve started to implement this machine tag format here. If you look at my last post&#x2014;which has a whole list of books&#x2014;you&#x2019;ll see that I&#x2019;ve tagged the post with a bunch of machine tags in the book:isbn format.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T19:46:19Z</dc:date>
+<dc:subject>flickr machinetags metablogging tagging tags upcoming</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/tagging" />
+    <rdf:li resource="http://del.icio.us/tag/tags" />
+    <rdf:li resource="http://del.icio.us/tag/machinetags" />
+    <rdf:li resource="http://del.icio.us/tag/flickr" />
+    <rdf:li resource="http://del.icio.us/tag/upcoming" />
+    <rdf:li resource="http://del.icio.us/tag/metablogging" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.phpunit.de/">
+<title>PHPUnit - Trac</title>
+<link>http://www.phpunit.de/</link>
+<description>&#x26;quot;a member of the xUnit family of testing frameworks and provides both a framework that makes the writing of tests easy as well as the functionality to easily run the tests and analyse their results.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T17:17:50Z</dc:date>
+<dc:subject>php testing webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/php" />
+    <rdf:li resource="http://del.icio.us/tag/testing" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://qa.php.net/write-test.php">
+<title>Writing Tests [PHP-QAT: Quality Assurance Team]</title>
+<link>http://qa.php.net/write-test.php</link>
+<description>&#x26;quot;A phpt test is a little script used by the php internal and quality assurance teams to test PHP's functionality.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T17:17:25Z</dc:date>
+<dc:subject>php testing webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/php" />
+    <rdf:li resource="http://del.icio.us/tag/testing" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.caucho.com/resin-3.0/quercus/">
+<title>Quercus: PHP in Java</title>
+<link>http://www.caucho.com/resin-3.0/quercus/</link>
+<description>&#x26;quot;Quercus is Caucho Technology's fast, open-source, 100% Java implementation of the PHP language (requires JDK 1.5).&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T05:16:45Z</dc:date>
+<dc:subject>java php webdev</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/php" />
+    <rdf:li resource="http://del.icio.us/tag/java" />
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.newscientisttech.com/article.ns?id=dn11590">
+<title>Plastic sheets perform auto-origami - tech - 12 April 2007 - New Scientist Tech</title>
+<link>http://www.newscientisttech.com/article.ns?id=dn11590</link>
+<description>&#x26;quot;Sheets of plastic that fold into tiny pyramids, boxes and spheres when water is added have been created by French researchers.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T05:15:48Z</dc:date>
+<dc:subject>nanotech nifty origami science</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/origami" />
+    <rdf:li resource="http://del.icio.us/tag/nanotech" />
+    <rdf:li resource="http://del.icio.us/tag/nifty" />
+    <rdf:li resource="http://del.icio.us/tag/science" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.ibelieveinscience.com/">
+<title>I Believe In Science</title>
+<link>http://www.ibelieveinscience.com/</link>
+<description>&#x26;quot;The Tree of Life design celebrates the theory of evolution and was created to give a voice to those who favor traditional biology and oppose the growing American support of various forms of creationism.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-13T04:48:19Z</dc:date>
+<dc:subject>clothing creationism evolution science wishlist</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/clothing" />
+    <rdf:li resource="http://del.icio.us/tag/wishlist" />
+    <rdf:li resource="http://del.icio.us/tag/creationism" />
+    <rdf:li resource="http://del.icio.us/tag/science" />
+    <rdf:li resource="http://del.icio.us/tag/evolution" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://joi.ito.com/archives/2007/04/12/mindfulness_and_deferred_yak_shaving.html">
+<title>Joi Ito's Web: Mindfulness and deferred yak shaving</title>
+<link>http://joi.ito.com/archives/2007/04/12/mindfulness_and_deferred_yak_shaving.html</link>
+<description>&#x26;quot;I figure I should probably be respectful to the spirit of the promise with the &#x26;quot;meditation me&#x26;quot; so that I'll continue to trust my requests for deferred yak shaving during my meditation.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T20:21:12Z</dc:date>
+<dc:subject>attention meditation meta</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/meditation" />
+    <rdf:li resource="http://del.icio.us/tag/meta" />
+    <rdf:li resource="http://del.icio.us/tag/attention" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.digital-web.com/articles/html5_xhtml2_and_the_future_of_the_web/">
+<title>Digital Web Magazine - HTML5, XHTML2, and the Future of the Web</title>
+<link>http://www.digital-web.com/articles/html5_xhtml2_and_the_future_of_the_web/</link>
+<description>&#x26;quot;HTML5 will be the future of the web, so my advice would be to pay close attention to it.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T20:17:38Z</dc:date>
+<dc:subject>html html5 webdev whatwg xhtml</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/html5" />
+    <rdf:li resource="http://del.icio.us/tag/whatwg" />
+    <rdf:li resource="http://del.icio.us/tag/xhtml" />
+    <rdf:li resource="http://del.icio.us/tag/html" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.orlandoweekly.com/artsculture/story.asp?id=11477">
+<title>Orlando Weekly - SMOKING YAHOO!'S PIPES</title>
+<link>http://www.orlandoweekly.com/artsculture/story.asp?id=11477</link>
+<description>&#x26;quot;I like the idea of turning all the data on the web into my raw material, to do with what I please. That&#x2019;s the beautiful part of Pipes. Still, the more data we deposit in the hive-mind of the web, the less power we have over it.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T18:14:45Z</dc:date>
+<dc:subject>atom feeds pipes rss yahoo</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/pipes" />
+    <rdf:li resource="http://del.icio.us/tag/yahoo" />
+    <rdf:li resource="http://del.icio.us/tag/rss" />
+    <rdf:li resource="http://del.icio.us/tag/atom" />
+    <rdf:li resource="http://del.icio.us/tag/feeds" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://news.bostonherald.com/localRegional/view.bg?articleid=194044">
+<title>Mooninites coming to Hub: Theaters &#x2018;toon&#x2019; out Tom&#x2019;s plea - Local &#x26;amp; Regional - BostonHerald.com</title>
+<link>http://news.bostonherald.com/localRegional/view.bg?articleid=194044</link>
+<description>&#x26;quot;If it was banned in Boston it would get bigger numbers nationally because it would be front-page news.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T15:42:02Z</dc:date>
+<dc:subject>boston mooninites morons</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/boston" />
+    <rdf:li resource="http://del.icio.us/tag/mooninites" />
+    <rdf:li resource="http://del.icio.us/tag/morons" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://scienceblogs.com/developingintelligence/2007/03/why_the_brain_is_not_like_a_co.php">
+<title>Developing Intelligence : 10 Important Differences Between Brains and Computers</title>
+<link>http://scienceblogs.com/developingintelligence/2007/03/why_the_brain_is_not_like_a_co.php</link>
+<description>&#x26;quot;Appreciating these differences may be crucial to understanding the mechanisms of neural information processing, and ultimately for the creation of artificial intelligence.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T15:16:32Z</dc:date>
+<dc:subject>brain cogsci computers mind</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/cogsci" />
+    <rdf:li resource="http://del.icio.us/tag/brain" />
+    <rdf:li resource="http://del.icio.us/tag/mind" />
+    <rdf:li resource="http://del.icio.us/tag/computers" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.sveinbjorn.org/sloth">
+<title>Sveinbjorn Thordarson's Website - Sloth</title>
+<link>http://www.sveinbjorn.org/sloth</link>
+<description>&#x26;quot;Sloth is a program that displays a list of all open files in use by all the applications your user account is running on the system -- this list includes IP and Unix sockets, character devices and directories.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T14:45:53Z</dc:date>
+<dc:subject>mac osx software</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/osx" />
+    <rdf:li resource="http://del.icio.us/tag/mac" />
+    <rdf:li resource="http://del.icio.us/tag/software" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.fidothemovie.com/">
+<title>Fido</title>
+<link>http://www.fidothemovie.com/</link>
+<description>Imagine the 50's with zombies as domestic servants and pets.</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T14:26:54Z</dc:date>
+<dc:subject>awesome fido movie nifty zombies</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/zombies" />
+    <rdf:li resource="http://del.icio.us/tag/movie" />
+    <rdf:li resource="http://del.icio.us/tag/awesome" />
+    <rdf:li resource="http://del.icio.us/tag/nifty" />
+    <rdf:li resource="http://del.icio.us/tag/fido" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://aws.typepad.com/aws/2007/04/mysql_interface.html">
+<title>Amazon Web Services Blog: MySQL Interface to Amazon S3</title>
+<link>http://aws.typepad.com/aws/2007/04/mysql_interface.html</link>
+<description>&#x26;quot;Independent developer Mark Atwood has been working on a MySQL interface to Amazon S3.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T14:22:42Z</dc:date>
+<dc:subject>amazon databases mysql s3 webdev webservices</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/s3" />
+    <rdf:li resource="http://del.icio.us/tag/amazon" />
+    <rdf:li resource="http://del.icio.us/tag/mysql" />
+    <rdf:li resource="http://del.icio.us/tag/webdev" />
+    <rdf:li resource="http://del.icio.us/tag/webservices" />
+    <rdf:li resource="http://del.icio.us/tag/databases" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.cs.cmu.edu/~marekm/projects/beatbots/">
+<title>Marek P. Michalowski - BeatBots: Socially Rhythmic Robots</title>
+<link>http://www.cs.cmu.edu/~marekm/projects/beatbots/</link>
+<description>&#x26;quot;We are currently developing and studying dance-oriented nonverbal play with between children and the robot Keepon, designed and built by Hideki Kozima.&#x26;quot;</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T14:19:22Z</dc:date>
+<dc:subject>dancing nifty robots toys video</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/dancing" />
+    <rdf:li resource="http://del.icio.us/tag/robots" />
+    <rdf:li resource="http://del.icio.us/tag/toys" />
+    <rdf:li resource="http://del.icio.us/tag/video" />
+    <rdf:li resource="http://del.icio.us/tag/nifty" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.tokyomango.com/tokyo_mango/2007/04/video_cosplayer.html">
+<title>TOKYOMANGO: Video: Cosplayer Off-Kai Ends In Police Raid</title>
+<link>http://www.tokyomango.com/tokyo_mango/2007/04/video_cosplayer.html</link>
+<description>&#x26;quot;To the lay person, this congregation might look like a harmless street dance unworthy of triggering the fear of cops, but you have to understand that it took a huge amount of guts for these law-abiding Japanese citizens to decide to do this without permi</description>
+<dc:creator>deusx</dc:creator>
+<dc:date>2007-04-12T05:56:17Z</dc:date>
+<dc:subject>flashmob japan video</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/japan" />
+    <rdf:li resource="http://del.icio.us/tag/flashmob" />
+    <rdf:li resource="http://del.icio.us/tag/video" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+</rdf:RDF>

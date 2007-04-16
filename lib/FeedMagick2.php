@@ -35,7 +35,6 @@ class FeedMagick2 {
     public function __construct($config) {
         $this->config = $config;
         $this->base_dir = $this->getConfig('base_dir', '.');
-        chdir($this->base_dir);
 
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
@@ -55,11 +54,12 @@ class FeedMagick2 {
      * @return Log an instance of the logger
      */
     public function getLogger($name) {
-        $log_conf = $this->getConfig('log', array(
-            'path' => 'logs/main.log', 'level' => PEAR_LOG_INFO
-        ));
         return Log::singleton(
-            'file', $log_conf['path'], $name, array(), $log_conf['level']
+            'file', 
+            $this->getConfig('log/path', './logs/main.log'),
+            $name, 
+            array(), 
+            $this->getConfig('log/level', PEAR_LOG_DEBUG)
         );
     }
 
@@ -190,8 +190,11 @@ class FeedMagick2 {
      *
      */
     public function clidispatch() {
-        $argv = $_SERVER['argv'];
+        chdir($this->base_dir);
+        
+        $_SERVER['REQUEST_METHOD'] = 'CLI';
 
+        $argv = $_SERVER['argv'];
         $script_name = array_shift($argv);
 
         // Convert --options into $_GET values.
@@ -209,6 +212,7 @@ class FeedMagick2 {
      * @todo Need better error handling here.
      */
     public function webdispatch() {
+        chdir($this->base_dir);
 
         // Grab the desired pipeline by local file or URL.
         list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
