@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed
+    xmlns="http://www.w3.org/2005/Atom"
+    xmlns:at="http://www.sixapart.com/ns/at"
+    xmlns:icbm="http://postneo.com/icbm"
+    xmlns:rvw="http://purl.org/NET/RVW/0.2/"
+    xml:lang="en">
+    <title>l.m.orchard’s blog</title>
+    <link rel="self" type="application/atom+xml" title="l.m.orchard’s blog (Atom)" href="http://decafbad.vox.com/library/posts/page/1/atom.xml" />
+    <link rel="alternate" type="text/html" title="l.m.orchard’s blog" href="http://decafbad.vox.com/library/posts/page/1/"/> 
+    <link rel="service.post" type="application/atom+xml" title="l.m.orchard’s blog" href="http://www.vox.com/services/atom/svc=post/collection_id=6a00c22520ce968e1d00c2251fdb63604a" /> 
+    <link rel="service.subscribe" type="application/atom+xml" title="l.m.orchard’s blog" href="http://decafbad.vox.com/library/posts/atom.xml" />    
+    <link rel="next" type="application/atom+xml" title="l.m.orchard’s blog" href="http://decafbad.vox.com/library/posts/page/2/atom.xml" /> 
+    <link rel="last" type="application/atom+xml" title="l.m.orchard’s blog" href="http://decafbad.vox.com/library/posts/page/3/atom.xml" />  
+    <generator uri="http://www.vox.com/">Vox</generator>
+    <updated>2007-01-07T08:53:10Z</updated> 
+    <author>
+        <name>l.m.orchard</name>
+        <uri>http://decafbad.vox.com/</uri>
+    </author> 
+    <id>tag:vox.com,2006:6p00c22520ce968e1d/</id> 
+    <subtitle>I am a caffinated code junky.  I write books and stuff sometimes, too.</subtitle>  
+    
+    <entry>
+        <title>QotD: Give Me A Ring </title>   
+        <link rel="alternate" type="text/html" title="QotD: Give Me A Ring " href="http://decafbad.vox.com/library/post/qotd-give-me-a-ring.html" />  
+        <link rel="service.post" type="application/atom+xml" title="QotD: Give Me A Ring " href="http://decafbad.vox.com/library/post/qotd-give-me-a-ring.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="QotD: Give Me A Ring " href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00cdf3acb902cb8f" />          <id>tag:vox.com,2007-01-07:asset-6a00c22520ce968e1d00cdf3acb902cb8f</id>
+        <published>2007-01-07T08:50:53Z</published>
+        <updated>2007-01-07T08:53:10Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <blockquote><p>What is your favorite ring tone? <br /><span style="font-size: 0.8em;">Submitted by <a at:user-xid="6p00d10a78e4028bfa" class="enclosure-inline-user" href="http://rachaelthegreat.vox.com/">rach</a>.&#160;</span> </p></blockquote><p>
+My favorite ring tone is the one I&#39;m using right now - the opening 30 seconds or so from the <a href="http://en.wikipedia.org/wiki/Charlatans_UK">Charlatans</a> (UK) tune &quot;Weirdo&quot;.&#160; It has an awesome build up effect from organs to a beat to guitars that gradually grabs more attention, and sounds a bit like James Bond.</p><p>My second favorite <a href="http://joi.vox.com/library/post/qotd-give-me-a-ring.html">has been covered by Joi Ito</a>.</p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="qotd" scheme="http://decafbad.vox.com/tags/qotd/" label="qotd" /> 
+    <category term="favorite ringtone" scheme="http://decafbad.vox.com/tags/favorite+ringtone/" label="favorite ringtone" /> 
+    </entry> 
+    
+    <entry>
+        <title>QotD: Better on the Big Screen</title>   
+        <link rel="alternate" type="text/html" title="QotD: Better on the Big Screen" href="http://decafbad.vox.com/library/post/qotd-better-on-the-big-screen.html" />  
+        <link rel="service.post" type="application/atom+xml" title="QotD: Better on the Big Screen" href="http://decafbad.vox.com/library/post/qotd-better-on-the-big-screen.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="QotD: Better on the Big Screen" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c22526fc718e1d" />          <id>tag:vox.com,2006-09-12:asset-6a00c22520ce968e1d00c22526fc718e1d</id>
+        <published>2006-09-12T19:39:01Z</published>
+        <updated>2006-09-12T19:39:01Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <blockquote><p>If you could watch <em>any</em> movie on the big screen right at this moment, what would it be?</p></blockquote><p>
+Can I pick a trilogy?&#160; What am I saying - this is my blog, sure I can.</p><p>I pick the entire Indiana Jones trilogy.&#160; Man, I&#39;d love to see that whole thing, back to back, in a really nice venue.&#160; And by really nice, I mean one of those theaters with tables and beer and food, and a big screen, and a nice sound system.<br /> </p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="qotd" scheme="http://decafbad.vox.com/tags/qotd/" label="qotd" /> 
+    <category term="movies" scheme="http://decafbad.vox.com/tags/movies/" label="movies" /> 
+    <category term="big screen" scheme="http://decafbad.vox.com/tags/big+screen/" label="big screen" /> 
+    </entry> 
+    
+    <entry>
+        <title>unhappy and immobile</title>   
+        <link rel="alternate" type="text/html" title="unhappy and immobile" href="http://decafbad.vox.com/library/post/unhappy-and-immobile.html" />  
+        <link rel="service.post" type="application/atom+xml" title="unhappy and immobile" href="http://decafbad.vox.com/library/post/unhappy-and-immobile.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="unhappy and immobile" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c22526ef068e1d" />          <id>tag:vox.com,2006-09-12:asset-6a00c22520ce968e1d00c22526ef068e1d</id>
+        <published>2006-09-12T08:29:36Z</published>
+        <updated>2006-09-12T18:21:25Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <p>So, hopping from a bus today at my stop, I managed to rupture an achilles tendon.&#160; Hurts like a bitch, and it&#39;s going to need surgery ASAP.&#160; Until then, I can&#39;t walk, and have a splint on my leg as a souvenier from the emergency room.&#160; And now the WoW servers are down.</p><p>I am not happy.<br /></p> 
+                </div>
+            ]]>
+        </content> 
+    </entry> 
+    
+    <entry>
+        <title>QotD: Reflecting on September 11th</title>   
+        <link rel="alternate" type="text/html" title="QotD: Reflecting on September 11th" href="http://decafbad.vox.com/library/post/qotd-reflecting-on-september-11th.html" />  
+        <link rel="service.post" type="application/atom+xml" title="QotD: Reflecting on September 11th" href="http://decafbad.vox.com/library/post/qotd-reflecting-on-september-11th.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="QotD: Reflecting on September 11th" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c22525ee6b604a" />          <id>tag:vox.com,2006-09-11:asset-6a00c22520ce968e1d00c22525ee6b604a</id>
+        <published>2006-09-11T22:50:14Z</published>
+        <updated>2006-09-11T22:50:14Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <blockquote><p>What are your personal memories of September 11th?</p></blockquote><p>
+Car accident on the way to work, morning of.&#160; Startling, but not very damaging, triple rear-end at a light as the plane strikes were announced.&#160; Turning back around, 3/4 of the way to work, everyone sent home.&#160; Sitting at home somewhat shaken from everything, hearing from my cousin in the Air Force stationed in Japan.&#160; Messaging with LiveJournal friends, all scared.&#160; Walking from my apartment to downtown Ann Arbor, to get a drink amongst others, and watch the TV - something I never do.&#160; No contrails in the sky.&#160; Eerily quiet.</p><p>Today?&#160; I&#39;m done being scared, and I&#39;m pissed and defiant.&#160; The terrorists are pathetic.&#160; Our government is pathetic.&#160; More dead and wounded now than hurt and killed in the towers.&#160; Less safe than ever before.&#160; Hated too.&#160; Fuckers, all of them.&#160; I&#39;d rather we&#39;d showered the world with as many dollar bills as we&#39;ve spent on bombs.&#160; Drained the swamps.&#160; Mended the wounds.&#160; Fed the hungry.&#160; Become beloved in the world.&#160; Too late for that now?<br /> </p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="qotd" scheme="http://decafbad.vox.com/tags/qotd/" label="qotd" /> 
+    <category term="september 11th" scheme="http://decafbad.vox.com/tags/september+11th/" label="september 11th" /> 
+    </entry> 
+    
+    <entry>
+        <title>vox feature wish for neighborhood feeds</title>   
+        <link rel="alternate" type="text/html" title="vox feature wish for neighborhood feeds" href="http://decafbad.vox.com/library/post/vox-feature-wish-for-neighborhood-feeds.html" />  
+        <link rel="service.post" type="application/atom+xml" title="vox feature wish for neighborhood feeds" href="http://decafbad.vox.com/library/post/vox-feature-wish-for-neighborhood-feeds.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="vox feature wish for neighborhood feeds" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c2252496c0604a" />          <id>tag:vox.com,2006-09-02:asset-6a00c22520ce968e1d00c2252496c0604a</id>
+        <published>2006-09-02T19:40:10Z</published>
+        <updated>2006-09-02T22:38:00Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <p>Something I wish the Neighbors Atom/RSS feed had:&#160; Names of said neighbors in item titles.&#160; Right now, I get &quot;l.m orchard&#39;s Neighborhood &gt;&gt; {TITLE OF POST}&quot; in my aggregator, and have no idea who I&#39;m looking at.&#160; Also, my aggregator works by showing titles first, which I skim, and then post bodies when I click on the title.<br /></p> 
+                </div>
+            ]]>
+        </content> 
+    </entry> 
+    
+    <entry>
+        <title>QotD: Less Stress, Please</title>   
+        <link rel="alternate" type="text/html" title="QotD: Less Stress, Please" href="http://decafbad.vox.com/library/post/qotd-less-stress-please.html" />  
+        <link rel="service.post" type="application/atom+xml" title="QotD: Less Stress, Please" href="http://decafbad.vox.com/library/post/qotd-less-stress-please.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="QotD: Less Stress, Please" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c225247e34549d" />          <id>tag:vox.com,2006-09-01:asset-6a00c22520ce968e1d00c225247e34549d</id>
+        <published>2006-09-01T23:23:42Z</published>
+        <updated>2006-09-01T23:29:07Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <blockquote><p>What is your favorite way to relieve stress?<br /></p></blockquote><p>
+Sometimes, I punch inanimate objects that I can&#39;t possibly damage.&#160; I used to punch things I could damage - which was satisfying - but then I had all this damaged stuff.&#160; On the other hand, punching things I can&#39;t damage mostly just damages me.&#160; I&#39;ve never punched people or animals.&#160; Well, at least not in anger and not very hard and definitely not in the face.&#160; Lately, I squish things, like little stress balls.&#160; Of course, if I&#39;ve been punching things, it&#39;s a little painful to squish things.&#160; I also take a lot of deep breaths and do meditative things.&#160; Video games are sometimes good, but sometimes just piss me off more.&#160; I&#39;ve been known to drink a bit while under stress, but I&#39;m trying to not do that so much anymore.&#160; The other thing I&#39;ve been trying to do is just avoid stress in the first place, but that&#39;s not always practical.<br /></p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="qotd" scheme="http://decafbad.vox.com/tags/qotd/" label="qotd" /> 
+    <category term="stress reliever" scheme="http://decafbad.vox.com/tags/stress+reliever/" label="stress reliever" /> 
+    </entry> 
+    
+    <entry>
+        <title>welcome the girl to vox!</title>   
+        <link rel="alternate" type="text/html" title="welcome the girl to vox!" href="http://decafbad.vox.com/library/post/welcome-the-girl-to-vox.html" />  
+        <link rel="service.post" type="application/atom+xml" title="welcome the girl to vox!" href="http://decafbad.vox.com/library/post/welcome-the-girl-to-vox.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="welcome the girl to vox!" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c225246b29549d" />          <id>tag:vox.com,2006-09-01:asset-6a00c22520ce968e1d00c225246b29549d</id>
+        <published>2006-09-01T14:35:20Z</published>
+        <updated>2006-09-01T14:35:20Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <p>So, it looks like <a href="http://sparklybunny.vox.com/library/post/vox-was-made-for-me.html">the girl has gotten lured into joining Vox</a>.&#160; They have bunnies here, even.&#160; How could she resist?<br /></p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="bunnies" scheme="http://decafbad.vox.com/tags/bunnies/" label="bunnies" /> 
+    <category term="metablogging" scheme="http://decafbad.vox.com/tags/metablogging/" label="metablogging" /> 
+    </entry> 
+    
+    <entry>
+        <title>QotD: Can&#39;t Get You Out of My Head</title>   
+        <link rel="alternate" type="text/html" title="QotD: Can&#39;t Get You Out of My Head" href="http://decafbad.vox.com/library/post/qotd-cant-get-you-out-of-my-head.html" />  
+        <link rel="service.post" type="application/atom+xml" title="QotD: Can&#39;t Get You Out of My Head" href="http://decafbad.vox.com/library/post/qotd-cant-get-you-out-of-my-head.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="QotD: Can&#39;t Get You Out of My Head" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c2252459af604a" />          <id>tag:vox.com,2006-09-01:asset-6a00c22520ce968e1d00c2252459af604a</id>
+        <published>2006-09-01T05:26:28Z</published>
+        <updated>2006-09-01T05:26:28Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <blockquote><p>What song or lyrics are stuck in your head at the moment?&#160; What album is it from?<br /><span style="font-size: 0.8em;">Submitted by <a at:user-xid="6p00c2251e7cd68e1d" class="enclosure-inline-user" href="http://ducnly.vox.com/">Lox Ly</a>.&#160; </span><br /></p></blockquote>
+<p><a href="http://www.last.fm/music/She+Wants+Revenge/_/Sister">&quot;Sister&quot; by She Wants Revenge</a> has been stuck in my head all day, mostly for the main guitar riff.&#160; Although, <a href="http://www.lyricsbase.com/lyrics/shewantsrevenge/sister.html">the lyrics are pretty twisted</a>.<br /> </p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="music" scheme="http://decafbad.vox.com/tags/music/" label="music" /> 
+    <category term="qotd" scheme="http://decafbad.vox.com/tags/qotd/" label="qotd" /> 
+    <category term="song lyrics" scheme="http://decafbad.vox.com/tags/song+lyrics/" label="song lyrics" /> 
+    <category term="shewantsrevenge" scheme="http://decafbad.vox.com/tags/shewantsrevenge/" label="shewantsrevenge" /> 
+    </entry> 
+    
+    <entry>
+        <title>so simultaneously extraordinary and mundane</title>   
+        <link rel="alternate" type="text/html" title="so simultaneously extraordinary and mundane" href="http://decafbad.vox.com/library/post/so-simultaneously-extraordinary-and-mundane.html" />  
+        <link rel="service.post" type="application/atom+xml" title="so simultaneously extraordinary and mundane" href="http://decafbad.vox.com/library/post/so-simultaneously-extraordinary-and-mundane.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="so simultaneously extraordinary and mundane" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c2252456a6f219" />          <id>tag:vox.com,2006-09-01:asset-6a00c22520ce968e1d00c2252456a6f219</id>
+        <published>2006-09-01T02:43:27Z</published>
+        <updated>2006-09-01T14:21:01Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <p>Moving out here has been so simultaneously extraordinary and mundane.&#160; Settling into the new apartment and daily routines has been same as anywhere - only there are unexpected hills on the horizon and the names of half of everything have changed.&#160; We haven&#39;t had the chance to get out socially much yet, so all the acquaintances I&#39;ve made online remain as relatively equidistant as they were 3 months ago.&#160; But, I keep reminding myself that so many of my blogospheric contacts are real-world neighbors now.</p><p><a href="http://decafbad.com/blog/2006/06/09/wedding-day-is-today">I got happily married</a>, <a href="http://decafbad.com/blog/2006/06/24/go-west-young-man">changed jobs</a>, and effectively changed countries with <a href="http://decafbad.com/blog/2006/07/25/youngmangonewest">a move from the midwest to the west coast</a>.&#160; It&#39;s a lot to process, and my mind&#39;s trying to grasp at the familiar and map everything else exotic onto a predictable metaphor.&#160; My mind resists further change, it feels like.&#160; I&#39;m going to have to watch myself for signs of hermitage and social avoidance, though, hoping that the momentum of this world shift can carry me past old habits.&#160; This is an opportunity for self-revision while the situation remains elastic, and I&#39;m hoping to make a few long-needed alterations.</p><p>I&#39;m trying to keep cool, but on some days I just want to spaz out like the starry-eyed new-kid-on-the-block that, in part, I am.&#160; I mean, consider the extraordinary:&#160; In June, I was married in Michigan to <a href="http://www.flickr.com/photos/deusx/170950600/">the girl of my dreams</a>, and tonight I&#39;m sleeping in the Silicon Valley <a href="http://decafbad.com/images/growup-header.gif">toward which I&#39;ve gazed nearly since birth</a>.&#160; But, remember the mundane:&#160; I&#39;m riding the bus to work, hacking code daily and helping douse occasional server fires.</p><p>But of course, even the bus commute is a bit out-of-bounds for my post-Detroit car-bound normality and the work I&#39;m doing rests within a surreal frame.&#160; I mean, <a href="http://blog.del.icio.us/blog/2006/07/hello_world.html">my job</a> is to work on <a href="http://del.icio.us/deusx">the thing</a> about which I just spent a period of months in my basement writing <a href="http://decafbad.com/blog/2006/08/09/hacking-delicious-is-out-and-about">a book</a>.</p><p>Bah, you see my oscillations here?&#160; Maybe if you grab me by the shoulders, I&#39;ll <a href="http://xkcd.com/c131.html">make that clicking sound fans make when you hold them in place</a>.</p> 
+                </div>
+            ]]>
+        </content> 
+    </entry> 
+    
+    <entry>
+        <title>social writing networks</title>   
+        <link rel="alternate" type="text/html" title="social writing networks" href="http://decafbad.vox.com/library/post/social-writing-networks.html" />  
+        <link rel="service.post" type="application/atom+xml" title="social writing networks" href="http://decafbad.vox.com/library/post/social-writing-networks.html#comments" /> 
+        <link rel="service.edit" type="application/atom+xml" title="social writing networks" href="http://www.vox.com/atom/svc=post/asset_id=6a00c22520ce968e1d00c22524255f604a" />          <id>tag:vox.com,2006-08-31:asset-6a00c22520ce968e1d00c22524255f604a</id>
+        <published>2006-08-31T05:03:10Z</published>
+        <updated>2006-08-31T05:10:35Z</updated>
+    
+        <author>
+            <name>l.m.orchard</name>
+            <uri>http://decafbad.vox.com/</uri>
+        </author>
+    
+        
+        <content type="html" xml:base="http://decafbad.vox.com/">
+            <![CDATA[
+                <div xmlns="http://www.w3.org/1999/xhtml" xmlns:at="http://www.sixapart.com/ns/at">
+       <p>Listening to <a href="http://www.itconversations.com/shows/detail861.html">an IT Conversations podcast of the Prosumer Media session at Web 2.0</a>.&#160; Among other things, I hear Mena Trott talking about Vox (nee Comet).&#160; One thing she&#39;s talking about are the benefits of small and intimate audiences for one&#39;s
+communication.&#160; This echoes <a href="http://www.itconversations.com/shows/detail1069.html">another presentation given by
+Anil Dash</a>, about social networking and audience reach.&#160; <br /></p><p>I&#39;ve certainly been looking around for <a href="http://blogs.opml.org/decafbad/2006/03/12#When:1:59:13PM">a closer-knit blogging community smaller than the whole blogosphere</a> for awhile now.&#160; I had that for awhile <a href="http://deus-x.livejournal.com/">at LiveJournal</a>, and still might - but I&#39;ve fallen out of the habit of posting in that neighborhood.&#160; And, <a href="http://blogs.opml.org/decafbad/2006/03/12#When:1:59:13PM">as I just linked</a>, I found another small community over in OPML-space.&#160; But, again, I&#39;ve wandered away from there a bit - this time mostly due to recent major <a href="http://decafbad.com/blog/2006/04/25/a-honeymoon-in-san-francisco">life events</a>, overhauls, and <a href="http://decafbad.com/blog/2006/06/24/go-west-young-man">happy disruptions</a>.&#160; What&#39;s my point?&#160; Not sure, but I have found a lot of reward from smaller venues.<br /></p><p>Another thing Mena was talking about was the importance of keeping people who&#39;ve signed up engaged.&#160; In relation to that, again, I seem to wander away from communities after awhile.&#160; I&#39;m sure a large chunk of it has to do with my personal combination of early adopter and <a href="http://decafbad.com/blog/2006/05/26/confessions-of-a-serial-enthusiast">serial enthusiast</a>.&#160; So, maybe I&#39;m hard to keep around in any case.&#160; But, some things I do like around these Vox parts include site-wide memes like the <a href="http://www.vox.com/explore/posts/tags/qotd/">Question of the Day</a>.&#160; These things get strong legs on LiveJournal and parts elsewhere.</p><p>But, what occurs to me this afternoon, is that I&#39;d like to see more <em>writing prompts</em>.&#160; Not memes, per se - and I&#39;m definitely leaving if Vox fills up with cut-and-paste quizzes.&#160; But, I&#39;d be interested in more invitations to self-disclosure or plain old interesting writing.&#160; Hell, this might sound cheesy or annoying, but I wouldn&#39;t mind hooking into some half-serious &quot;assignments&quot; ala English classes I&#39;ve taken.<br /></p><p>Actually, now that I write that, I&#39;m also kind of looking for some <em>creative</em> writing prompts in shared blogging form.&#160; Flash fiction, character sketches, etc.&#160; I wonder if something like that would fly around here?&#160; I&#39;ve been getting finally serious about pushing some finished fiction out into the world is something I&#39;m trying do, lately to the exception of my usual hacking sprees.</p><p>Anyway: rambling now - time to post.<br /></p> 
+                </div>
+            ]]>
+        </content> 
+    <category term="livejournal" scheme="http://decafbad.vox.com/tags/livejournal/" label="livejournal" /> 
+    <category term="fiction" scheme="http://decafbad.vox.com/tags/fiction/" label="fiction" /> 
+    <category term="writing" scheme="http://decafbad.vox.com/tags/writing/" label="writing" /> 
+    <category term="blogosphere" scheme="http://decafbad.vox.com/tags/blogosphere/" label="blogosphere" /> 
+    <category term="vox" scheme="http://decafbad.vox.com/tags/vox/" label="vox" /> 
+    <category term="metablogging" scheme="http://decafbad.vox.com/tags/metablogging/" label="metablogging" /> 
+    <category term="creativewriting" scheme="http://decafbad.vox.com/tags/creativewriting/" label="creativewriting" /> 
+    </entry> 
+</feed>

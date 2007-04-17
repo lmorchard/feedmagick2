@@ -1,0 +1,9 @@
+[
+    { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
+    { "module":"Tidyer" },
+    { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} },
+    {
+        "module" : "WebFilter",
+        "parameters" : { "url" : "http:\/\/localhost\/~lorchard\/FeedMagick2\/?pipeline=magpiejson" }
+    }
+]

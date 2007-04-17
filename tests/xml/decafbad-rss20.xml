@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="wordpress/2.1" -->
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	>
+
+<channel>
+	<title>0xDECAFBAD</title>
+	<link>http://decafbad.com/blog</link>
+	<description>It's all spinning wheels and self-doubt until the first pot of coffee.</description>
+	<pubDate>Thu, 05 Apr 2007 07:05:15 +0000</pubDate>
+	<generator>http://wordpress.org/?v=2.1</generator>
+	<language>en</language>
+			<item>
+		<title>i (heart) ficlets, microformats, and feed scrapers</title>
+		<link>http://decafbad.com/blog/2007/04/05/i-heart-ficlets-microformats-and-feed-scrapers</link>
+		<comments>http://decafbad.com/blog/2007/04/05/i-heart-ficlets-microformats-and-feed-scrapers#comments</comments>
+		<pubDate>Thu, 05 Apr 2007 07:00:05 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[asides]]></category>
+
+		<category><![CDATA[xsl]]></category>
+
+		<category><![CDATA[microformats]]></category>
+
+		<category><![CDATA[scrapers]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/04/05/i-heart-ficlets-microformats-and-feed-scrapers</guid>
+		<description><![CDATA[I&#8217;ve really got to reiterate / call out a few points from that last entry:
+
+
+I &#10084; making feed scrapers, although they&#8217;re sometimes a pain.
+I &#10084; Microformats, for making scrapers easy.
+I &#10084; Ficlets for using Microformats and making it easy for me to use their site as an API using just XSL and HTTP GET.
+
+
+I&#8217;d love [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-482d006c8ee204503bcbe11a192659867cf27fdf'><p>I&#8217;ve really got to reiterate / call out a few points from <a href="http://decafbad.com/blog/2007/04/05/ficlets-enhanced-author-feed-an-xsl-scraper-hack">that last entry</a>:</p>
+
+<ul>
+<li>I &#10084; <a href="http://decafbad.com/blog/?s=scraper">making feed scrapers</a>, although they&#8217;re sometimes a pain.</li>
+<li>I &#10084; <a href="http://microformats.org/">Microformats</a>, for making scrapers easy.</li>
+<li>I &#10084; <a href="http://ficlets.com/">Ficlets</a> for using <a href="http://microformats.org/">Microformats</a> and making it easy for me to use their <a href="http://allinthehead.com/retro/301/can-your-website-be-your-api">site as an API</a> using just XSL and HTTP GET.</li>
+</ul>
+
+<p>I&#8217;d love to see more sites like <a href="http://ficlets.com/">Ficlets</a>.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/04/05/i-heart-ficlets-microformats-and-feed-scrapers/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>Ficlets enhanced author feed, an XSL scraper hack</title>
+		<link>http://decafbad.com/blog/2007/04/05/ficlets-enhanced-author-feed-an-xsl-scraper-hack</link>
+		<comments>http://decafbad.com/blog/2007/04/05/ficlets-enhanced-author-feed-an-xsl-scraper-hack#comments</comments>
+		<pubDate>Thu, 05 Apr 2007 06:37:00 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[essays]]></category>
+
+		<category><![CDATA[hacks]]></category>
+
+		<category><![CDATA[rss]]></category>
+
+		<category><![CDATA[atom]]></category>
+
+		<category><![CDATA[xsl]]></category>
+
+		<category><![CDATA[ficlets]]></category>
+
+		<category><![CDATA[scrapers]]></category>
+
+		<category><![CDATA[scraping]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/04/05/ficlets-enhanced-author-feed-an-xsl-scraper-hack</guid>
+		<description><![CDATA[I&#8217;ve been trying to get myself serious about writing and even set up a personal slush pile for my output.  Then, I found Ficlets, and spewed a few quick starter stories there.  And then&#8230; I stopped.  I&#8217;m hoping to pick it up again very soon, but I guess that&#8217;s the nature of [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-feafecfb37f7d30ba188115b9a49e7ae30483a3b'><p>I&#8217;ve been trying to get myself serious about writing and even set up a <a href="http://decafbad.com/skein/">personal slush pile for my output</a>.  Then, I found <a href="http://ficlets.com/authors/l_m_orchard">Ficlets</a>, and spewed a few quick starter stories there.  And then&#8230; I stopped.  I&#8217;m hoping to pick it up again very soon, but I guess that&#8217;s the nature of my <a href="http://decafbad.com/blog/2006/05/26/confessions-of-a-serial-enthusiast">serial enthusiasm</a>—it doesn&#8217;t just apply to hacking.</p>
+
+<p>So, here&#8217;s something ironic:  I just spent a few hours tonight throwing together a hack for <a href="http://ficlets.com/authors/l_m_orchard">Ficlets</a>.  See, <a href="http://ficlets.com/authors/l_m_orchard">Ficlets</a> runs on original stories, comments, ratings, and sequels and prequels to stories.  You can get an Atom feed of an author&#8217;s stories and a feed of comments—but it seems like there&#8217;s no way to get notified of prequels and sequels, which are a very gratifying part of the whole shebang.</p>
+
+<p>With that in mind, check out this RSS feed:</p>
+
+<ul>
+<li><a href="http://decafbad.com/2005/12/FeedMagick/www-bin/ficlets.php?author=l_m_orchard"><code>http://decafbad.com/2005/12/FeedMagick/www-bin/ficlets.php?author=l_m_orchard</code></a></li>
+</ul>
+
+<p>That&#8217;s a blend of all my stories, comments on my stories, as well as prequels and sequels found for my stories.  Subscribing to that feed will give me updates whenever there&#8217;s anything new in all the above.  It&#8217;s thrown together using a semi-crazy mix of my <a href="http://decafbad.com/trac/wiki/FeedMagick">FeedMagick</a> package for caching, and some XSL for scraping.  If you&#8217;d like a feed like this of your own, just replace <code>l_m_orchard</code> for your own author name in the <code>author</code> parameter.</p>
+
+<p><strong>Please note, however, that this little service is hosted on my site and may go away at any time for any reason.</strong></p>
+
+<p>In case you&#8217;re interested in what&#8217;s under the hood, here&#8217;s the quick and dirty XSL that&#8217;s behind it:</p>
+
+<ul>
+<li><a href="http://decafbad.com/2007/04/ficlets.xsl"><code>http://decafbad.com/2007/04/ficlets.xsl</code></a></li>
+</ul>
+
+<p>This thing&#8217;s made possible because the <a href="http://ficlets.com/authors/l_m_orchard">Ficlets</a> feeds are XML, <strong>and so are the XHTML pages happily infested with microformats</strong>.  If they ever go invalid, this scraper breaks.  But, that&#8217;s the nature of scrapers, and it works for now.  Oh, and although they provide Atom, this feed is RSS 2.0.  Why?  Because it was easier that way.  I might put some more effort into an Atom feed, but my itch has so far been scratched.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/04/05/ficlets-enhanced-author-feed-an-xsl-scraper-hack/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>a new direction</title>
+		<link>http://decafbad.com/blog/2007/04/01/a-new-direction</link>
+		<comments>http://decafbad.com/blog/2007/04/01/a-new-direction#comments</comments>
+		<pubDate>Sun, 01 Apr 2007 19:02:12 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[asides]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/04/01/a-new-direction</guid>
+		<description><![CDATA[Starting today, I&#8217;m going to commit to posting here twice daily!  More hacks, more commentary, more snark, and more grousing!  I&#8217;ll also be starting on that ten volume novel series finally!  It&#8217;ll be a multi-generational romance story set just after the Singularity!
+
+&#8230;
+
+Yeah, sorry, that&#8217;s my crappy April Fools joke.  I should [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-bd1fc5cbe96ffdf7c2630631b48bf80cb6badc5f'><p>Starting today, I&#8217;m going to commit to posting here twice daily!  More hacks, more commentary, more snark, and more grousing!  I&#8217;ll also be starting on that ten volume novel series finally!  It&#8217;ll be a multi-generational romance story set just after the Singularity!</p>
+
+<p>&#8230;</p>
+
+<p>Yeah, sorry, that&#8217;s my crappy April Fools joke.  I should probably go outside for the day and come back to the internets tomorrow.  <img src='http://decafbad.com/blog/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/04/01/a-new-direction/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>Frustrations in using iTunes and iPod to capture podcast listening behavior</title>
+		<link>http://decafbad.com/blog/2007/03/09/frustrations-in-using-itunes-and-ipod-to-capture-podcast-listening-behavior</link>
+		<comments>http://decafbad.com/blog/2007/03/09/frustrations-in-using-itunes-and-ipod-to-capture-podcast-listening-behavior#comments</comments>
+		<pubDate>Fri, 09 Mar 2007 20:13:04 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[essays]]></category>
+
+		<category><![CDATA[apple]]></category>
+
+		<category><![CDATA[rant]]></category>
+
+		<category><![CDATA[ipod]]></category>
+
+		<category><![CDATA[podcasts]]></category>
+
+		<category><![CDATA[podcasting]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/03/09/frustrations-in-using-itunes-and-ipod-to-capture-podcast-listening-behavior</guid>
+		<description><![CDATA[Update (15 Mar 2007): So, long rant, but I may have found my problem - I had set podcasts in iTunes to sync only &#8220;unplayed episodes&#8221; to the iPod, which also seems to imply that they never sync / record data about having been played.  Or ratings from the iPod, for that matter.  [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-e64a19821c738d99794a21d66916d0f949bea2e2'><p><strong>Update (15 Mar 2007):</strong> <i>So, long rant, but I may have found my problem - I had set podcasts in iTunes to sync only &#8220;unplayed episodes&#8221; to the iPod, which also seems to imply that they never sync / record data about having been played.  Or ratings from the iPod, for that matter.  I just changed that setting to &#8220;all episodes&#8221;, and podcasts seem to be showing up in my Recently Played smart playlist again.  Hopefully this gets me back to where I want to be.</i></p>
+
+<p><strong>Update (19 Mar 2007):</strong> <i>Hmm, nope.  Recently Played playlist seems to be updating now, but the iScrobbler-to-last.fm bit seems to be ignoring my iPod-played podcasts.  Bah.</i></p>
+
+<p>Is it just me, or has iTunes been gradually losing podcast tuner functionality with respect to the iPod?  </p>
+
+<p>I&#8217;m seriously thinking of ditching it for <a href="http://juicereceiver.sourceforge.net/index.php">Juice</a> or something else.  Recently, the podcasts were completely segregated from the rest of the audio files, stuck into a much harder-to-manage interface.  Related to that, my main gripe at the moment is that I just can&#8217;t seem to get my podcast listening behavior posted to <a href="http://www.last.fm/user/deusx/">last.fm</a>.  Maybe I&#8217;m weird, but I like to capture and publish that attention data from myself.  </p>
+
+<p>I listen to a <em>lot</em> of podcasts on the commute to and from work, which is part walking and part bus.  In fact, I probably listened to about a dozen episodes of various serials yesterday — but none of them show up in my iPod&#8217;s Recently Played smart playlist.  So, subsequently, none made it to <a href="http://www.last.fm/user/deusx/">last.fm</a>.  </p>
+
+<p>On the (increasingly rare) occasions I happened to listen to music on my iPod this week, those tracks showed up just fine.  And while at my desk, in iTunes itself, I don&#8217;t seem to have these issues.  I seem to remember this working better in the past year or so.  For what it&#8217;s worth, my podcasts are auto-synced with iTunes, but the rest of my library is manually managed — because I don&#8217;t want 20GB of music on my iPod duplicated on my laptop.</p>
+
+<p>At one point, I remember that the &#8220;Last Played&#8221; criteria changed from just <em>starting</em> a podcast to <em>completely</em> playing it through.  This made clean up of old podcasts nicer, such that partially-played episodes didn&#8217;t get clobbered when I still intended to finish them.  But lately, I&#8217;ve stopped podcasts before they finish, because many have lengthy themes at the end or runs of promos I&#8217;ve already heard during the day.  So, there go the &#8220;Last Played&#8221; and &#8220;Play Count&#8221; fields.</p>
+
+<p>But, I just tried manually fast-forwarding a few podcast episodes to the end on the iPod.  I tried playing the last few seconds in an attempt to force the play count to trip.  It seemed to work on the iPod itself - but when I reconnected to iTunes, no dice.  The &#8220;Recently Played&#8221; playlist shows nothing new, and the episode itself reflects no play counts in iTunes.  I&#8217;m either very confused, or things are getting more broken.</p>
+
+<p>So, I thought, maybe I&#8217;ll just rate the podcasts about which I want to publish my listening behavior.  Kind of like giving a &#8220;digg&#8221;.  Seems hackish and not as effortless as simply capturing my behavior - but, nope, I can&#8217;t rate podcasts on the iPod.  There goes that idea, and another feature missing.</p>
+
+<p>Ugh.  So yeah, this is an semi-inarticulate rant about a problem whose issues and solution I don&#8217;t quite yet have a handle on.  It&#8217;s just frustrating that I don&#8217;t seem to be able to easily track my own podcast listening behavior with iTunes and the iPod the way I <em>thought</em> I used to be able to do.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/03/09/frustrations-in-using-itunes-and-ipod-to-capture-podcast-listening-behavior/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>Blog posting delegation and third-party auth</title>
+		<link>http://decafbad.com/blog/2007/03/05/blog-posting-delegation-and-third-party-auth</link>
+		<comments>http://decafbad.com/blog/2007/03/05/blog-posting-delegation-and-third-party-auth#comments</comments>
+		<pubDate>Mon, 05 Mar 2007 22:13:45 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[essays]]></category>
+
+		<category><![CDATA[metablogging]]></category>
+
+		<category><![CDATA[webdev]]></category>
+
+		<category><![CDATA[webservices]]></category>
+
+		<category><![CDATA[atom]]></category>
+
+		<category><![CDATA[xmlrpc]]></category>
+
+		<category><![CDATA[rest]]></category>
+
+		<category><![CDATA[http]]></category>
+
+		<category><![CDATA[auth]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/03/05/blog-posting-delegation-and-third-party-auth</guid>
+		<description><![CDATA[Here&#8217;s something I&#8217;ve been meaning to post about, brought back to mind from Kim Cameron&#8217;s post on &#8220;Wrong-headed impersonation&#8221;:  
+
+I wish that blog posting interfaces (ie. MetaWeblog API and Atom Publishing Protocol) offered a way to delegate blog posting to a 3rd party app (desktop or web) in such a way as to avoid [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-0b27caa3421319e01f722f71976a8ab50f2955a6'><p>Here&#8217;s something I&#8217;ve been meaning to post about, brought back to mind from <a href="http://www.identityblog.com/?p=701">Kim Cameron&#8217;s post on &#8220;Wrong-headed impersonation&#8221;</a>:  </p>
+
+<p>I wish that blog posting interfaces (ie. <a href="http://www.xmlrpc.com/metaWeblogApi">MetaWeblog API</a> and <a href="http://www.ietf.org/html.charters/atompub-charter.html">Atom Publishing Protocol</a>) offered a way to delegate blog posting to a 3rd party app (desktop or web) in such a way as to avoid providing one&#8217;s login details (i.e. user name and password).  For instance, consider both <a href="http://www.flickr.com/services/api/auth.spec.html">Flickr&#8217;s</a> and <a href="http://upcoming.org/services/api/token_auth.php">Upcoming&#8217;s</a> 3rd party token-based authentication / authorization schemes.</p>
+
+<p>In particular, I&#8217;m looking at things like del.icio.us&#8217; own Daily Blog Post and others.  These can be used to auto-post content to one&#8217;s blog generated elsewhere - but at the price of sharing login details.  Granted, you can mostly trust these 3rd parties not to do anything nasty with your credentials, but it would be nice not to have to.</p>
+
+<p>I figure that something RESTful like extending HTTP authentication (ala <a href="http://www.xml.com/pub/a/2003/12/17/dive.html">Atom Authentication</a>) with a token scheme could be interesting, and possibly fit nicely into <a href="http://www.ietf.org/html.charters/atompub-charter.html">APP</a> itself.  It could probably be retrofit into the <a href="http://www.xmlrpc.com/metaWeblogApi">MetaWeblog API</a> by specifying a per-app user name and password.  I can imagine a WordPress admin plugin that issues approved authentication tokens to restrict the categories and other activities allowed by 3rd party apps.  </p>
+
+<p>Just something I&#8217;m thinking about, as more services may or may not grow into delegated blog posting.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/03/05/blog-posting-delegation-and-third-party-auth/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>status: quietly humming along</title>
+		<link>http://decafbad.com/blog/2007/03/05/status-quietly-humming-along</link>
+		<comments>http://decafbad.com/blog/2007/03/05/status-quietly-humming-along#comments</comments>
+		<pubDate>Mon, 05 Mar 2007 18:56:08 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[asides]]></category>
+
+		<category><![CDATA[metablogging]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/03/05/status-quietly-humming-along</guid>
+		<description><![CDATA[Still alive over here, though the blog&#8217;s gathering dust.  I figure I need to post about not posting from time to time, so here we go:
+
+What&#8217;s been up with me?  Well, I&#8217;ve not been doing as much extracurricular hacking at home.  Instead, I&#8217;ve been opting to fill time with World of Warcraft, [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-4ad494752f3a1947a3f682fdd961da0c0d103e2c'><p>Still alive over here, though the blog&#8217;s gathering dust.  I figure I need to post about not posting from time to time, so here we go:</p>
+
+<p>What&#8217;s been up with me?  Well, I&#8217;ve not been doing as much extracurricular hacking at home.  Instead, I&#8217;ve been opting to fill time with World of Warcraft, <a href="http://decafbad.com/skein/">halting steps back into fiction writing</a>, and actually starting to venture <em>out</em> with my wife into the city and surrounding area.  That leaves less time to get worked up about things passing through my info-filters to actually jot down anything worth saying - and it seems most everyone else out there is doing well enough of a job so far without me.  </p>
+
+<p>There&#8217;s also something to be said for not being snowed in and huddling for warmth during a Michigan winter.  </p>
+
+<p>I have been quite busy at work, but that&#8217;s not something I can say very much about right now since it&#8217;s not my story to spill.  Maybe someday, I&#8217;ll lift radio silence about things, but certainly not for awhile yet.</p>
+
+<p>In lieu of posts here, you can see most of my output to the net collected in one spot <a href="http://lmorchard.jaiku.com/">here on Jaiku</a> - which includes all my bookmarks, Diggs, Twitters, iTunes tracks, and <a href="http://claimid.com/lmorchard">the like</a>.  Lately, I&#8217;ve been wondering if I should apply another redesign around here that emphasizes everything else capturing status from me, and offer a smaller space for the actual posts I leave here.  I&#8217;m sure my enthusiasms will swing me back this way soon enough, but this&#8217;ll probably remain one of the quieter feeds in your subscriptions for the foreseeable future.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/03/05/status-quietly-humming-along/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>suggestion: tinfoil hat for digg mind control laser defense</title>
+		<link>http://decafbad.com/blog/2007/02/15/it-takes-two-to-tango-yodel-anecdotal</link>
+		<comments>http://decafbad.com/blog/2007/02/15/it-takes-two-to-tango-yodel-anecdotal#comments</comments>
+		<pubDate>Thu, 15 Feb 2007 16:34:27 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[asides]]></category>
+
+		<category><![CDATA[yahoo]]></category>
+
+		<category><![CDATA[digg]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/02/15/it-takes-two-to-tango-yodel-anecdotal</guid>
+		<description><![CDATA[We call it a Suggestion Board — you can browse suggestions from other site visitors or post your own. Digg-style voting means we can quickly discover what’s most important to users.Source: It takes two to Tango - Yodel Anecdotal
+
+Sweet merciful crap are Digg fans a scary, groupthink-y bunch.  I work at Yahoo! — so [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-a5c5e72258dfa689c3215b0edc7f19e461426b45'><p><blockquote cite="http://yodel.yahoo.com/2007/02/14/it-takes-two-to-tango/">We call it a Suggestion Board — you can browse suggestions from other site visitors or post your own. Digg-style voting means we can quickly discover what’s most important to users.</blockquote><div class="quotesource">Source: <a href="http://yodel.yahoo.com/2007/02/14/it-takes-two-to-tango/">It takes two to Tango - Yodel Anecdotal</a></div></p>
+
+<p>Sweet merciful crap are <a href="http://digg.com">Digg</a> fans a scary, groupthink-y bunch.  I work at Yahoo! — so I guess I&#8217;m vulnerable to bias — but it seems like the guys on this team just can&#8217;t get a break.  They open up public suggestion boards to get open feedback on products — something that I think is very cool and clueful.  They took inspiration from Digg and other prior examples of web-based voting, and what do they get for their trouble?  A few hundred lemmings marching to the beat of &#8220;OMFG HAX YOU STOLE DIGGS SITE!&#8221;</p>
+
+<p>It&#8217;s not a major news site; it&#8217;s not like the front page of Yahoo! turned into a Digg clone and they started offering to pay top Digg users.  Seriously - it&#8217;s just a suggestion board with simple flat comment threads that invites voting to surface good suggestions.  So it&#8217;s got a big thumbs-up button reminiscent of <a href="http://digg.com">Digg</a>&#8217;s counter badges - they mentioned that it&#8217;s like <a href="http://digg.com">Digg</a>.  That&#8217;s inspiration, maybe flattery-level imitation.  But theft?  If I were a thief, would I tell you where I stole my stuff from?</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/02/15/it-takes-two-to-tango-yodel-anecdotal/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>i should be writing</title>
+		<link>http://decafbad.com/blog/2007/02/15/i-should-be-writing</link>
+		<comments>http://decafbad.com/blog/2007/02/15/i-should-be-writing#comments</comments>
+		<pubDate>Thu, 15 Feb 2007 09:05:30 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[asides]]></category>
+
+		<category><![CDATA[writing]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/02/15/i-should-be-writing</guid>
+		<description><![CDATA[You know what I have had some enthusiasm for lately?  My renewed fiction writing efforts.  My latest exercise into 7th Son / Infection podcast fanfic might seem a bit precious and / or silly — at least, I know I&#8217;ve always turned my nose up at fanfic, or surreptitiously checked out examples of [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-7f47fe640650c22fe87708b86125844ff77ad9f1'><p>You know what I <em>have</em> had some enthusiasm for lately?  <a href="http://decafbad.com/skein/">My renewed fiction writing efforts.</a>  My latest exercise into <a href="http://decafbad.com/skein/category/alphavsdelta/">7th Son / Infection podcast fanfic</a> might seem a bit precious and / or silly — at least, I know <em>I&#8217;ve</em> always turned my nose up at fanfic, or surreptitiously checked out examples of the genre after making sure no one was watching.  But, the guys behind <a href="http://jchutchins.net/7Son/Home/Home.html">7th Son</a> and <a href="http://scottsigler.podshow.com/podcasts/">Infection</a> are both very appreciative of fans and are quick to give shout-outs — so, it&#8217;s providing me with a bit of fun and motivation to actually get something fictional written after years of sputtering activity.  So, hey, whatever works.  <img src='http://decafbad.com/blog/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/02/15/i-should-be-writing/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>Thoughts on Pipes on the Web - Part II</title>
+		<link>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web-part-ii</link>
+		<comments>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web-part-ii#comments</comments>
+		<pubDate>Thu, 15 Feb 2007 08:49:56 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[essays]]></category>
+
+		<category><![CDATA[webdev]]></category>
+
+		<category><![CDATA[rss]]></category>
+
+		<category><![CDATA[mashups]]></category>
+
+		<category><![CDATA[atom]]></category>
+
+		<category><![CDATA[yahoo]]></category>
+
+		<category><![CDATA[feedmagick]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web-part-ii</guid>
+		<description><![CDATA[In the last post, I expressed concern for my own well-being over a lack of head-over-heels love for Yahoo! Pipes.  On the surface, I think it&#8217;s because it&#8217;s not a freshly discovered concept for me, and also probably because I&#8217;m tired and a bit hacked out right now.  But, I think there&#8217;s a [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-56b9dd7336dd463976d9ebda20f64984a073e5d3'><p>In <a href="http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web">the last post</a>, I expressed concern for my own well-being over a lack of head-over-heels love for <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>.  On the surface, I think it&#8217;s because it&#8217;s not a freshly discovered concept for me, and also probably because I&#8217;m tired and a bit hacked out right now.  But, I think there&#8217;s a bit more to it.</p>
+
+<p>First of all, I&#8217;m not impressed by GUI builders for most things.  Don&#8217;t get me wrong:  That <a href="http://pipes.yahoo.com/">Pipes</a> GUI is pretty sweet and quite an impressive implementation — but as a rule, such things don&#8217;t quite get my geek on.  So, there&#8217;s that.</p>
+
+<p>Another thing is that I&#8217;ve done something <em>kinda</em> like <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>, called <a href="http://decafbad.com/trac/wiki/FeedMagick">FeedMagick</a> — only, it doesn&#8217;t have a GUI and I mostly abandoned it after releasing the code and having used it for a project at my old job.  It&#8217;s one of those <a href="http://decafbad.com/blog/2006/05/26/confessions-of-a-serial-enthusiast">serial enthusiasms</a> that I&#8217;ve figured I&#8217;d circle back to eventually.  I still think it&#8217;s a pretty cool idea.  </p>
+
+<p>All kudos to the <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a> team though: Unlike me, they&#8217;ve actually got a living and breathing project — which trumps a paged-to-disk <a href="http://decafbad.com/blog/2006/05/26/confessions-of-a-serial-enthusiast">serial enthusiasm</a> most days.</p>
+
+<p>So what else is really curbing my enthusiasm?  Well, <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a> looks like a pretty self-contained pipes engine — data goes in one end, <a href="http://www.catb.org/~esr/jargon/html/F/frobnicate.html">frobnication</a> happens in the middle, data comes out the other side.</p>
+
+<p>But, what I like about the notion of <a href="http://207.22.26.166/bytecols/2001-08-15.html">the URL-line</a> is that you can take one URL and <em>supply it as a parameter to another URL</em> — making <a href="http://www.decafbad.com/blog/2002/04/18/oooaod">messy pipelined URLs</a> while building a crazy web-wide distributed execution environment powered by HTTP and REST.  This is the kernel of the notion that I think really excites me about pipe on the web — I just haven&#8217;t had a chance to do much with it lately.</p>
+
+<p>Depending on the perspective, true pipes on the web — that is, URLs fetching URLs — look to me like <a href="http://www.defmacro.org/ramblings/fp.html">functional programming</a> ala <a href="http://en.wikipedia.org/wiki/Lisp_programming_language">Lisp</a>.  Consider an idempotent GET request as a pure function call with no side-effects.  Then, consider a GET request that accepts a URL as a parameter — it&#8217;s a nested function call: the outer GET must make an inner GET to fetch the parameter-supplied URL.  Give the inner URL another URL as a parameter, and you&#8217;ve got yet another nested function call.  </p>
+
+<p>But, if you like, ignore the theoretical <a href="http://www.defmacro.org/ramblings/fp.html">benefits of functional programming</a> — flip the nested function calls inside out and you&#8217;ve got a pipe.  And, since you&#8217;re using HTTP GET, you can get all the benefits of HTTP — like caching of execution results and a web full of distributed processing nodes, among other things.  </p>
+
+<p>I haven&#8217;t explored <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a> deeply enough yet, so maybe I&#8217;m missing the features that pipe authors can used to call on other distributed pipe elements out on the web at large.  But, I think that&#8217;s what ultimately gets me psyched about pipes the web and hasn&#8217;t yet for <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>.</p>
+
+<p>And, of course, I think I&#8217;m just a little hacked out and tired of whizbang new stuff right now.  <img src='http://decafbad.com/blog/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web-part-ii/feed/</wfw:commentRss>
+		</item>
+		<item>
+		<title>Thoughts on Pipes on the Web</title>
+		<link>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web</link>
+		<comments>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web#comments</comments>
+		<pubDate>Thu, 15 Feb 2007 08:09:56 +0000</pubDate>
+		<dc:creator>l.m.orchard</dc:creator>
+		
+		<category><![CDATA[essays]]></category>
+
+		<category><![CDATA[webdev]]></category>
+
+		<category><![CDATA[rss]]></category>
+
+		<category><![CDATA[mashups]]></category>
+
+		<category><![CDATA[atom]]></category>
+
+		<category><![CDATA[yahoo]]></category>
+
+		<category><![CDATA[feedmagick]]></category>
+
+		<guid isPermaLink="false">http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web</guid>
+		<description><![CDATA[By way of my meme tracker, I found something like 15 entries linking to Yahoo! Pipes from my feed subscriptions.  That&#8217;s crazy — I&#8217;ve usually never seen more than 3-5 feeds linking to anyone thing, maybe as many as 8 if it&#8217;s something really hot.  I read about it over morning coffee and [...]]]></description>
+			<content:encoded><![CDATA[<div class='microid-fc5895ff5dd11ee376e0deed12f0696073e12177'><p>By way of my <a href="http://decafbad.com/trac/browser/trunk/hacking_rss_and_atom/ch15_popular_links.py">meme tracker</a>, I found something like 15 entries linking to <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a> from my feed subscriptions.  That&#8217;s crazy — I&#8217;ve usually never seen more than 3-5 feeds linking to anyone thing, maybe as many as 8 if it&#8217;s something <em>really</em> hot.  I read about it over morning coffee and aggregator skimming; I heard about it on <a href="http://www.twit.tv/88">TWiT</a> on the bus to work; I was told all about it in the hallway once I got to work.  <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a> has been hard to miss. </p>
+
+<p>With that in mind, it seems weird to me that <em>I</em> didn&#8217;t get as excited about the release of <a href="http://pipes.yahoo.com/">Pipes</a> as everyone else in my local blogosphere seems to have.  <a href="http://pipes.yahoo.com/">Pipes</a> has all the ingredients of something that should <em>really</em> set me off.  Pipes, filters, mashups, RSS, Atom, RDF — (singing) these are a few of my favorite things!  So, what gives?  I&#8217;m genuinely worried that I&#8217;m sick, depressed, losing it, or otherwise replaced by a pod alien.  Possibly all the above.</p>
+
+<p>I knew about <a href="http://pipes.yahoo.com/">Pipes</a> as an internal project at Yahoo! quite awhile ago — possibly even in my first week or two after <a href="http://decafbad.com/blog/2006/06/24/go-west-young-man">having joined</a>.  I&#8217;m fuzzy on the timing here, but it&#8217;s not important.  Someone mentioned it to me at some point, I poked at it a bit from the internal network, and thought it was neat / keen.  My main impression at the time was, &#8220;Cool, someone&#8217;s doing <a href="http://decafbad.com/trac/wiki/FeedMagick">FeedMagick</a>, but done right and with a slick visual layout tool.&#8221;  </p>
+
+<p>Then, I got really busy with del.icio.us and wandered off.  So, the release wasn&#8217;t big surprising news to me — my reaction was something like, &#8220;Huh, so they did a public release of that?  Nice.&#8221;  Clearly I need more caffeine.</p>
+
+<p>The thing is that the idea of pipes on the web is not itself a new concept to me.  I think my <a href="http://www.decafbad.com/twiki/bin/view/Main/XmlRpcFilteringPipe">XmlRpcFilteringPipes</a> seems kinda silly in retrospect, and I&#8217;m all about <a href="http://207.22.26.166/bytecols/2001-08-15.html">the Power of the URL-line</a> nowadays — but suffice it to say that I&#8217;ve been thinking about pipes on the web since as long ago as 2002 or so.  </p>
+
+<p>So, while I&#8217;m all jaded and apparently incapable of feeling the wonder, this seems to be one of the biggest revelations to people playing with <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>:</p>
+
+<p><i>Pipes?  On the web?  <strong>BRILLIANT!</strong></i></p>
+
+<p>So, it&#8217;s not you, it&#8217;s me.  I think I&#8217;ve got a serious deficit of enthusiasm for what&#8217;s really a pretty cool thing.  I want to think a bit more about why that is.</p>
+</div>]]></content:encoded>
+			<wfw:commentRss>http://decafbad.com/blog/2007/02/15/thoughts-on-pipes-on-the-web/feed/</wfw:commentRss>
+		</item>
+	</channel>
+</rss>

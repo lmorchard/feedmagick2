@@ -187,7 +187,9 @@ class FeedMagick2 {
     }
 
     /**
-     *
+     * Quick and dirty CLI wrapper around web dispatch, accepts "--name value" 
+     * options as query parameters, STDIN as POST request body on '--stdin' 
+     * flag.
      */
     public function clidispatch() {
         chdir($this->base_dir);
@@ -197,10 +199,18 @@ class FeedMagick2 {
         $argv = $_SERVER['argv'];
         $script_name = array_shift($argv);
 
-        // Convert --options into $_GET values.
+        // Convert --options into $_GET values, super-hacky getopts.
         while ($opt = array_shift($argv)) {
             if (substr($opt, 0, 2) == '--') {
-                $_GET[substr($opt, 2)] = array_shift($argv);
+                $opt_name = substr($opt, 2);
+                if ($argv && !(substr($argv[0], 0, 2) == '--')) {
+                    // If there are args left, and the next one doesn't start 
+                    // with '--', treat as an arg value
+                    $_GET[$opt_name] = array_shift($argv);
+                } else {
+                    // Otherwise, just treat this arg as a boolean flag.
+                    $_GET[$opt_name] = TRUE;
+                }
             }
         }
 
