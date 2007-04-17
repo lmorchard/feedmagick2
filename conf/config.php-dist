@@ -22,7 +22,7 @@ $config = array(
 
     'log' => array(
         'path'  => "$base_dir/logs/feedmagick2-debug-".date('Ymd', time()).".log",
-        'level' => PEAR_LOG_DEBUG
+        'level' => 7 //PEAR_LOG_DEBUG
     )
 
 );
