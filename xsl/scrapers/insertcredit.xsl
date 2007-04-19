@@ -22,7 +22,7 @@
   xmlns:dyn="http://exslt.org/dynamic"
   xmlns:str="http://exslt.org/strings">
   
-  <xsl:import href="www/xsl/scrapers/lib/scraper.xsl" />
+  <xsl:import href="xsl/scrapers/lib/scraper.xsl" />
 
   <xsl:variable name="base">http://www.insertcredit.com/</xsl:variable>
   <xsl:variable name="items.path">//html:p[@id='title']</xsl:variable>

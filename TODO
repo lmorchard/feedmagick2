@@ -5,15 +5,37 @@ auto-extracted from source using bin/update-todo.sh
 
 == Bugs ==
 
+== v0.5 Release ==
+
+    * Blog post
+    * Index page
+    * Usage page w/ parameters form
+    * HTTP cache control on Fetcher
+    * More tests
+    * Modules
+        * Starter / Blank
+        * FeedHeaderMunger
+        * ReadingLister
+        * Inbox
+        * Stretcher
+        * From / To hAtom
+        * ImportedPipeline / ExternalPipeline
+
+== v1.0 Release ==
+
+    * Builder
+    * Docs
+    * All tests
+
 == Improvements ==
 
-    * Stick the definition-via-url logic into the pipeline class itself.
-       * Allow sub-pipelines to be pulled in via URL as well.
+    * Need to better explore / think out request / response headers in the pipeline.
     * Enforce required parameters in pipeline definition, and in URL params
+    * Config options to lock down some open features for semi-private usage
+        * No usage pages
+        * No URL-based pipelines
+        * No POST-based feed input
     * Use Services_JSON when json_encode / json_decode not available?
-    * Explore more functional bits 
-        * ie. a module that accepts POSTs and shortcircuits the whole pipeline.
-            * write-able feeds.
     * Cacher / Fetcher
         * Obey and produce HTTP caching semantics
         * Store and use ETag and Last-Modified in Fetcher
@@ -49,32 +71,44 @@ auto-extracted from source using bin/update-todo.sh
     * Builder
         * An AJAXified builder app that uses module metadata to piece togther pipelines.
     * Modules
-        * Regex Filter
-            * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
+        * Google JSON clone
+            * http://code.google.com/apis/ajaxfeeds/documentation/
+        * ReadingLister
+            * Accept an OPML list of feeds
+            * Blend together into one big feed
         * Feed Header Munger
             * Replace the feed title / link / description / etc with parameters
-        * Auto-tagger
-            * Auto add dc:subject and/or category tags based on certain patterns
-        * Normalize/Repair
-            * Use Magpie to liberally parse broken feed, rebuild into working feed
-        * From hAtom
+        * Starter / Blank
+            * Start with a blank RSS or Atom feed
+            * Pair with Feed Header Munger and Blender to make a feed from scratch almost
+        * To hAtom / hAtomizer
             * Render any feed as hAtom
-        * To hAtom
+        * From hAtom / DehAtomizer
             * Turn hAtom into Atom.
-        * Stretcher
-            * Keep a local cache of feed items, keep them in the feed longer than original
-            * Good for piling up items from a single entry feed
-        * Item Inbox
-            * Simple POST interface to add items to a feed, stored locally in small file buffer
+        * Inboxer / Item Inbox
+            * Simple stdin / POST interface to add items to a feed, stored locally in small file buffer
                * Good for logging, simple status updates
             * Possibly offer Atom Publishing Protocol compliance
             * Possibly accept posts from mailhook.org
             * Should be passworded / keyed
+        * Stretcher
+            * Keep a local cache of feed items, keep them in the feed longer than original
+            * Good for piling up items from a single entry feed
+        * Archiver
+            * Keep daily / hourly / etc archive feeds of unique items
+            * Side-effect of GET'ing the feed
+        * ImportedPipeline / ExternalPipeline
+            * Module that refers to another JSON pipeline definition by URL and splices it in.
+            * Stick the definition-via-url logic into the pipeline class itself.
+                * Allow sub-pipelines to be pulled in via URL as well.
+        * Regex Filter
+            * Specify a negative/positive regex criteria on CDATA of an arbitrary item element
+        * Auto-tagger
+            * Auto add dc:subject and/or category tags based on certain patterns
+        * Normalize/Repair
+            * Use Magpie to liberally parse broken feed, rebuild into working feed
         * Favicon Sprinkler
             * For blended feeds, drop in an img ref to the original site's favicon
-        * Blank
-            * Start with a blank RSS or Atom feed
-            * Pair with Feed Header Munger and Blender to make a feed from scratch almost
 
 == Blue Sky ==
 
