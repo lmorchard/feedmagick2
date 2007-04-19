@@ -6,10 +6,10 @@ $config = array(
     'base_dir' => $base_dir,
 
     'paths' => array(
+        'web'       => "$base_dir",
         'modules'   => "$base_dir/modules",
-        'web'       => "$base_dir/www",
-        'pipelines' => "$base_dir/www/pipelines",
-        'xsl'       => "$base_dir/www/xsl"
+        'pipelines' => "$base_dir/pipelines",
+        'xsl'       => "$base_dir/xsl"
     ),
     
     'cache' => array(
