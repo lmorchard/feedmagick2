@@ -52,13 +52,15 @@ class FeedMagick2_BasePipeModule {
     public function __construct($parent, $id=NULL, $options=array()) {
         $this->_parent  = $parent;
         $this->_id      = $id;
-        $this->_options = $options;
         $this->_input   = NULL;
         $this->_params  = array();
 
         $this->log = $parent->getLogger($id);
 
-        $this->populatePlaceholders($this->_options);
+        $this->_options = $options;
+        if ($options) {
+            $this->populatePlaceholders($this->_options);
+        }
     }
 
     /**

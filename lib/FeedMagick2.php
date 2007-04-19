@@ -7,9 +7,11 @@
 
 /** */
 require_once 'Log.php';
+require_once 'Net/URL/Mapper.php';
 require_once 'Cache/Lite.php';
 require_once 'HTTP/Request.php';
 require_once 'Services/JSON.php';
+require_once 'FeedMagick2/Template.php';
 require_once 'FeedMagick2/BasePipeModule.php';
 require_once 'FeedMagick2/Pipeline.php';
 
@@ -22,10 +24,13 @@ class FeedMagick2 {
 
     /** Current pipeline for the instance */
     public $pipeline;
+
     public $config;
     public $log;
     public $cache;
     public $headers;
+    public $template;
+    public $urlmapper;
 
     /**
      * Initialize the web framework
@@ -35,16 +40,12 @@ class FeedMagick2 {
     public function __construct($config) {
         $this->config = $config;
         $this->base_dir = $this->getConfig('base_dir', '.');
-
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
-
-        $this->pipeline = array();
         $this->cache = new Cache_Lite($this->getConfig('cache', array(
             'cacheDir' => './data/cache/', 'lifeTime' => '3600'
         )));
         $this->json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-        $this->headers = array();
         $this->loadModules();
     }
 
@@ -214,7 +215,8 @@ class FeedMagick2 {
             }
         }
 
-        $this->webdispatch();
+        // $this->webdispatch();
+        $this->dispatchPipeline($_GET['pipeline']);
     }
     
     /**
@@ -222,12 +224,50 @@ class FeedMagick2 {
      * @todo Need better error handling here.
      */
     public function webdispatch() {
+        
         chdir($this->base_dir);
+
+        $this->urlmapper = Net_URL_Mapper::getInstance();
+        $this->urlmapper->setPrefix($this->getConfig('base_url', '/'));
+
+        $m = $this->urlmapper;     
+
+        $m->connect('/pipelines/:name', 
+            array( 'controller'=>'pipeline' ));
+        $m->connect('/', 
+            array( 'controller'=>'action', 'action'=>'index' ));
+        $m->connect('/phpinfo', 
+            array( 'controller'=>'action', 'action'=>'phpinfo' ));
+        $m->connect('*path', 
+            array( 'controller'=>'action', 'action'=>'default' ));
+
+        if (! $this->route_vars = $m->match($_SERVER['REQUEST_URI']) ) {
+            $this->route_vars = array('controller'=>'action', 'action'=>'index');
+        }
+
+        switch ($this->route_vars['controller']) {
+            case 'pipeline':
+                return $this->dispatchPipeline($this->route_vars['name']);
+            case 'action':
+            default:
+                if ( $this->route_vars['action'] == 'index' 
+                        && isset($_GET['pipeline']) ) {
+                    return $this->dispatchPipeline($_GET['pipeline']);
+                }
+                return $this->dispatchAction();
+        }
+
+    }
+
+    /**
+     *
+     */
+    public function dispatchPipeline($pipeline_name='default') {
 
         // Grab the desired pipeline by local file or URL.
         list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
             $this->getConfig('paths/pipelines', "{$this->base_dir}/pipelines"),
-            isset($_GET['pipeline']) ? $_GET['pipeline'] : 'default'
+            $pipeline_name
         );
 
         // Attempt to parse the pipeline.
@@ -246,6 +286,36 @@ class FeedMagick2 {
         $this->log->debug("Sending output.");
         foreach ($headers as $name=>$value) { header("$name: $value"); }
         echo $body;
+         
+    }
+
+    /**
+     *
+     */
+    public function dispatchAction() {
+
+        $action_name = isset($this->route_vars['action']) ? 
+            $this->route_vars['action'] : 'default';
+
+        $actions_base = $this->getConfig('paths/actions', './actions');
+
+        if (! $action_path = realpath("$actions_base/$action_name.action.php") ) {
+            $action_path = realpath("$actions_base/default.action.php");
+        }
+
+        $this->template = new FeedMagick2_Template();
+        $this->template->BASE_URL =
+            $this->getConfig('base_url', '/');
+        $this->template->setPath('template', 
+            $this->getConfig('path/templates', './templates'));
+        $this->template->setPath('resource', 
+            $this->getConfig('path/templates', './templates'));
+
+        $tpl = $this->template;
+
+        $tpl->page_id = 'pageid';
+         
+        include $action_path;
 
     }
 

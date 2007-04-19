@@ -76,6 +76,8 @@ auto-extracted from source using bin/update-todo.sh
         * ReadingLister
             * Accept an OPML list of feeds
             * Blend together into one big feed
+        * HTTP header munger
+            * Alter things like User-Agent sent on request.
         * Feed Header Munger
             * Replace the feed title / link / description / etc with parameters
         * Starter / Blank

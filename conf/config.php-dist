@@ -3,10 +3,14 @@ $base_dir = realpath(dirname(__FILE__)."/..");
 ini_set("include_path", ini_get("include_path").":$base_dir/lib:$base_dir/extlib:$base_dir/modules");
 $config = array(
 
+    'base_url' => '/~lorchard/FeedMagick2',
+
     'base_dir' => $base_dir,
 
     'paths' => array(
         'web'       => "$base_dir",
+        'actions'   => "$base_dir/actions",
+        'templates' => "$base_dir/templates",
         'modules'   => "$base_dir/modules",
         'pipelines' => "$base_dir/pipelines",
         'xsl'       => "$base_dir/xsl"
