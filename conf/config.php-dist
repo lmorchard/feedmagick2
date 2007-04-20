@@ -13,7 +13,9 @@ $config = array(
         'templates' => "$base_dir/templates",
         'modules'   => "$base_dir/modules",
         'pipelines' => "$base_dir/pipelines",
-        'xsl'       => "$base_dir/xsl"
+        'xsl'       => "$base_dir/xsl",
+        'docs'      => "$base_dir/docs",
+        'help'      => "$base_dir/docs/help"
     ),
     
     'cache' => array(

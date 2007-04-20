@@ -1,22 +1,21 @@
-= FeedMagick2: A swiss-army knife for web feeds =
+## FeedMagick2: A swiss-army knife for web feeds
+    http://decafbad.com/trac/wiki/FeedMagick
+    l.m.orchard@pobox.com
+    Share and Enjoy
 
-http://decafbad.com/trac/wiki/FeedMagick
-l.m.orchard@pobox.com
-Share and Enjoy
+### Overview 
 
-== Overview ==
+### Requirements
 
-== Requirements ==
+* PHP 5.2.1 with...
+    * HTML Tidy for Tidyer module
+    * libxslt for XSLTFilter
+* Modules in extlib/ from PEAR and friends.
 
-    * PHP 5.2.1 with...
-        * HTML Tidy for Tidyer module
-        * libxslt for XSLTFilter
-    * PEAR modules in extlib/
-
-== Installation ==
+### Installation 
 
     cp conf/config.php-dist conf/config.php
     chmod a+w logs
 
-== Configuration ==
+### Configuration
 

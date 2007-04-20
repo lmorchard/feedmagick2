@@ -22,21 +22,16 @@ body {
 #bd { }
 
 #yui-main .yui-b { padding: 1.5em; font-size: 114% } 
-#yui-main h2 { font-size: 150%; padding-bottom: 0.75em; }
 #yui-main p { padding-bottom: 1.0em; }
-
-#side { padding: 1.5em; font-size: 100% }
-#side .section { margin-bottom: 1.0em; }
-#side h2 { font-size: 115%; font-weight: bold; margin-bottom: 0.25em; border-bottom: 2px solid #ccc }
 
 #ft { padding: 1em; border-top: 2px solid #ccc }
 
 body.signup { }
 
-h1 { font-weight: bold; }
-h2 { font-weight: bold; }
-h3 { font-weight: bold; font-size: 110%; }
-h4 { font-weight: bold; font-size: 120%; }
+h1 { font-weight: bold; font-size: 140%; }
+h2 { font-weight: bold; font-size: 130%; }
+h3 { font-weight: bold; font-size: 120%; }
+h4 { font-weight: bold; font-size: 110%; }
 h5 { font-weight: bold; font-size: 100%; }
 
 a { text-decoration: none; }
@@ -63,77 +58,28 @@ form ul.errors li { color: red; list-style: disc; margin-left: 2em; }
 form ul.messages { padding-bottom: 1.5em; }
 form ul.messages li { color: green; list-style: disc; margin-left: 2em; }
 
-#side #login_form { padding-top: 0.5em; padding-bottom: 0.5em }
-#side #login_form ul.fields { }
-#side #login_form ul.fields li label { display: block; text-align: left; width: 100% }
-#side #login_form ul.fields li input.text { }
-#side #login_form ul.fields li .required { display: none }
-#side #login_form ul.fields li .spacer { display: none }
-#side #login_form ul.fields li .submit { width: 100% }
-
 #settings_form #profile_image_img { margin-left: 16ex; }
 
 body { background: #efebef; }
 #bd { background: #fff }
 
-.userhome h4 { clear: both }
-
 .clear { clear: both; }
 
-#update_form { padding-bottom: 2em; }
-#update_form h3 { font-size: 140%; margin-bottom: 0.5em; }
-#update_form .avatar { float: left; }
-#update_form .avatar img { border: 2px solid #666; }
-#update_form .main { margin-left: 110px; }
-#update_form .main span.counter { float: right; }
-#update_form .main textarea { display: block;  width: 98%; height: 90px; padding: 3px; }
-#update_form .main .submit { padding: 3px; width: 98%; } 
-#update_form .main .tagswrapper { display: block; padding: 2px 0 2px 0; }
-#update_form .main .tagswrapper #tags { padding: 3px; width: 98%; }
+.index ul.modules li { float: left; width: 47%; height: 7em; }
+.index ul.modules h4 { background: #ddccdd; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
+.index ul.modules p { padding-right: 2em; }
 
-li.update { margin-bottom: 0.5em; padding: 0.5em; background: #efebef; }
-li.update .avatar { float: left; }
-li.update .avatar img { border: 2px solid #666; }
-li.update .username { font-weight: bold }
-li.update .meta { color: #666; margin-left: 0.5em; font-size: 80%; white-space: nowrap }
-li.update .time { color: #66f; }
+#bd p { padding-top: 0.5em; }
+#bd h2 { }
+#bd h3 { margin-top: 0.75em; }
+#bd ul { margin-left: 1.5em; padding-top: 0.5em; }
+#bd ul li { list-style-type: square; padding-bottom: 0.5em; }
 
-.userupdate h3 { font-size: 150%; }
-ul.single_update { margin-top: 0.5em; }
-ul.single_update li.update { min-height:52px; height:auto !important; height:52px; }
-ul.single_update li.update .main { margin-left: 110px }
-ul.single_update li.update .text { font-size: 140%; }
+#side { padding: 1.0em 0 0 1.5em; font-size: 100% }
+#side .section { margin-bottom: 1.0em; }
+#side h2 { font-size: 115%; font-weight: bold; margin-bottom: 0.25em; border-bottom: 2px solid #ccc }
+#side > ul { padding-top: 0; margin-left: 0 }
+#side > ul > li { list-style-type: none }
 
-.first_update_wrapper h3 { font-size: 155% }
-.first_update_wrapper .avatar { float: left; margin: 0.5em 1em 0em 0; border: 2px solid #666 }
-
-ul.first_update { margin-top: 0.5em; margin-bottom: 1.5em; }
-ul.first_update li.update { min-height:52px; height:auto !important; height:52px; }
-ul.first_update li.update .main { margin-left: 110px }
-ul.first_update li.update .text { font-size: 135%; }
-
-ul.updates { margin-top: 0.5em; }
-ul.updates li.update { min-height:52px; height:auto !important; height:52px; }
-ul.updates li.update .main { margin-left: 62px }
-ul.updates li.odd { background: #efebef; }
-ul.updates li.even { background: #fff; }
-
-ul.user_updates { margin-top: 0.5em; }
-ul.user_updates li.update { clear: both; margin-bottom: 0.25em; padding: 0.5em; }
-ul.user_updates li.update .main { margin-left: 62px }
-ul.user_updates li.odd { background: #efebef; }
-ul.user_updates li.even { background: #fff; }
-
-dl.user_details { padding-top: 0.5em }
-dl.user_details dt { font-weight: bold; display: inline; float: left; padding-right: 0.5em; }
-dl.user_details dd { clear: right; padding-bottom: 1em; }
-
-#user_actions ul { padding-top: 0.5em; padding-bottom: 0.5em; }
-#user_actions ul li { text-indent: -2em; margin-left: 2em; margin-bottom: 0.5em; }
-#user_actions ul li form .submit { width: 8.5ex; text-align: center; }
-
-#user_friends ul.friends { padding-top: 0.5em; padding-bottom: 0.5em;  }
-#user_friends ul.friends li { display: inline; padding: 0 }
-#user_friends ul.friends li a img { border: 2px solid #ddd }
-#user_friends ul.friends li a:hover img { border: 2px solid #333 }
+#side .toc .current { font-weight: bold; }
 

@@ -188,9 +188,9 @@ class FeedMagick2 {
     }
 
     /**
-     * Quick and dirty CLI wrapper around web dispatch, accepts "--name value" 
-     * options as query parameters, STDIN as POST request body on '--stdin' 
-     * flag.
+     * Quick and dirty CLI wrapper around pipeline dispatch, accepts "--name 
+     * value" options as query parameters, STDIN as POST request body on 
+     * '--stdin' flag.
      */
     public function clidispatch() {
         chdir($this->base_dir);
@@ -238,6 +238,10 @@ class FeedMagick2 {
             array( 'controller'=>'action', 'action'=>'index' ));
         $m->connect('/phpinfo', 
             array( 'controller'=>'action', 'action'=>'phpinfo' ));
+        $m->connect('/help/', 
+            array( 'controller'=>'action', 'action'=>'help', 'path'=>'index' ));
+        $m->connect('/help/*path', 
+            array( 'controller'=>'action', 'action'=>'help' ));
         $m->connect('*path', 
             array( 'controller'=>'action', 'action'=>'default' ));
 

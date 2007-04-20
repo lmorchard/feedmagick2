@@ -2,7 +2,6 @@
 /**
  *
  */
-$tpl->page_id = 'index';
 
 $tpl->modules = $this->getMetaForModules();
 

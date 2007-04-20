@@ -24,11 +24,12 @@
             <li><a href="#ft" accesskey="2">Skip to navigation</a></li>
             <li><a href="#side">Skip to sidebar</a></li>
         </ul>
-        <div id="doc" class="yui-t4">
+        <div id="doc" class="<?php echo ( isset($this->has_sidebar) && $this->has_sidebar ) ? 'yui-t4' : 'yui-t7' ?>">
             <div id="hd">
-            <h1 id="site_title"><a href="<?php $this->_("$BASE_URL") ?>">FeedMagick2</a></h1>
+            <h1 id="site_title"><a href="<?php echo $this->BASE_URL ?>/">FeedMagick2</a></h1>
                 <ul class="nav">
-                    <li></li>
+                <li class="first"><a href="<?php echo $this->BASE_URL ?>/">home</a></li>
+                    <li><a href="<?php echo $this->BASE_URL ?>/help/">help</a></li>
                 </ul>
             </div> 
             <div id="bd">

@@ -1,94 +1,103 @@
-[
+{
+    "title" : "Blender test",
+    "description" : "Combines a number of personal feeds into one big aggregation of activity.",
+    "author" : "l.m.orchard@pobox.com',
+    "parameters" :
     {
-        "module" : "Fetcher",
-        "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+
     },
-    { 
-        "module" : "TitleMunger", 
-        "parameters" : { "title_prefix" : "[blog] "} 
-    },
-    {
-        "module" : "Blender",
-        "parameters" : [
-            {
-                "module" : "FeedMagick2_Pipeline",
-                "parameters" : [
-                    {
-                        "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
-                    },
-                    { 
-                        "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[livejournal] "} 
-                    }
-                ]
-            },
-            {
-                "module" : "FeedMagick2_Pipeline",
-                "parameters" : [
-                    {
-                        "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
-                    },
-                    { 
-                        "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[last.fm] "} 
-                    }
-                ]
-            },
-            {
-                "module" : "FeedMagick2_Pipeline",
-                "parameters" : [
-                    {
-                        "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/del.icio.us\/rss\/deusx" }
-                    },
-                    { 
-                        "module" : "XSLFilter", 
-                        "parameters" : {"xsl":"normalizer.xsl","format":"rss"} 
-                    },
-                    { 
-                        "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[del.icio.us] "} 
-                    }
-                ]
-            },
-            {
-                "module" : "FeedMagick2_Pipeline",
-                "parameters" : [
-                    {
-                        "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/digg.com\/rss\/deusx\/index2.xml" }
-                    },
-                    { 
-                        "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[dugg] "} 
-                    }
-                ]
-            },
-            {
-                "module" : "FeedMagick2_Pipeline",
-                "parameters" : [
-                    {
-                        "module" : "Fetcher",
-                        "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/user_timeline\/8882.rss" }
-                    },
-                    { 
-                        "module" : "TitleMunger", 
-                        "parameters" : { "title_prefix" : "[twitter] "} 
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "module" : "Summarizer"
-    },
-    { 
-        "module" : "XSLFilter", 
-        "parameters" : {"xsl":"sort-rss-by-pubdate.xsl"} 
-    },
-    {
-        "module" : "Cacher"
-    }
-]
+    "pipeline" : [
+        {
+            "module" : "Fetcher",
+            "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+        },
+        { 
+            "module" : "TitleMunger", 
+            "parameters" : { "title_prefix" : "[blog] "} 
+        },
+        {
+            "module" : "Blender",
+            "parameters" : [
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[livejournal] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[last.fm] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/del.icio.us\/rss\/deusx" }
+                        },
+                        { 
+                            "module" : "XSLFilter", 
+                            "parameters" : {"xsl":"normalizer.xsl","format":"rss"} 
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[del.icio.us] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/digg.com\/rss\/deusx\/index2.xml" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[dugg] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/user_timeline\/8882.rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[twitter] "} 
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "module" : "Summarizer"
+        },
+        { 
+            "module" : "XSLFilter", 
+            "parameters" : {"xsl":"sort-rss-by-pubdate.xsl"} 
+        },
+        {
+            "module" : "Cacher"
+        }
+    ]
+}
