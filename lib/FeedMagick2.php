@@ -100,8 +100,8 @@ class FeedMagick2 {
      * @param string Name of the pipe module class
      * @return array of metadata properties.
      */
-    public function &getMetaForModule($class_name) {
-        $obj =& $this->instantiateModule($class_name, NULL, NULL);
+    public function getMetaForModule($class_name) {
+        $obj = $this->instantiateModule($class_name, NULL, NULL);
         return $obj->getMetadata();
     }
     
@@ -169,7 +169,7 @@ class FeedMagick2 {
                 if ($opts) {
                     $out[$name] = $opts;
                 } else {
-                    $this->log->err("Failed fetching pipeline '$file'!");
+                    $this->log->err("Failed fetching pipeline '$name'!");
                 }
             }
             closedir($dh);

@@ -29,6 +29,8 @@ auto-extracted from source using bin/update-todo.sh
 
 ### Improvements
 
+* Make inspector form work with remote pipeline URL
+
 * Need to better explore / think out request / response headers in the pipeline.
 * Enforce required parameters in pipeline definition, and in URL params
 * Config options to lock down some open features for semi-private usage
