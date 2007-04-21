@@ -9,7 +9,7 @@
         { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} },
         {
             "module" : "WebFilter",
-            "parameters" : { "url" : "http:\/\/localhost\/~lorchard\/FeedMagick2\/?pipeline=magpiejson" }
+            "parameters" : { "url" : "http:\/\/decafbad.com\/2007\/04\/FeedMagick2\/?pipeline=magpiejson" }
         }
     ]
 }
