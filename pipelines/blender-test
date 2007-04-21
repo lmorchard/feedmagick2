@@ -1,12 +1,9 @@
 {
-    "title" : "Blender test",
-    "description" : "Combines a number of personal feeds into one big aggregation of activity.",
-    "author" : "l.m.orchard@pobox.com',
-    "parameters" :
-    {
-
-    },
-    "pipeline" : [
+    "title"       : "Blender demo",
+    "description" : "Combines a number of l.m.orchard's personal feeds into one big stream of updates.",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : { },
+    "pipeline"    : [
         {
             "module" : "Fetcher",
             "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}

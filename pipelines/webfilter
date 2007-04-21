@@ -1,9 +1,15 @@
-[
-    { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
-    { "module":"Tidyer" },
-    { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} },
-    {
-        "module" : "WebFilter",
-        "parameters" : { "url" : "http:\/\/localhost\/~lorchard\/FeedMagick2\/?pipeline=magpiejson" }
-    }
-]
+{
+    "title"       : "WebFilter demo",
+    "description" : "Combines a local pipeline with an external HTTP WebFilter pipeline.  (Will need URL customization for your local installation)",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : { },
+    "pipeline" : [
+        { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
+        { "module":"Tidyer" },
+        { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} },
+        {
+            "module" : "WebFilter",
+            "parameters" : { "url" : "http:\/\/localhost\/~lorchard\/FeedMagick2\/?pipeline=magpiejson" }
+        }
+    ]
+}

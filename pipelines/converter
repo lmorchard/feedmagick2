@@ -1,4 +1,13 @@
-[
-    { "module":"Fetcher", "parameters":{"url":"{url}"} },
-    { "module":"XSLFilter", "parameters":{"xsl":"normalizer.xsl", "format":"{format}"} }
-]
+{
+    "title"       : "Feed normalizer",
+    "description" : "Normalize and convert feed data between formats",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters" : {
+        "url" :    { "type":"string", "label":"Input feed URL", "default":"http:\/\/decafbad.com\/blog\/feed" },
+        "format" : { "type":"string", "label":"Output feed format (rss, atom)", "default":"atom" }
+    },
+    "pipeline" : [
+        { "module":"Fetcher", "parameters":{"url":"{url}"} },
+        { "module":"XSLFilter", "parameters":{"xsl":"normalizer.xsl", "format":"{format}"} }
+    ]
+}

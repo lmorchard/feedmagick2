@@ -1,22 +1,15 @@
-[
-    {
-        "module" : "Fetcher",
-        "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+{
+    "title"       : "Passthrough demo",
+    "description" : "Pass a feed through several passthrough modules that shouldn't change feed content",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : { 
+        "url" : { "type":"string", "label":"Input feed URL", "default":"http:\/\/decafbad.com\/blog\/feed" }    
     },
-    {
-        "module" : "SAXPassthrough",
-        "parameters" : {}
-    },
-    {
-        "module" : "RawPassthrough",
-        "parameters" : {}
-    },
-    {
-        "module" : "DOMPassthrough",
-        "parameters" : {}
-    },
-    {
-        "module" : "Cacher"
-    }
-]
-
+    "pipeline" : [
+        { "module" : "Fetcher", "parameters" : { "url" : "{url}"} },
+        { "module" : "SAXPassthrough", "parameters" : {} },
+        { "module" : "RawPassthrough", "parameters" : {} },
+        { "module" : "DOMPassthrough", "parameters" : {} },
+        { "module" : "Cacher" } 
+    ]
+}

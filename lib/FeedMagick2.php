@@ -109,7 +109,7 @@ class FeedMagick2 {
      * Collect metadata from all registered pipe modules.
      * @return array of module metadata
      */
-    public function &getMetaForModules() {
+    public function getMetaForModules() {
         $metas = array();
         foreach (self::$module_registry as $class_name) {
             $metas[$class_name] = $this->getMetaForModule($class_name);
@@ -124,7 +124,7 @@ class FeedMagick2 {
      * @param array Options for the instance, may be indexed or associative array
      * @return BasePipeModule a new instance of the requested pipe module.
      */
-    public function &instantiateModule($class_name, $id, $options) {
+    public function instantiateModule($class_name, $id, $options) {
         if (!in_array($class_name, self::$module_registry)) 
             die("No such pipe module named '$class_name'");
         $this->log->debug("$id instantiated as module $class_name");
@@ -153,6 +153,42 @@ class FeedMagick2 {
                 closedir($dh);
             }
         }
+    }
+
+    /**
+     * Scan the pipelines directory for pipelines and return metadata for all 
+     * of them.
+     * @return array List of pipelines
+     */
+    public function getMetaForPipelines() {
+        $out = array();
+        $path = $this->getConfig('paths/pipelines', "{$this->base_dir}/pipelines");
+        if ( is_dir($path) && ($dh = opendir($path)) ) {
+            while (($name = readdir($dh)) !== FALSE) {
+                $opts = $this->getMetaForPipeline($name);
+                if ($opts) {
+                    $out[$name] = $opts;
+                } else {
+                    $this->log->err("Failed fetching pipeline '$file'!");
+                }
+            }
+            closedir($dh);
+        }
+        return $out;
+    }
+
+    /**
+     * Return metadata for a named pipeline.
+     * @param string Name of a pipeline
+     * @return array Associative array of pipeline metadata
+     */
+    public function getMetaForPipeline($name) {
+        $path = $this->getConfig('paths/pipelines', "{$this->base_dir}/pipelines");
+        $file = "$path/$name";
+        $src  = file_get_contents($file);
+        $opts = $this->json->decode($src, TRUE);
+        $this->log->debug("Fetching pipeline '$file'...");
+        return $opts;
     }
 
     /**
@@ -220,6 +256,7 @@ class FeedMagick2 {
     }
     
     /**
+     * Web request dispatcher, using URL routing and controller dispatching.
      * @todo Carry headers along as a property of this object?
      * @todo Need better error handling here.
      */
@@ -238,8 +275,10 @@ class FeedMagick2 {
             array( 'controller'=>'action', 'action'=>'index' ));
         $m->connect('/phpinfo', 
             array( 'controller'=>'action', 'action'=>'phpinfo' ));
+        $m->connect('/inspect/*path', 
+            array( 'controller'=>'action', 'action'=>'inspect' ));
         $m->connect('/help/', 
-            array( 'controller'=>'action', 'action'=>'help', 'path'=>'index' ));
+            array( 'controller'=>'action', 'action'=>'help', 'path'=>'README' ));
         $m->connect('/help/*path', 
             array( 'controller'=>'action', 'action'=>'help' ));
         $m->connect('*path', 
@@ -249,7 +288,7 @@ class FeedMagick2 {
             $this->route_vars = array('controller'=>'action', 'action'=>'index');
         }
 
-        switch ($this->route_vars['controller']) {
+        switch ($this->getRouteVar('controller')) { 
             case 'pipeline':
                 return $this->dispatchPipeline($this->route_vars['name']);
             case 'action':
@@ -264,7 +303,18 @@ class FeedMagick2 {
     }
 
     /**
-     *
+     * Fetch a route parameter extracted from a matched route.
+     * @param string Name of the variable
+     * @param string Default value if variable not set
+     * @return string route parameter
+     */
+    public function getRouteVar($name, $default=NULL) {
+        return (isset($this->route_vars) && array_key_exists($name, $this->route_vars)) ?
+            $this->route_vars[$name] : $default;
+    }
+
+    /**
+     * Controller function to dispatch pipeline processing.
      */
     public function dispatchPipeline($pipeline_name='default') {
 
@@ -294,20 +344,21 @@ class FeedMagick2 {
     }
 
     /**
-     *
+     * For routes that lead to actions, locate the action, initialize 
+     * templating, and execute the action.
      */
     public function dispatchAction() {
 
-        $action_name = isset($this->route_vars['action']) ? 
-            $this->route_vars['action'] : 'default';
-
         $actions_base = $this->getConfig('paths/actions', './actions');
 
-        if (! $action_path = realpath("$actions_base/$action_name.action.php") ) {
+        $action_name = $this->getRouteVar('action', 'default');
+
+        if (! ($action_path = realpath("$actions_base/$action_name.action.php")) ) {
+            // If no action was found with the desired name, fall back to default.
             $action_path = realpath("$actions_base/default.action.php");
         }
 
-        $this->template = new FeedMagick2_Template();
+        $this->template = $tpl = new FeedMagick2_Template();
         $this->template->BASE_URL =
             $this->getConfig('base_url', '/');
         $this->template->setPath('template', 
@@ -315,10 +366,6 @@ class FeedMagick2 {
         $this->template->setPath('resource', 
             $this->getConfig('path/templates', './templates'));
 
-        $tpl = $this->template;
-
-        $tpl->page_id = 'pageid';
-         
         include $action_path;
 
     }

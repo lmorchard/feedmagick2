@@ -1,5 +1,11 @@
-[
-    { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
-    { "module":"Tidyer" },
-    { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} }
-]
+{
+    "title"       : "jbox.com scraper",
+    "description" : "Scrape product listings from jbox.com to produce a feed.",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : { },
+    "pipeline"    : [
+        { "module":"Fetcher", "parameters":{"url":"http:\/\/www.jbox.com\/UPDATES\/14\/"} },
+        { "module":"Tidyer" },
+        { "module":"XSLFilter", "parameters":{"xsl":"scrapers\/jbox.xsl"} }
+    ]
+}

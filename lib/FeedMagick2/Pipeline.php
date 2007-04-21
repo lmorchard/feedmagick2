@@ -44,6 +44,10 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
     public function __construct($parent, $id=NULL, $options=array()) {
         parent::__construct($parent, $id, $options);
         if ($options) {
+            if (array_key_exists('pipeline', $options)) {
+                // Accept a bare list of modules, or a full-blown pipeline spec with metadata.
+                $options = $options['pipeline'];
+            } 
             $this->_pipe = array();
             list($i, $prev_mod, $mod) = array(0, NULL, NULL);
             foreach ($options as $opt) {

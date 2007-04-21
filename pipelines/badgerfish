@@ -1,4 +1,12 @@
-[
-    { "module":"Fetcher", "parameters":{"url":"{url}"} },
-    { "module":"BadgerFishJSON" }
-]
+{
+    "title"       : "Feed to JSON via BadgerFish",
+    "description" : "Use BadgerFish to transform feed XML content to JSON",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : {
+        "url" : { "type":"string", "label":"Input feed URL" }
+    },
+    "pipeline" : [
+        { "module":"Fetcher", "parameters":{"url":"{url}"} },
+        { "module":"BadgerFishJSON" }
+    ]
+}

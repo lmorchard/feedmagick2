@@ -1,10 +1,18 @@
-[
-    {
-        "module" : "Fetcher",
-        "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/{author|u}"}
+{
+    "title"       : "Ficlets enhanced author feed",
+    "description" : "Use an XSL scraper from decafbad.com to produce an enhanced feed for a Ficlets.com author",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters" : {
+        "author" : { "type":"string", "label":"Ficlets.com author", "default":"l_m_orchard" }
     },
-    {
-        "module" : "XSLFilter",
-        "parameters" : {"xsl" : "http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
-    }
-]
+    "pipeline" : [
+        {
+            "module" : "Fetcher",
+            "parameters" : { "url" : "http:\/\/ficlets.com\/feeds\/author\/{author|u}"}
+        },
+        {
+            "module" : "XSLFilter",
+            "parameters" : {"xsl" : "http:\/\/decafbad.com\/2007\/04\/ficlets.xsl"}
+        }
+    ]
+}

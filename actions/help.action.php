@@ -22,7 +22,7 @@ $tpl->help_path = $help_path;
 $help_src = file_get_contents($help_path);
 
 $tpl->toc = array(
-    'Index'  => 'index',
+    //'Index'  => 'index',
     'README' => 'README',
     'TODO'   => 'TODO'
 );

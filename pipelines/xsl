@@ -1,4 +1,13 @@
-[
-    { "module":"Fetcher", "parameters":{"url":"{url}"} },
-    { "module":"XSLFilter", "parameters":{"xsl":"{xsl}"} }
-]
+{
+    "title"       : "XSLTFilter demo",
+    "description" : "Filters an arbitrary URL through an XSLT transformation",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : {
+        "url" : { "type":"string", "label":"Input URL" },
+        "xsl" : { "type":"string", "label":"XSL URL" }
+    },
+    "pipeline" : [
+        { "module":"Fetcher", "parameters":{"url":"{url}"} },
+        { "module":"XSLFilter", "parameters":{"xsl":"{xsl}"} }
+    ]
+}

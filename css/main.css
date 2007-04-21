@@ -22,7 +22,6 @@ body {
 #bd { }
 
 #yui-main .yui-b { padding: 1.5em; font-size: 114% } 
-#yui-main p { padding-bottom: 1.0em; }
 
 #ft { padding: 1em; border-top: 2px solid #ccc }
 
@@ -31,7 +30,7 @@ body.signup { }
 h1 { font-weight: bold; font-size: 140%; }
 h2 { font-weight: bold; font-size: 130%; }
 h3 { font-weight: bold; font-size: 120%; }
-h4 { font-weight: bold; font-size: 110%; }
+h4 { font-weight: bold; font-size: 105%; }
 h5 { font-weight: bold; font-size: 100%; }
 
 a { text-decoration: none; }
@@ -42,16 +41,16 @@ a:active { }
 pre { font-size: 80% }
 
 form ul.fields { }
-form ul.fields li { padding-bottom: 0.5em }
+form ul.fields li { clear: left; list-style-type: none !important; padding-bottom: 1.0em !important }
 form ul.fields li .required { }
 form ul.fields li .errormsg,
 form ul.fields li span.error { color: #f33; font-size: 80% }
 form ul.fields li label, 
-form ul.fields li .spacer { display: block; float: left; text-align: right; padding-right: 0.5em; width: 15ex; }
+form ul.fields li .spacer { display: block; float: left; text-align: right; padding-right: 0.5em; width: 20ex; }
 form ul.fields li label.error { color: #f33 }
 form ul.fields li input.text,
 form ul.fields li textarea,
-form ul.fields li input.password { padding: 3px; width: 25ex; }
+form ul.fields li input.password { padding: 3px; width: 55ex; }
 form ul.fields li textarea { height: 5.5em; font-size: 85%; width: 200px; }
 form ul.errors { padding-bottom: 1.5em; }
 form ul.errors li { color: red; list-style: disc; margin-left: 2em; }
@@ -65,21 +64,38 @@ body { background: #efebef; }
 
 .clear { clear: both; }
 
-.index ul.modules li { float: left; width: 47%; height: 7em; }
-.index ul.modules h4 { background: #ddccdd; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
-.index ul.modules p { padding-right: 2em; }
-
-#bd p { padding-top: 0.5em; }
-#bd h2 { }
-#bd h3 { margin-top: 0.75em; }
+#bd p { padding-bottom: 0.25em; }
+#bd h2 { margin-bottom: 0.5em; }
+#bd h3 { margin-top: 0.75em; margin-bottom: 0.5em; }
+#bd li > h4 { margin-top: 0.25em; margin-bottom: 0.5em; }
 #bd ul { margin-left: 1.5em; padding-top: 0.5em; }
 #bd ul li { list-style-type: square; padding-bottom: 0.5em; }
 
-#side { padding: 1.0em 0 0 1.5em; font-size: 100% }
+#side { padding: 1.0em 1.0em 0 1.5em; font-size: 100% }
 #side .section { margin-bottom: 1.0em; }
 #side h2 { font-size: 115%; font-weight: bold; margin-bottom: 0.25em; border-bottom: 2px solid #ccc }
 #side > ul { padding-top: 0; margin-left: 0 }
 #side > ul > li { list-style-type: none }
 
 #side .toc .current { font-weight: bold; }
+
+body.index ul.pipelines li {  }
+body.index ul.pipelines h4 { background: #eee; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
+body.index ul.pipelines h4 a { display: block }
+body.index ul.pipelines p { padding-right: 2em; }
+
+body.index ul.modules li {  }
+body.index ul.modules h4 { background: #eee; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
+body.index ul.modules h4 a { display: block; }
+body.index ul.modules p { padding-right: 2em; }
+
+body.help pre.todo { overflow: scroll; width: 125%; font-size: 70% }
+
+body.inspect form { border: 1px solid; padding: 0.5em; margin: 0.5em 0.5em 2.5em 0.5em; }
+body.inspect label { font-size: 90%;}
+body.inspect ul.pipelines { margin-left: 0 !important }
+body.inspect ul.pipelines li { list-style-type: none !important; margin-left: 0; width: 48%; float: left; height: 6em; }
+body.inspect ul.pipelines li h4 { background: #eee; margin-right: 1em; }
+body.inspect ul.pipelines li h4 a { display: block; }
+body.inspect ul.pipelines li p { margin-right: 1em; font-size: 90% }
 

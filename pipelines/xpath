@@ -1,14 +1,23 @@
-[
-    {
-        "module" : "Fetcher",
-        "parameters" : { "url" : "{url}"}
+{
+    "title"       : "XPathFilter demo",
+    "description" : "Uses XPathFilter to selectively include feed items based on a category",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : {
+        "url" : { "type":"string", "label":"Input feed URL", "default":"http:\/\/del.icio.us\/rss\/deusx" },
+        "category" : { "type":"string", "label":"Category", "default":"webdev" }
     },
-    {
-        "module" : "XPathFilter",
-        "parameters" : {
-            "include" : [
-                "category[text()='{category}'] | dc:subject[contains(text(), '{category}')]"
-            ]
+    "pipeline" : [
+        { 
+            "module" : "Fetcher", 
+            "parameters" : { "url" : "{url}"} 
+        },
+        {
+            "module" : "XPathFilter",
+            "parameters" : {
+                "include" : [
+                    "category[text()='{category}'] | dc:subject[contains(text(), '{category}')]"
+                ]
+            }
         }
-    }
-]
+    ]
+}
