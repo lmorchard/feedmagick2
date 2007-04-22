@@ -1,16 +1,16 @@
 {
-    "title"       : "master feed",
+    "title"       : "Master personal feed",
     "description" : "Combines a number of personal feeds into one big stream of updates.",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : { 
-        "url" : { "type":"string", "label":"Main blog feed", "default":"http:\/\/decafbad.com\/blog\/feed\/" },
+        "url" :       { "type":"string", "label":"Main blog feed", "default":"http:\/\/decafbad.com\/blog\/feed\/" },
         "delicious" : { "type":"string", "label":"del.icio.us user name", "default":"deusx" },
-        "flickr" : { "type":"string", "label":"Flickr user name", "default":"deusx" },
+        "flickr" :    { "type":"string", "label":"Flickr user name", "default":"deusx" },
         "flickr_id" : { "type":"string", "label":"Flickr user ID", "default":"35034355597@N01" },
-        "digg" : { "type":"string", "label":"Digg user name", "default":"deusx" },
-        "lastfm" : { "type":"string", "label":"last.fm user name", "default":"deusx" },
-        "lj" : { "type":"string", "label":"LiveJournal user name", "default":"deus-x" },
-        "twitter" : { "type":"string", "label":"Twitter user ID", "default":"8882" }
+        "digg" :      { "type":"string", "label":"Digg user name", "default":"deusx" },
+        "lastfm" :    { "type":"string", "label":"last.fm user name", "default":"deusx" },
+        "lj" :        { "type":"string", "label":"LiveJournal user name", "default":"deus-x" },
+        "twitter" :   { "type":"string", "label":"Twitter user ID", "default":"8882" }
     },
     "pipeline"    : [
         {
@@ -72,7 +72,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http://api.flickr.com/services/feeds/photos_public.gne?id={flickr_id}&format=rss_200" }
+                            "parameters" : { "url" : "http:\/\/api.flickr.com\/services\/feeds\/photos_public.gne?id={flickr_id}&format=rss_200" }
                         },
                         { 
                             "module" : "TitleMunger", 
