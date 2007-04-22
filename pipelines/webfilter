@@ -1,6 +1,6 @@
 {
     "title"       : "WebFilter demo",
-    "description" : "Combines a local pipeline with an external HTTP WebFilter pipeline.  (Will need URL customization for your local installation)",
+    "description" : "Combines a local pipeline with an external pipeline via HTTP POST.  (Will need URL customization for your local installation)",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : { },
     "pipeline" : [

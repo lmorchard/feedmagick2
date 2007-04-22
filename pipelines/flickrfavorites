@@ -1,5 +1,5 @@
 {
-    "title"       : "Flickr Favorites Feed",
+    "title"       : "Flickr favorites feed",
     "description" : "Fetches public photos marked favorite by a user on Flickr and builds an RSS 2.0 feed",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : {

@@ -3,7 +3,7 @@
     "description" : "Use BadgerFish to transform XML content to JSON",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : {
-        "url" : { "type":"string", "label":"Input feed URL" }
+        "url" : { "type":"string", "label":"Input XML URL" }
     },
     "pipeline" : [
         { "module":"Fetcher", "parameters":{"url":"{url}"} },

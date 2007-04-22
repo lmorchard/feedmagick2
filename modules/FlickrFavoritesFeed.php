@@ -59,7 +59,7 @@ class FlickrFavoritesFeed extends FeedMagick2_DOMBasePipeModule {
         // Request a list of the user's favorite pictures, including the date.
         list($faves, $faves_xp) = $this->api(array(
             'method'  => 'flickr.favorites.getPublicList',
-            'extras'  => 'date_taken,date_upload,owner_name,license',
+            'extras'  => 'date_taken,date_upload,last_update,owner_name,license',
             'user_id' => $user_id
         ));
 
@@ -69,8 +69,8 @@ class FlickrFavoritesFeed extends FeedMagick2_DOMBasePipeModule {
 
             // Extract some attributes from the photo as an array.
             $photo = array();
-            foreach (array('id', 'server', 'farm', 'secret', 'owner', 
-                    'ownername', 'title', 'dateupload', 'license') as $name) {
+            foreach (array('id', 'server', 'farm', 'secret', 'owner', 'ownername', 
+                    'title', 'dateupload', 'lastupdate', 'license') as $name) {
                 $photo[$name] = $photo_node->getAttribute($name);
             }
 
