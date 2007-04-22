@@ -1,0 +1,16 @@
+{
+    "title"       : "Flickr Favorites Feed",
+    "description" : "Fetches public photos marked favorite by a user on Flickr and builds an RSS 2.0 feed",
+    "author"      : "l.m.orchard@pobox.com",
+    "parameters"  : {
+        "user" : { "type":"string", "label":"Flickr user name", "default":"deusx" }
+    },
+    "pipeline" : [
+        { 
+            "module" : "FlickrFavoritesFeed", 
+            "parameters" : {
+                "user"   : "{user}"
+            }
+        }
+    ]
+}

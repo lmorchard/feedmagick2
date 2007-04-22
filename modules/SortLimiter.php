@@ -13,6 +13,8 @@ require_once 'FeedMagick2/DOMBasePipeModule.php';
 /**
  * Use XPath to include or exclude feed items.
  * @todo This could probably be done with XSL, but implemented this way will work without libxsl.
+ * @todo Implement some other sort types - ie. for numeric, RSS RFC2822 pubDate
+ * @todo Rework so that limiting can be done separately from sorting.
  */
 class SortLimiter extends FeedMagick2_DOMBasePipeModule {
 
@@ -82,7 +84,7 @@ class SortLimiter extends FeedMagick2_DOMBasePipeModule {
         }
 
         // Scoop up the parameters in the pipeline.
-        $sortby    = $this->getParameter('sortby', 'pubDate');
+        $sortby    = $this->getParameter('sortby', 'title');
         $sortorder = $this->getParameter('sortorder', 'asc') == 'asc';
         $limit     = $this->getParameter('limit', FALSE);
         $offset    = $this->getParameter('offset', 0);

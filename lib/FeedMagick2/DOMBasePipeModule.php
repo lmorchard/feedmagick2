@@ -37,7 +37,57 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
     }
 
     /**
-     * Hook this object up in-line with other SAX filters
+     * Helper function to construct and append a DOM node all in one shot.  Had 
+     * some trouble using SimpleXML with cdata containing ampersands, so this 
+     * is a homebrewed workaround.
+     *
+     * @param $parent - Parent node or DOMDocument
+     * @param $tagnname - Name of element to construct
+     * @param $attributes - Array of name/value pairs to be used as attributes (optional)
+     * @param $cdata - Character data to be inserted into element (optional)
+     * @return A newly constructed DOM element, added to the parent.
+     */
+    public static function append($parent, $tagname, $attributes=NULL, $cdata=NULL) {
+
+        // Find the owner document, whether it's the actual parent or the owner 
+        // of the parent.
+        $doc = ($parent instanceof DOMDocument) ?  $parent : $parent->ownerDocument;
+
+        if (is_array($tagname)) {
+            // If the $tagname is an array, assume that it's a (name, NS) tuple.
+            $el = $doc->createElementNS($tagname[1], $tagname[0]);
+        } else {
+            // Otherwise, it's just a string tag name.
+            $el = $doc->createElement($tagname);
+        }
+
+        // Add any attributes supplied.
+        if ($attributes) {
+            foreach ($attributes as $name=>$val) {
+                $el->setAttribute($name, $val);
+            }
+        }
+
+        // Insert any character data supplied.
+        if ($cdata) {
+            $el->appendChild($doc->createTextNode($cdata));
+        }
+
+        // Finally, append this element to its parent and return the element itself.
+        $parent->appendChild($el);
+        return $el;
+    }
+
+    function xpathVal($xpath, $path, $node) {
+        $nodes = $xpath->query($path, $node);
+        if ($nodes->length > 0) {
+            return $nodes->item(0)->nodeValue;
+        }
+        return "";
+    }
+
+    /**
+     * Hook this object up in-line with other DOM filters
      * @return array ($headers, $doc)
      */
     function fetchOutput_DOM_XML() {

@@ -1,5 +1,5 @@
 {
-    "title"       : "Blender demo",
+    "title"       : "l.m.orchard's master feed",
     "description" : "Combines a number of l.m.orchard's personal feeds into one big stream of updates.",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : { },
@@ -15,32 +15,6 @@
         {
             "module" : "Blender",
             "parameters" : [
-                {
-                    "module" : "FeedMagick2_Pipeline",
-                    "parameters" : [
-                        {
-                            "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
-                        },
-                        { 
-                            "module" : "TitleMunger", 
-                            "parameters" : { "title_prefix" : "[livejournal] "} 
-                        }
-                    ]
-                },
-                {
-                    "module" : "FeedMagick2_Pipeline",
-                    "parameters" : [
-                        {
-                            "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
-                        },
-                        { 
-                            "module" : "TitleMunger", 
-                            "parameters" : { "title_prefix" : "[last.fm] "} 
-                        }
-                    ]
-                },
                 {
                     "module" : "FeedMagick2_Pipeline",
                     "parameters" : [
@@ -83,11 +57,47 @@
                             "parameters" : { "title_prefix" : "[twitter] "} 
                         }
                     ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "FlickrFavoritesFeed",
+                            "parameters" : { "user" : "deusx" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[flickr faves] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[livejournal] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[last.fm] "} 
+                        }
+                    ]
                 }
             ]
-        },
-        {
-            "module" : "Summarizer"
         },
         { 
             "module" : "XSLFilter", 
