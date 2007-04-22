@@ -1,12 +1,21 @@
 {
-    "title"       : "l.m.orchard's master feed",
-    "description" : "Combines a number of l.m.orchard's personal feeds into one big stream of updates.",
+    "title"       : "master feed",
+    "description" : "Combines a number of personal feeds into one big stream of updates.",
     "author"      : "l.m.orchard@pobox.com",
-    "parameters"  : { },
+    "parameters"  : { 
+        "url" : { "type":"string", "label":"Main blog feed", "default":"http:\/\/decafbad.com\/blog\/feed\/" },
+        "delicious" : { "type":"string", "label":"del.icio.us user name", "default":"deusx" },
+        "flickr" : { "type":"string", "label":"Flickr user name", "default":"deusx" },
+        "flickr_id" : { "type":"string", "label":"Flickr user ID", "default":"35034355597@N01" },
+        "digg" : { "type":"string", "label":"Digg user name", "default":"deusx" },
+        "lastfm" : { "type":"string", "label":"last.fm user name", "default":"deusx" },
+        "lj" : { "type":"string", "label":"LiveJournal user name", "default":"deus-x" },
+        "twitter" : { "type":"string", "label":"Twitter user ID", "default":"8882" }
+    },
     "pipeline"    : [
         {
             "module" : "Fetcher",
-            "parameters" : { "url" : "http:\/\/decafbad.com\/blog\/feed\/"}
+            "parameters" : { "url" : "{url}"}
         },
         { 
             "module" : "TitleMunger", 
@@ -20,7 +29,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/del.icio.us\/rss\/deusx" }
+                            "parameters" : { "url" : "http:\/\/del.icio.us\/rss\/{delicious}" }
                         },
                         { 
                             "module" : "XSLFilter", 
@@ -37,7 +46,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/digg.com\/rss\/deusx\/index2.xml" }
+                            "parameters" : { "url" : "http:\/\/digg.com\/rss\/{digg}\/index2.xml" }
                         },
                         { 
                             "module" : "TitleMunger", 
@@ -50,7 +59,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/user_timeline\/8882.rss" }
+                            "parameters" : { "url" : "http:\/\/twitter.com\/statuses\/user_timeline\/{twitter}.rss" }
                         },
                         { 
                             "module" : "TitleMunger", 
@@ -62,8 +71,21 @@
                     "module" : "FeedMagick2_Pipeline",
                     "parameters" : [
                         {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http://api.flickr.com/services/feeds/photos_public.gne?id={flickr_id}&format=rss_200" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[flickr] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
                             "module" : "FlickrFavoritesFeed",
-                            "parameters" : { "user" : "deusx" }
+                            "parameters" : { "user" : "{flickr}" }
                         },
                         { 
                             "module" : "TitleMunger", 
@@ -76,7 +98,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/deus-x.livejournal.com\/data\/rss" }
+                            "parameters" : { "url" : "http:\/\/{lj}.livejournal.com\/data\/rss" }
                         },
                         { 
                             "module" : "TitleMunger", 
@@ -89,7 +111,7 @@
                     "parameters" : [
                         {
                             "module" : "Fetcher",
-                            "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/deusx\/recenttracks.rss" }
+                            "parameters" : { "url" : "http:\/\/ws.audioscrobbler.com\/1.0\/user\/{lastfm}\/recenttracks.rss" }
                         },
                         { 
                             "module" : "TitleMunger", 
