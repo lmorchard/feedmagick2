@@ -9,6 +9,9 @@
         "flickr_id" : { "type":"string", "label":"Flickr user ID", "default":"35034355597@N01" },
         "digg" :      { "type":"string", "label":"Digg user name", "default":"deusx" },
         "lastfm" :    { "type":"string", "label":"last.fm user name", "default":"deusx" },
+        "lastfm" :    { "type":"string", "label":"last.fm user name", "default":"deusx" },
+        "cocomment" : { "type":"string", "label":"coComment user name", "default":"lmorchard" },
+        "vox" :       { "type":"string", "label":"Vox name", "default":"decafbad" },
         "lj" :        { "type":"string", "label":"LiveJournal user name", "default":"deus-x" },
         "twitter" :   { "type":"string", "label":"Twitter user ID", "default":"8882" }
     },
@@ -103,6 +106,36 @@
                         { 
                             "module" : "TitleMunger", 
                             "parameters" : { "title_prefix" : "[livejournal] "} 
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/www.cocomment.com\/myrss2\/{cocomment}.rss" }
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[cocomment] "}
+                        }
+                    ]
+                },
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "http:\/\/{vox}.vox.com\/library\/posts\/atom.xml" }
+                        },
+                        { 
+                            "module" : "XSLFilter", 
+                            "parameters" : {"xsl":"normalizer.xsl","format":"rss"} 
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[vox] "}
                         }
                     ]
                 },

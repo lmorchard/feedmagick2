@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     ch14_xslt_feed_normalizer.xsl
     from Chapter 14 of "Hacking RSS and Atom" by l.m.orchard published by Wiley
@@ -9,7 +9,8 @@
 <xsl:stylesheet 
     version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:atom="http://purl.org/atom/ns#"
+    xmlns:atom03="http://purl.org/atom/ns#"
+    xmlns:atom10="http://www.w3.org/2005/Atom"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rss10="http://purl.org/rss/1.0/"
     xmlns:rss09="http://my.netscape.com/rdf/simple/0.9/"
@@ -34,23 +35,19 @@
             <xsl:when test="$format='rss'">
                 <xsl:call-template name="rss20.feed" />
             </xsl:when>
-            <xsl:when test="$format='timetest'">
-                <xsl:call-template name="rfc822_to_w3cdtf">
-                </xsl:call-template>
-            </xsl:when>
             <xsl:otherwise>
-                <xsl:call-template name="atom03.feed" />
+                <xsl:call-template name="atom10.feed" />
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
-    <!-- Atom 0.3 feed output shell template -->
-    <xsl:template name="atom03.feed">
-        <feed xmlns="http://purl.org/atom/ns#" version="0.3">
+    <!-- Atom 1.0 feed output shell template -->
+    <xsl:template name="atom10.feed">
+        <feed xmlns="http://www.w3.org/2005/Atom" version="1.0">
             <title><xsl:value-of select="$feed.title"/></title>
-            <tagline><xsl:value-of select="$feed.description"/></tagline>
+            <subtitle><xsl:value-of select="$feed.description"/></subtitle>
             <link rel="alternate" type="text/html" href="{$feed.link}" />
-            <modified><xsl:value-of select="$feed.date" /></modified>
+            <published><xsl:value-of select="$feed.date" /></published>
             <xsl:if test="$feed.author.name and $feed.author.email">
                 <author>
                     <name><xsl:value-of select="$feed.author.name" /></name>
@@ -61,16 +58,16 @@
         </feed>
     </xsl:template>
     
-    <!-- Atom 0.3 entry output template -->
-    <xsl:template name="atom03.entry">
+    <!-- Atom 1.0 entry output template -->
+    <xsl:template name="atom10.entry">
         <xsl:param name="entry.title" select="''" />
         <xsl:param name="entry.id" select="''" />
         <xsl:param name="entry.author.name" select="''" />
         <xsl:param name="entry.author.email" select="''" />
         <xsl:param name="entry.date" select="''" />
-        <xsl:param name="entry.summary" select="''" />
+        <xsl:param name="entry.content" select="''" />
         <xsl:param name="entry.link" select="''" />
-        <entry xmlns="http://purl.org/atom/ns#">
+        <entry xmlns="http://www.w3.org/2005/Atom">
             <title><xsl:value-of select="$entry.title" /></title>
             <link rel="alternate" type="text/html" href="{$entry.link}" />
             <id><xsl:value-of select="$entry.id" /></id>
@@ -80,10 +77,10 @@
                     <email><xsl:value-of select="$entry.author.email" /></email>
                 </author>
             </xsl:if>
-            <issued><xsl:value-of select="$entry.date" /></issued>
-            <modified><xsl:value-of select="$entry.date" /></modified>
+            <published><xsl:value-of select="$entry.date" /></published>
+            <updated><xsl:value-of select="$entry.date" /></updated>
             <!-- TODO: Handle unescaping escaped entities and such from RSS -->
-            <summary><xsl:value-of select="$entry.summary" /></summary>
+            <content type="html"><xsl:value-of select="$entry.content" /></content>
         </entry>
     </xsl:template>
 
@@ -118,7 +115,7 @@
         <xsl:param name="entry.author.name" select="''" />
         <xsl:param name="entry.author.email" select="''" />
         <xsl:param name="entry.date" select="''" />
-        <xsl:param name="entry.summary" select="''" />
+        <xsl:param name="entry.content" select="''" />
         <xsl:param name="entry.link" select="''" />
         <item>
             <title><xsl:value-of select="$entry.title"/></title>  
@@ -130,14 +127,15 @@
             </pubDate>        
             <guid><xsl:value-of select="$entry.id" /></guid>
             <description>
-                <xsl:value-of select="$entry.summary"/>
+                <xsl:value-of select="$entry.content"/>
             </description>
         </item>
     </xsl:template>
 
     <!-- Extract feed title content -->
     <xsl:variable name="feed.title"   
-        select="/atom:feed/atom:title |
+        select="/atom03:feed/atom03:title |
+                /atom10:feed/atom10:title |
                 /rdf:RDF/rss10:channel/rss10:title |
                 /rdf:RDF/rss10:channel/dc:title |
                 /rdf:RDF/rss09:channel/rss09:title |
@@ -146,7 +144,8 @@
 
     <!-- Extract feed.description / description -->
     <xsl:variable name="feed.description"
-        select="/atom:feed/atom:tagline |
+        select="/atom03:feed/atom03:tagline |
+                /atom10:feed/atom10:subtitle |
                 /rss/channel/description |
                 /rss/channel/dc:description |
                 /rdf:RDF/rss10:channel/rss10:description |
@@ -155,7 +154,8 @@
 
     <!-- Extract feed authorship info -->
     <xsl:variable name="feed.author.email"
-        select="/atom:feed/atom:author/atom:email |
+        select="/atom03:feed/atom03:author/atom03:email |
+                /atom10:feed/atom10:author/atom10:email |
                 /rss/channel/managingEditor |
                 /rss/channel/dc:creator |
                 /rss/channel/dc:author |
@@ -166,14 +166,20 @@
             
     <!-- Extract feed authorship info -->
     <xsl:variable name="feed.author.name"
-        select="/atom:feed/atom:author/atom:name | $feed.author.email" />
+        select="/atom10:feed/atom10:author/atom10:name | 
+                /atom03:feed/atom03:author/atom03:name | 
+                $feed.author.email" />
 
     <!-- Extract various interpretations of feed link -->
     <xsl:variable name="feed.link"   
-        select="/atom:feed/atom:link[@rel='alternate' and 
+        select="/atom03:feed/atom03:link[@rel='alternate' and 
                     ( @type='text/html' or 
                       @type='application/xhtml+xml' )]/@href |
-                    
+
+                /atom10:feed/atom10:link[@rel='alternate' and 
+                    ( @type='text/html' or 
+                      @type='application/xhtml+xml' )]/@href |
+    
                 /rss/channel/link |
                 /rss/channel/dc:relation/@rdf:resource |
                 /rss/channel/item/l:link[@l:rel='permalink' and 
@@ -200,7 +206,9 @@
             <!-- All other date formats are assumed W3CDTF / ISO8601 -->
             <xsl:otherwise>
                 <xsl:value-of
-                    select="/atom:feed/atom:modified |
+                    select="/atom03:feed/atom03:modified |
+                            /atom10:feed/atom10:updated |
+                            /atom10:feed/atom10:published |
                             /rss/channel/dc:date |
                             /rdf:RDF/rss10:channel/dc:date |
                             /rdf:RDF/rdf:channel/dc:date |
@@ -213,36 +221,47 @@
 
         <!-- Find and process all feed entries -->
         <xsl:for-each 
-            select="/atom:feed/atom:entry | 
+            select="/atom03:feed/atom03:entry | 
+                    /atom10:feed/atom10:entry | 
                     /rdf:RDF/rss10:item | 
                     /rdf:RDF/rss09:item | 
                     /rss/channel/item">
 
             <!-- Extract entry title -->
             <xsl:variable name="entry.title"
-                select="atom:title | title | dc:title | 
+                select="atom03:title | atom10:title | title | dc:title | 
                         rdf:title | rss10:title" />
 
             <!-- Extract entry GUID -->
             <xsl:variable name="entry.id"
-                select="atom:id | @rdf:about |
+                select="atom03:id | atom10:id | @rdf:about |
                         guid[not(@isPermaLink) or @isPermaLink='true']| 
                         link"/>
 
             <!-- Extract entry authorship -->
             <xsl:variable name="entry.author.email"
-                select="atom:author/atom:email | dc:creator | dc:author" />
+                select="atom03:author/atom03:email | 
+                        atom10:author/atom10:email | 
+                        dc:creator | dc:author" />
+
             <xsl:variable name="entry.author.name"
-                select="atom:author/atom:name | $entry.author.email" />
+                select="atom03:author/atom03:name | 
+                        atom10:author/atom10:name | 
+                        $entry.author.email" />
 
             <!-- Extract entry summary content -->
-            <xsl:variable name="entry.summary"
-                select="atom:summary | description | dc:description | 
+            <xsl:variable name="entry.content"
+                select="atom03:summary | atom10:summary | atom03:content | 
+                        atom10:content | description | dc:description | 
                         rdf:description | rss10:description" />
 
             <!-- Extract from various candidates for entry link -->
             <xsl:variable name="entry.link"
-                select="atom:link[@rel='alternate' and
+                select="atom03:link[@rel='alternate' and
+                          ( @type='text/html' or
+                            @type='application/xhtml+xml' )]/@href |
+
+                        atom10:link[@rel='alternate' and
                           ( @type='text/html' or
                             @type='application/xhtml+xml' )]/@href |
                             
@@ -265,7 +284,8 @@
                     <!-- All others assumed W3CDTF / ISO8601 -->
                     <xsl:otherwise>
                         <xsl:value-of
-                            select="atom:modified | dc:date | 
+                            select="atom03:modified | atom10:updated | 
+                                    atom10:published | dc:date | 
                                     dcterms:modified" />
                     </xsl:otherwise> 
                 </xsl:choose>
@@ -286,15 +306,15 @@
                             select="$entry.author.email" />
                         <xsl:with-param name="entry.date" 
                             select="$entry.date" />
-                        <xsl:with-param name="entry.summary" 
-                            select="$entry.summary" />
+                        <xsl:with-param name="entry.content" 
+                            select="$entry.content" />
                         <xsl:with-param name="entry.link" 
                             select="$entry.link" />
                     </xsl:call-template>
                 </xsl:when>
 
                 <xsl:otherwise>
-                    <xsl:call-template name="atom03.entry">
+                    <xsl:call-template name="atom10.entry">
                         <xsl:with-param name="entry.title" 
                             select="$entry.title" />
                         <xsl:with-param name="entry.id" 
@@ -305,8 +325,8 @@
                             select="$entry.author.email" />
                         <xsl:with-param name="entry.date" 
                             select="$entry.date" />
-                        <xsl:with-param name="entry.summary" 
-                            select="$entry.summary" />
+                        <xsl:with-param name="entry.content" 
+                            select="$entry.content" />
                         <xsl:with-param name="entry.link" 
                             select="$entry.link" />
                     </xsl:call-template>
