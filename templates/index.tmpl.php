@@ -7,10 +7,10 @@
     <h2>What is FeedMagick2</h2>
 
     <p>
-        FeedMagick2 is a toolkit for filtering, sorting, blending, converting,
-        munging, and tweaking syndication feeds in formats like RSS and Atom.
-        It provides relatively simple <a href="#sectmodules">modules</a> that 
-        can be strung together in <a href="#sectpipelines">pipelines</a> to 
+        FeedMagick2 is a toolkit for filtering, sorting, blending, converting, 
+        munging, and tweaking syndication feeds in RSS and Atom as well as XHTML content and 
+        other XML formats.  It provides relatively simple <a href="#sectmodules">modules</a> 
+        that can be strung together in <a href="#sectpipelines">pipelines</a> to 
         process feeds on the web or command line.
     </p>
 

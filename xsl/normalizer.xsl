@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     ch14_xslt_feed_normalizer.xsl
-    from Chapter 14 of "Hacking RSS and Atom" by l.m.orchard published by Wiley
+    from Chapter 14 of "Hacking RSS and Atom" by leslie michael orchard published by Wiley
 
     Normalize feed data from Atom and RSS feeds and output 
     a new feed in either format, based on 'format' parameter.

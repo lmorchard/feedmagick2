@@ -18,9 +18,9 @@ class Tidyer extends FeedMagick2_BasePipeModule {
     public function getVersion()     
         { return '0.0'; }
     public function getTitle()
-        { return "HTML Tidy"; }
+        { return "Tidyer"; }
     public function getDescription() 
-        { return 'Use HTML Tidy to attempt to get parseable XML out of tag soup input.'; }
+        { return 'Use Tidy to attempt to get parseable XML out of tag soup input.'; }
     public function getAuthor()
         { return 'l.m.orchard@pobox.com'; }
     public function getSupportedInputs() 

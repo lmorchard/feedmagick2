@@ -79,12 +79,14 @@ body { background: #efebef; }
 
 #side .toc .current { font-weight: bold; }
 
-body.index ul.pipelines li {  }
+#sectpipelines { clear: both; }
+body.index ul.pipelines li { width:48%; float: left; height: 7.0em; }
 body.index ul.pipelines h4 { background: #eee; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
 body.index ul.pipelines h4 a { display: block }
 body.index ul.pipelines p { padding-right: 2em; }
 
-body.index ul.modules li {  }
+#sectmodules { clear: both; }
+body.index ul.modules li { width:48%; float: left; height: 7.0em;  }
 body.index ul.modules h4 { background: #eee; margin-right: 2em; padding: 0.25em 0.5em 0.25em 0.5em; margin-left: -0.25em; }
 body.index ul.modules h4 a { display: block; }
 body.index ul.modules p { padding-right: 2em; }

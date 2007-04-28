@@ -1,6 +1,6 @@
 {
     "title"       : "Feed to JSON via Magpie",
-    "description" : "Parses a feed with Magpie RSS and produces JSON output",
+    "description" : "Parses a feed with Magpie and produces JSON output",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : {
         "url" : { "type":"string", "label":"Input feed URL", "default":"http:\/\/decafbad.com\/blog\/feed" }
