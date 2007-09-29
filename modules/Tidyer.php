@@ -42,7 +42,6 @@ class Tidyer extends FeedMagick2_BasePipeModule {
             'show-warnings'=>0, 
             'indent'=>1, 
             'indent-spaces'=>4, 
-            'wrap'=>96, 
             'force-output'=>1,
             'quiet'=>1, 
             'numeric-entities'=>1
