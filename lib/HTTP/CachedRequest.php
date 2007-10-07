@@ -2,10 +2,10 @@
 /**
  * Share and Enjoy.
  *
- * @todo: Allow caching method to be pluggable via callbacks (ie. memory, mysql, etc)
- * @todo: Make cache dir and hash level configurable settings.
- * @todo: Option to specify max age of local cache to shortcircuit HTTP requests.
- * @todo: Honor HTTP cache control headers
+ * @todo Allow caching method to be pluggable via callbacks (ie. memory, mysql, etc)
+ * @todo Make cache dir and hash level configurable settings.
+ * @todo Option to specify max age of local cache to shortcircuit HTTP requests.
+ * @todo Honor HTTP cache control headers
  */
 require_once 'HTTP/Request.php';
 

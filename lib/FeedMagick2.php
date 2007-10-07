@@ -255,21 +255,6 @@ class FeedMagick2 {
     }
 
     /**
-     * Scan the modules path and load available modules.
-     *
-     * @todo Do some more verification of available modules.
-     * @todo Wrap module loading in a try/catch and report bum modules.
-     * @todo Find a way to autoload these?
-     */
-    public function loadModules() {
-        $modules = $this->findModules();
-        $this->log->debug(var_export($modules, true));
-        foreach ($modules as $file) {
-            require_once $file;
-        }
-    }
-
-    /**
      * Scan the pipelines directory for pipelines and return metadata for all 
      * of them.
      *
