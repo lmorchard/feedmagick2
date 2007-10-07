@@ -29,6 +29,8 @@ auto-extracted from source using bin/update-todo.sh
 
 ### Improvements
 
+* Completely separate pipeline runner from web UI.
+
 * Make inspector form work with remote pipeline URL
 
 * Need to better explore / think out request / response headers in the pipeline.

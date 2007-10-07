@@ -1,14 +1,17 @@
 <?php
 /**
+ * Blender
+ *
+ * Blend entries from the results of several sub-modules.
+ *
+ * @name Blender
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
+ * @inputs DOM
+ * @outputs DOM
  */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
 
 /**
  * Blends the items from output feeds of one or more sub-modules into this 
@@ -18,19 +21,6 @@ require_once 'FeedMagick2/DOMBasePipeModule.php';
  * @todo Auto-convert sub-module feeds into format of input feed?
  */
 class Blender extends FeedMagick2_DOMBasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "Blender"; }
-    public function getDescription() 
-        { return "Blend entries from the results of several sub-modules."; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getExpectedParameters()
-        { return array(); }
 
     /**
      * Namespace and element name tuples defining known feed item containers
@@ -123,6 +113,3 @@ class Blender extends FeedMagick2_DOMBasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('Blender');

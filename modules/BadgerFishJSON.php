@@ -1,35 +1,17 @@
 <?php
 /**
+ * BadgerFish JSON
+ *
+ * Use BadgerFish to turn parsed XML into JSON
+ *
+ * @inputs DOM
+ * @outputs Raw
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-require_once 'BadgerFish.php';
-
-/**
- * Use BadgerFish to turn parsed XML into JSON
- */
 class BadgerFishJSON extends FeedMagick2_BasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "BadgerFish JSON"; }
-    public function getDescription() 
-        { return 'Use BadgerFish to turn parsed XML into JSON'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getSupportedOutputs() 
-        { return array( 'Raw' ); }
-    public function getExpectedParameters() 
-        { return array(); }
 
     public function fetchOutput_SAX_XML() {
         die("Module supports raw output only, not SAX_XML.");
@@ -53,6 +35,3 @@ class BadgerFishJSON extends FeedMagick2_BasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('BadgerFishJSON');

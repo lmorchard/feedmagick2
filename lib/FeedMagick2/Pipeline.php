@@ -1,30 +1,26 @@
 <?php
 /**
+ * Pipeline
+ *
+ * Implements a complete pipeline, also itself a pipeline module.
+ * 
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
+ * @inputs Raw
+ * @outputs Raw, DOM, SAX
+ *
+ * @todo Methods to prepend or append pipe modules, post-construction
  */
 
-/** */
 require_once 'FeedMagick2.php';
 require_once 'FeedMagick2/BasePipeModule.php';
 
 /**
- * Implements a complete pipeline, also itself a pipeline module.
- * @todo Methods to prepend or append pipe modules, post-construction
  */
 class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
 
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "Pipeline"; }
-    public function getDescription() 
-        { return 'A pipelined collection of pipe modules'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    
     public function getSupportedInputs() {
         if ($this->_pipe) {
             return $this->getHead()->getSupportedInputs();
@@ -108,6 +104,3 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('FeedMagick2_Pipeline');

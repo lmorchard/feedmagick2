@@ -1,40 +1,18 @@
 <?php
 /**
+ * XSLFilter
+ *
+ * Use XSL to process feed content.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
- */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-
-/**
- * Use XSL to process feed content.
+ *
+ * @todo Need to accept arbitrary parameters for XSL.
  */
 class XSLFilter extends FeedMagick2_DOMBasePipeModule {
 
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "XSLFilter"; }
-    public function getDescription() 
-        { return 'Use XSL to process feed content.'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getExpectedParameters() {
-        return array(
-            'xsl' => self::PARAM_STRING | self::PARAM_REQUIRED
-        );
-    }
-
-    /**
-     *
-     * @todo Need to accept arbitrary parameters for XSL.
-     */
     public function processDoc($headers, $doc) {
         
         // Instantiate an XSLT processor
@@ -63,6 +41,3 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('XSLFilter');

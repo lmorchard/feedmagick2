@@ -1,6 +1,4 @@
 <?php
-$base_dir = realpath(dirname(__FILE__)."/..");
-ini_set("include_path", ini_get("include_path").":$base_dir/lib:$base_dir/extlib:$base_dir/modules");
 $config = array(
 
     'base_url' => '/~lorchard/FeedMagick2',

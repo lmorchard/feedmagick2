@@ -5,22 +5,30 @@
  * @version 0.1
  */
 
-/** */
-require_once 'Log.php';
-require_once 'Net/URL/Mapper.php';
-require_once 'Cache/Lite.php';
-require_once 'HTTP/Request.php';
-require_once 'Services/JSON.php';
-require_once 'FeedMagick2/Template.php';
-require_once 'FeedMagick2/BasePipeModule.php';
-require_once 'FeedMagick2/Pipeline.php';
+function __autoload ($class_name)
+{
+    $file_name = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
+    $status = (@include_once $file_name);
+
+    /*
+    if ($status === false) {
+        eval(sprintf('class %s {func' . 'tion __construct(){throw new Project_Exception_AutoLoad("%s");}}', $className, $className));
+    } 
+    */ 
+}
 
 /**
  * Main driver framework for FeedMagick2
  */
 class FeedMagick2 {
 
-    protected static $module_registry;
+    /** List of modules found in base package, not in scan of module paths */
+    public static $builtin_modules = array(
+        'FeedMagick2_Pipeline'
+    );
+
+    /** A shared static instance of this class */
+    public static $instance = FALSE;
 
     /** Current pipeline for the instance */
     public $pipeline;
@@ -37,8 +45,8 @@ class FeedMagick2 {
      * @param array Configuration array
      * @todo Try to replace Services_JSON with the PHP binary extension, but not working on my laptop.
      */
-    public function __construct($config) {
-        $this->config = $config;
+    public function __construct($config=NULL) {
+        $this->config = ($config) ? $config : array();
         $this->base_dir = $this->getConfig('base_dir', '.');
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
@@ -46,7 +54,18 @@ class FeedMagick2 {
             'cacheDir' => './data/cache/', 'lifeTime' => '3600'
         )));
         $this->json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
-        $this->loadModules();
+        self::$instance = $this;
+    }
+
+    /**
+     * Return a global shared instance.
+     *
+     * @return FeedMagick2
+     */
+    public function getInstance() {
+        if (!self::$instance) 
+            self::$instance = new self();
+        return self::$instance;
     }
 
     /**
@@ -85,24 +104,14 @@ class FeedMagick2 {
     }
 
     /**
-     * Register a loaded and known pipe module.
-     * @param string Name of a pipe module class to register.
-     * @todo Allow modules to register aliases, ie. FeedMagic2_Pipeline => Pipeline
-     */
-    public static function registerModule($class_name) {
-        if (!isset(self::$module_registry)) 
-            self::$module_registry = array();
-        array_push(self::$module_registry, $class_name);
-    }
-
-    /**
      * Collect the metadata from a pipe module.
+     *
      * @param string Name of the pipe module class
      * @return array of metadata properties.
      */
     public function getMetaForModule($class_name) {
-        $obj = $this->instantiateModule($class_name, NULL, NULL);
-        return $obj->getMetadata();
+        $rc = new ReflectionClass($class_name);
+        return $this->parseMetaFromModuleFile($rc->getFileName());
     }
     
     /**
@@ -111,9 +120,14 @@ class FeedMagick2 {
      */
     public function getMetaForModules() {
         $metas = array();
-        foreach (self::$module_registry as $class_name) {
-            $metas[$class_name] = $this->getMetaForModule($class_name);
+        $modules = $this->findModules();
+        foreach ($modules as $fn) {
+            $meta = $this->parseMetaFromModuleFile($fn);
+            if ($meta) {
+                $metas[$meta['class']] = $meta;
+            }
         }
+        $this->log->debug(var_export($metas, true));
         return $metas;
     }
 
@@ -125,39 +139,140 @@ class FeedMagick2 {
      * @return BasePipeModule a new instance of the requested pipe module.
      */
     public function instantiateModule($class_name, $id, $options) {
-        if (!in_array($class_name, self::$module_registry)) 
-            die("No such pipe module named '$class_name'");
-        $this->log->debug("$id instantiated as module $class_name");
+        //if (!in_array($class_name, self::$module_registry)) 
+        //    die("No such pipe module named '$class_name'");
         $rc = new ReflectionClass($class_name);
         $obj = $rc->newInstance($this, $id, $options);
+        $this->log->debug("$id instantiated as module $class_name");
         return $obj;
     }
 
     /**
+     * Scan the module paths and come up with the filenames of available modules.
+     *
+     * @return array List of module filenames.
+     */
+    public function findModules() {
+
+        $modules = array();
+        
+        foreach(self::$builtin_modules as $module_class) {
+            $rc = new ReflectionClass($module_class);
+            $modules[] = $rc->getFileName();
+        }        
+        
+        $modules_paths = $this->getConfig('paths/modules', "{$this->base_dir}/modules");
+        if (!is_array($modules_paths)) 
+            $modules_paths = array($modules_paths);
+
+        foreach ($modules_paths as $modules_path) {
+            if (is_dir($modules_path)) {
+                if ($dh = opendir($modules_path)) {
+                    while (($name = readdir($dh)) !== FALSE) {
+                        $file = "$modules_path/$name";
+                        if (is_file($file) && strpos(substr($file, -4, 4), '.php') !== FALSE) {
+                            $modules[] = $file;
+                        }
+                    }
+                    closedir($dh);
+                }
+            }
+        }
+
+        return $modules; 
+    }    
+
+    /**
+     * Given a filename, attempt to parse header comment for module meta 
+     * attribute content.
+     *
+     * @param string Filename for a pipeline module.
+     */
+    public function parseMetaFromModuleFile($fn) {
+
+        $src = file($fn, FILE_USE_INCLUDE_PATH | FILE_IGNORE_NEW_LINES);
+        $meta = array( 'description' => '');
+        $in_header = FALSE;
+        $past_header = FALSE;
+
+        foreach ($src as $line) {
+            $line = trim($line);
+            if (!$past_header && $line == '/**') {
+
+                // Found the start of the header comment block, so start processing.
+                $in_header = TRUE;
+
+            } else if ($line == '*/') {
+
+                // Found the end of the header comment block, so stop processing.
+                $in_header = FALSE;
+                $past_header = TRUE;
+
+            } else if (!$in_header) {
+
+                if (substr($line, 0, 5) == 'class') {
+                    // Try to extract the class name.
+                    $parts = split(' ', $line);
+                    $meta['class'] = $parts[1];
+                }
+
+            } else if ($in_header && substr($line, 0, 1) == '*') {
+                
+                // Lines starting with an asterisk are part of the comment.
+                $line = trim(substr($line, 1));
+                if (substr($line, 0, 1) == '@') {
+
+                    // Comment lines starting with an @ are named attributes.
+                    $parts = split(' ', $line, 2);
+                    if (count($parts == 2)) {
+                        // As long as there's a name and a value, extract the attribute.
+                        $name = substr($parts[0], 1);
+                        if (isset($meta[$name])) {
+                            if (!is_array($meta[$name]))
+                                $meta[$name] = array($meta[$name]);
+                            $meta[$name][] = $parts[1];
+                        } else {
+                            $meta[$name] = $parts[1];
+                        }
+                    }
+
+                } else {
+                    
+                    // This line isn't named attribute, so it's title or description.
+                    if (!isset($meta['title']) && $line) {
+                        // If there's no title yet, and the line is non-blank, capture the title.
+                        $meta['title'] = $line;
+                    } else {
+                        // All other lines pile into the description.
+                        $meta['description'] .= "$line\n";
+                    }
+
+                }
+            }
+        }
+
+        return $meta;
+    }
+
+    /**
      * Scan the modules path and load available modules.
+     *
      * @todo Do some more verification of available modules.
      * @todo Wrap module loading in a try/catch and report bum modules.
      * @todo Find a way to autoload these?
      */
     public function loadModules() {
-        $modules_path = $this->getConfig('paths/modules', "{$this->base_dir}/modules");
-        if (is_dir($modules_path)) {
-            if ($dh = opendir($modules_path)) {
-                while (($name = readdir($dh)) !== FALSE) {
-                    $file = "$modules_path/$name";
-                    if (is_file($file) && strpos(substr($file, -4, 4), '.php') !== FALSE) {
-                        $this->log->debug("Loading module '$file'...");
-                        require_once $file;
-                    }
-                }
-                closedir($dh);
-            }
+        $modules = $this->findModules();
+        $this->log->debug(var_export($modules, true));
+        foreach ($modules as $file) {
+            require_once $file;
         }
     }
 
     /**
      * Scan the pipelines directory for pipelines and return metadata for all 
      * of them.
+     *
      * @return array List of pipelines
      */
     public function getMetaForPipelines() {
@@ -214,10 +329,12 @@ class FeedMagick2 {
         } else {
             // Assume any other path not matching local file system is a URL.
             $this->log->debug("Fetching via HTTP: $path");
-            $req     =& new HTTP_Request($path);
+            $req     =& new HTTP_CachedRequest($path);
             $rv      = $req->sendRequest();
             $headers = $req->getResponseHeader();
             $body    = $req->getResponseBody();
+
+            $this->log->debug("...was stale? ".$req->_is_stale." was cached? ".$req->_cache_hit);
         }
 
         return array($headers, $body);

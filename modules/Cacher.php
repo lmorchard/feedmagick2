@@ -1,31 +1,15 @@
 <?php
 /**
+ * Cacher
+ *
+ * Cache the output of the input feed, short-circuit input module execution.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/BasePipeModule.php';
-require_once 'Cache/Lite.php';
-
-/**
- * A module that passes raw content through unchanged.
- */
 class Cacher extends FeedMagick2_BasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "Cacher"; }
-    public function getDescription() 
-        { return 'Cache the output of the input feed, shortcircuit input module execution.'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'Raw' ); }
 
     /**
      * Use characteristics of the input module and the request itself to calculate a cache key.
@@ -67,6 +51,3 @@ class Cacher extends FeedMagick2_BasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('Cacher');

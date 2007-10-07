@@ -1,30 +1,15 @@
 <?php
 /**
+ * Flickr Favorites Feed
+ *
+ * Build an RSS feed for a user's Flickr favorites
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-
 class FlickrFavoritesFeed extends FeedMagick2_DOMBasePipeModule {
-
-    public function getVersion()     
-        { return "0.0"; }
-    public function getTitle()
-        { return "Flickr Favorites Feed"; }
-    public function getDescription() 
-        { return "Build an RSS feed for a user's Flickr favorites"; }
-    public function getAuthor()
-        { return "l.m.orchard@pobox.com"; }
-    public function getExpectedParameters() {
-        return array(
-            'user' => array('type'=>'string')
-        );
-    }
 
     public function __construct($parent, $id=NULL, $options=array()) {
         parent::__construct($parent, $id, $options);
@@ -125,10 +110,13 @@ class FlickrFavoritesFeed extends FeedMagick2_DOMBasePipeModule {
         $url = $this->rest_base_url.'?'.implode('&', $parts);
 
         // Fire off the HTTP API request.
-        $req     =& new HTTP_Request($url);
+        $this->log->debug("Flickr API call $url");
+        $req     =& new HTTP_CachedRequest($url);
         $rv      = $req->sendRequest();
         $headers = $req->getResponseHeader();
         $body    = $req->getResponseBody();
+
+        $this->log->debug("...was stale? ".$req->_is_stale." was cached? ".$req->_cache_hit);
 
         // Parse the response document and build an XPath object.
         $doc = new DOMDocument();
@@ -139,6 +127,3 @@ class FlickrFavoritesFeed extends FeedMagick2_DOMBasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('FlickrFavoritesFeed');

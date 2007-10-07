@@ -1,41 +1,24 @@
 <?php
 /**
+ * Sorter / Limiter
+ *
+ * Sort items by xpath value, limit items to a given number.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
- */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-
-/**
- * Use XPath to include or exclude feed items.
+ *
+ * @param string sortby
+ * @param string sortorder asc, desc
+ * @param string limit
+ * @param string offset
+ *
  * @todo This could probably be done with XSL, but implemented this way will work without libxsl.
  * @todo Implement some other sort types - ie. for numeric, RSS RFC2822 pubDate
  * @todo Rework so that limiting can be done separately from sorting.
  */
 class SortLimiter extends FeedMagick2_DOMBasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "SortLimiter"; }
-    public function getDescription() 
-        { return 'Sort items by XPath values and limit the number of items in the feed'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getExpectedParameters() {
-        return array(
-            'sortby'    => 'string',
-            'sortorder' => 'enum:asc,desc',
-            'limit'     => 'string',
-            'offset'    => 'string'
-        );
-    }
 
     /**
      * An XPath used to find feed items for processing.
@@ -84,7 +67,7 @@ class SortLimiter extends FeedMagick2_DOMBasePipeModule {
         }
 
         // Scoop up the parameters in the pipeline.
-        $sortby    = $this->getParameter('sortby', 'title');
+        $sortby    = $this->getParameter('sortby', FALSE);
         $sortorder = $this->getParameter('sortorder', 'asc') == 'asc';
         $limit     = $this->getParameter('limit', FALSE);
         $offset    = $this->getParameter('offset', 0);
@@ -93,8 +76,12 @@ class SortLimiter extends FeedMagick2_DOMBasePipeModule {
         $idx_items = array();
         $items = $xpath->query(self::$items_path);
         foreach ($items as $item) {
-            $key = $this->xpathVal($sortby, $item);
-            $idx_items[$key] = $item;
+            if ($sortby) {
+                $key = $this->xpathVal($sortby, $item);
+                $idx_items[$key] = $item;
+            } else {
+                $idx_items[] = $item;
+            }
         }
 
         // Remove all the items from the feed
@@ -105,10 +92,17 @@ class SortLimiter extends FeedMagick2_DOMBasePipeModule {
         }
 
         // Sort the orphaned feed items by key, according to sort order.
-        if ($sortorder) {
-            ksort($idx_items);
-        } else {
-            krsort($idx_items);
+        if ($sortby) {
+            $this->log->debug("Sorting by $sortby".($sortorder)?'':' in reverse');
+            if ($sortorder) {
+                ksort($idx_items);
+            } else {
+                krsort($idx_items);
+            }
+        }
+
+        if ($limit) {
+            $this->log->debug("Limiting feed to $limit entries");
         }
 
         // Re-add sorted items back into the feed, minding the offset and limit 
@@ -143,6 +137,3 @@ class SortLimiter extends FeedMagick2_DOMBasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('SortLimiter');

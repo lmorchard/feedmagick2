@@ -1,38 +1,17 @@
 <?php
 /**
+ * XPathFilter
+ *
+ * Use xpath matches to include or exclude feed items.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
- */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-
-/**
- * Use XPath to include or exclude feed items.
+ *
  * @todo This could probably be done with XSL, but implemented this way will work without libxsl.
  */
 class XPathFilter extends FeedMagick2_DOMBasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "XPathFilter"; }
-    public function getDescription() 
-        { return 'Use XPath to include or exclude feed items.'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getExpectedParameters() {
-        return array(
-            'namespaces' => 'array',
-            'includes'   => 'array',
-            'excludes'   => 'array'
-        );
-    }
 
     /**
      * An XPath used to find feed items for processing.
@@ -139,6 +118,3 @@ class XPathFilter extends FeedMagick2_DOMBasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('XPathFilter');

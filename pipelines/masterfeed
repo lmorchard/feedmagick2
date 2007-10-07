@@ -13,7 +13,7 @@
         "cocomment" : { "type":"string", "label":"coComment user name", "default":"lmorchard" },
         "vox" :       { "type":"string", "label":"Vox name", "default":"decafbad" },
         "lj" :        { "type":"string", "label":"LiveJournal user name", "default":"deus-x" },
-        "twitter" :   { "type":"string", "label":"Twitter user ID", "default":"8882" }
+        "twitter" :   { "type":"string", "label":"Twitter user name", "default":"lmorchard" },
     },
     "pipeline"    : [
         {
@@ -157,6 +157,10 @@
         { 
             "module" : "XSLFilter", 
             "parameters" : {"xsl":"sort-rss-by-pubdate.xsl"} 
+        },
+        {
+            "module" : "SortLimiter",
+            "parameters" : { "limit" : 50 }
         },
         {
             "module" : "Cacher"

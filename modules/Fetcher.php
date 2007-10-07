@@ -1,38 +1,18 @@
 <?php
 /**
+ * Fetcher
+ *
+ * Fetch data via URL.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
- */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/BasePipeModule.php';
-require_once 'HTTP/Request.php';
-
-/**
- * Fetches feeds and data via HTTP.
+ *
  * @todo Honor more HTTP caching mechanics.
  * @todo Do some local disk-based caching.
  */
 class Fetcher extends FeedMagick2_BasePipeModule {
-
-    public function getTitle()
-        { return "HTTP Fetch"; }
-    public function getVersion()
-        { return '0.0'; }
-    public function getDescription()
-        { return 'Simple module used to fetch data from a URL via HTTP'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-
-    public function getExpectedParameters() { 
-        return array(
-            'url' => self::PARAM_STRING | self::PARAM_REQUIRED,
-            'headers_whitelist' => 0 // TODO: Need to define these constants.
-        ); 
-    }
 
     /** 
      * Fetch HTTP content at the URL given in parameters.
@@ -56,6 +36,8 @@ class Fetcher extends FeedMagick2_BasePipeModule {
         }
 
         if (!$body) {
+            $this->log->debug("Fetcher fetching ".  $this->getParameter('url'));
+
             // Grab the desired data by local file or URL.
             list($headers, $body) = $this->getParent()->fetchFileOrWeb(
                 $this->getParent()->getConfig('paths/web', $this->getParent()->base_dir."/www"),
@@ -79,6 +61,3 @@ class Fetcher extends FeedMagick2_BasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('Fetcher');

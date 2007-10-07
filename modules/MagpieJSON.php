@@ -1,42 +1,18 @@
 <?php
 /**
+ * Magpie JSON
+ *
+ * Use Magpie to process feed content and return the resulting data as JSON.
+ *
  * @package FeedMagick2
  * @subpackage PipeModules
  * @author l.m.orchard@pobox.com
  * @version 0.1
  */
-
-/** */
-require_once 'FeedMagick2.php';
-require_once 'FeedMagick2/DOMBasePipeModule.php';
-require_once 'Services/JSON.php';
-
 define('MAGPIE_DIR', dirname(__FILE__).'/../extlib/magpierss/');
 require_once 'magpierss/rss_parse.inc';
 
-/**
- * Use Magpie to process feed content and return the resulting data as JSON.
- */
 class MagpieJSON extends FeedMagick2_BasePipeModule {
-
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "Magpie JSON"; }
-    public function getDescription() 
-        { return 'Use Magpie to process feed content and return the resulting data as JSON'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
-    public function getSupportedOutputs() 
-        { return array( 'Raw' ); }
-    public function getExpectedParameters() 
-        { return array(); }
-    public function fetchOutput_SAX_XML() 
-        { die("Module supports raw output only, not SAX_XML."); }
-    public function fetchOutput_DOM_XML() 
-        { die("Module supports raw output only, not DOM_XML."); }
     
     /**
      * @todo Whitelist the callback character set in BasePipeModule with an option slot modifier.
@@ -62,6 +38,3 @@ class MagpieJSON extends FeedMagick2_BasePipeModule {
     }
 
 }
-
-/** Register this module with the system. */
-FeedMagick2::registerModule('MagpieJSON');
