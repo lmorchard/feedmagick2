@@ -20,7 +20,7 @@ class HTTP_CachedRequest extends HTTP_Request {
 
     public static $cache_dir = './data/http-cache';
 
-    public static $cache_max_age = 600;
+    public static $cache_max_age = 3600;
    
     public static $cache_hash_level = 4;
 

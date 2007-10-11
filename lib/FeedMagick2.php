@@ -5,16 +5,12 @@
  * @version 0.1
  */
 
-function __autoload ($class_name)
-{
+/**
+ * Set up a simple class autoload handler for FeedMagick2 apps.
+ */
+function __autoload ($class_name) {
     $file_name = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
     $status = (@include_once $file_name);
-
-    /*
-    if ($status === false) {
-        eval(sprintf('class %s {func' . 'tion __construct(){throw new Project_Exception_AutoLoad("%s");}}', $className, $className));
-    } 
-    */ 
 }
 
 /**
@@ -41,20 +37,27 @@ class FeedMagick2 {
     public $urlmapper;
 
     /**
-     * Initialize the web framework
+     * Initialize the framework context
      * @param array Configuration array
      * @todo Try to replace Services_JSON with the PHP binary extension, but not working on my laptop.
      */
     public function __construct($config=NULL) {
+        
         $this->config = ($config) ? $config : array();
+        
         $this->base_dir = $this->getConfig('base_dir', '.');
+        
         $this->log = $this->getLogger('main');
         $this->log->debug(basename($_SERVER['SCRIPT_FILENAME'])." starting up...");
+        
         $this->cache = new Cache_Lite($this->getConfig('cache', array(
             'cacheDir' => './data/cache/', 'lifeTime' => '3600'
         )));
+        
         $this->json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+
         self::$instance = $this;
+
     }
 
     /**
@@ -70,6 +73,7 @@ class FeedMagick2 {
 
     /**
      * Return a usable logger given a name.
+     *
      * @param string Name to be used in identifying log messages.
      * @return Log an instance of the logger
      */
@@ -86,6 +90,7 @@ class FeedMagick2 {
     /**
      * Fetch a configuration setting value.  Arrays of arrays can be navigated 
      * with '/' delimited keys.
+     * 
      * @param string Name of the configuration setting
      * @param string Default config value if setting not set
      * @return mixed configuration value
@@ -116,6 +121,7 @@ class FeedMagick2 {
     
     /**
      * Collect metadata from all registered pipe modules.
+     * 
      * @return array of module metadata
      */
     public function getMetaForModules() {
@@ -123,27 +129,21 @@ class FeedMagick2 {
         $modules = $this->findModules();
         foreach ($modules as $fn) {
             $meta = $this->parseMetaFromModuleFile($fn);
-            if ($meta) {
-                $metas[$meta['class']] = $meta;
-            }
+            if ($meta) $metas[$meta['class']] = $meta;
         }
-        $this->log->debug(var_export($metas, true));
         return $metas;
     }
 
     /**
      * Create a new object instance of a pipe module.
+     * 
      * @param string Name of the module to be instantiated
      * @param string ID string for the instance
      * @param array Options for the instance, may be indexed or associative array
      * @return BasePipeModule a new instance of the requested pipe module.
      */
     public function instantiateModule($class_name, $id, $options) {
-        //if (!in_array($class_name, self::$module_registry)) 
-        //    die("No such pipe module named '$class_name'");
-        $rc = new ReflectionClass($class_name);
-        $obj = $rc->newInstance($this, $id, $options);
-        $this->log->debug("$id instantiated as module $class_name");
+        $obj = new $class_name($this, $id, $options);
         return $obj;
     }
 
@@ -279,6 +279,7 @@ class FeedMagick2 {
 
     /**
      * Return metadata for a named pipeline.
+     * 
      * @param string Name of a pipeline
      * @return array Associative array of pipeline metadata
      */
@@ -294,6 +295,7 @@ class FeedMagick2 {
     /**
      * Fetch data from a local file if available, or try from the web if the 
      * path appears not valid for local access.
+     * 
      * @param string Path to desired data
      * @param string Base root path to which access should be restricted
      * @return array headers and body
@@ -359,6 +361,7 @@ class FeedMagick2 {
     
     /**
      * Web request dispatcher, using URL routing and controller dispatching.
+     * 
      * @todo Carry headers along as a property of this object?
      * @todo Need better error handling here.
      */
@@ -406,6 +409,7 @@ class FeedMagick2 {
 
     /**
      * Fetch a route parameter extracted from a matched route.
+     * 
      * @param string Name of the variable
      * @param string Default value if variable not set
      * @return string route parameter

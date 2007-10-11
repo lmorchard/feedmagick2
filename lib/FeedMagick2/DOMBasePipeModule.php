@@ -14,16 +14,7 @@ require_once 'FeedMagick2/BasePipeModule.php';
  */
 class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
 
-    public function getVersion()     
-        { return '0.0'; }
-    public function getTitle()
-        { return "DOM Base Filter"; }
-    public function getDescription() 
-        { return 'A base class for DOM-based pipe modules'; }
-    public function getAuthor()
-        { return 'l.m.orchard@pobox.com'; }
-    public function getSupportedInputs() 
-        { return array( 'DOM_XML' ); }
+    public static $ATOM_NS = 'http://www.w3.org/2005/Atom';
 
     /**
      * Perform any needed modifications on the DOMDocument.
@@ -55,7 +46,7 @@ class FeedMagick2_DOMBasePipeModule extends FeedMagick2_BasePipeModule {
 
         if (is_array($tagname)) {
             // If the $tagname is an array, assume that it's a (name, NS) tuple.
-            $el = $doc->createElementNS($tagname[1], $tagname[0]);
+            $el = $doc->createElementNS($tagname[0], $tagname[1]);
         } else {
             // Otherwise, it's just a string tag name.
             $el = $doc->createElement($tagname);

@@ -15,17 +15,30 @@
         "twitter" :   { "type":"string", "label":"Twitter user name", "default":"lmorchard" },
     },
     "pipeline"    : [
-        {
-            "module" : "Fetcher",
-            "parameters" : { "url" : "{url}"}
-        },
         { 
-            "module" : "TitleMunger", 
-            "parameters" : { "title_prefix" : "[blog] "} 
+            "module":"BlankFeed",
+            "parameters": {
+                "title" : "Master Feed",
+                "description" : "Blended feed of many personal feeds",
+                "link"  : "http://example.com"
+            }
         },
         {
             "module" : "Blender",
             "parameters" : [
+                {
+                    "module" : "FeedMagick2_Pipeline",
+                    "parameters" : [
+                        {
+                            "module" : "Fetcher",
+                            "parameters" : { "url" : "{url}"}
+                        },
+                        { 
+                            "module" : "TitleMunger", 
+                            "parameters" : { "title_prefix" : "[blog] "} 
+                        }
+                    ]
+                },
                 {
                     "module" : "FeedMagick2_Pipeline",
                     "parameters" : [
@@ -159,7 +172,7 @@
         },
         {
             "module" : "SortLimiter",
-            "parameters" : { "limit" : 25 }
+            "parameters" : { "limit" : 50 }
         },
         {
             "module" : "Cacher"

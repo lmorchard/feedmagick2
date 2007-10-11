@@ -125,7 +125,7 @@
                     <xsl:with-param name="date" select="$entry.date" />
                 </xsl:call-template>
             </pubDate>        
-            <guid><xsl:value-of select="$entry.id" /></guid>
+            <guid isPermaLink="false"><xsl:value-of select="$entry.id" /></guid>
             <description>
                 <xsl:value-of select="$entry.content"/>
             </description>

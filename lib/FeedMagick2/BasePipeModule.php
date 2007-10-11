@@ -24,25 +24,6 @@ class FeedMagick2_BasePipeModule {
     private $_input;
     private $_params;
 
-    /** Accessor to module title */
-    public function getTitle() 
-        { return 'Abstract base class for all pipe modules.'; }
-    /** Accessor to module description */
-    public function getDescription() 
-        { return ''; }
-    /** Accessor to module version */
-    public function getVersion()
-        { return '0.0'; }
-    /** Accessor to module author */
-    public function getAuthor() 
-        { return 'l.m.orchard@pobox.com'; }
-    /** Accessor to expected module parameters */
-    public function getExpectedParameters() 
-        { return array(); }
-    /** Accessor to supported module inputs */
-    public function getSupportedInputs()
-        { return array(); }
-
     /** 
      * Construct an instance of the pipe module. 
      * @param BasePipeModule Parent pipe module
@@ -185,7 +166,7 @@ class FeedMagick2_BasePipeModule {
     public function fetchOutput_DOM_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();
         $doc = new DOMDocument();
-        $doc->loadXML($body);
+        if ($body) $doc->loadXML($body);
         return array($headers, $doc);
     }
 

@@ -5,7 +5,7 @@ auto-extracted from source using bin/update-todo.sh
 
 ### Bugs
 
-  * Since root dir is web dir, need to protect all bare PHP includes from execution
+* Since root dir is web dir, need to protect all bare PHP includes from execution
 
 ### v0.5 Release
 
@@ -39,7 +39,7 @@ auto-extracted from source using bin/update-todo.sh
     * No usage pages
     * No URL-based pipelines
     * No POST-based feed input
-* Use Services_JSON when json_encode / json_decode not available?
+* Use Services_JSON only when json_encode / json_decode not available?
 * Cacher / Fetcher
     * Obey and produce HTTP caching semantics
     * Store and use ETag and Last-Modified in Fetcher
@@ -74,9 +74,6 @@ auto-extracted from source using bin/update-todo.sh
         * Alter things like User-Agent sent on request.
     * Feed Header Munger
         * Replace the feed title / link / description / etc with parameters
-    * Starter / Blank
-        * Start with a blank RSS or Atom feed
-        * Pair with Feed Header Munger and Blender to make a feed from scratch almost
     * To hAtom / hAtomizer
         * Render any feed as hAtom
     * From hAtom / DehAtomizer

@@ -32,11 +32,10 @@ class XSLFilter extends FeedMagick2_DOMBasePipeModule {
         }
 
         // Process the XSL and retrn the modified document.
-        $this->log->debug("Processing XSL...");
         // HACK: This kinda sucks, going from DOM to XSL and back to DOM, but seems less flakey.
         $new_xml = $xslt->transformToXML($doc);
         $new_doc = DOMDocument::loadXML($new_xml);
-        $this->log->debug("...done processing XSL.");
+        $this->log->debug("Processed XSL.");
         return array($headers, $new_doc);
     }
 
