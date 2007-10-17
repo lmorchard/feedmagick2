@@ -16,6 +16,7 @@
  *
  * @todo This could probably be done with XSL, but implemented this way will work without libxsl.
  * @todo Implement some other sort types - ie. for numeric, RSS RFC2822 pubDate
+ * @todo Date sorting in Atom is buggy.  Fix this.
  * @todo Rework so that limiting can be done separately from sorting.
  */
 class SortLimiter extends FeedMagick2_DOMBasePipeModule {

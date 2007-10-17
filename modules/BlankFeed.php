@@ -13,7 +13,9 @@
 class BlankFeed extends FeedMagick2_DOMBasePipeModule {
 
     /**
+     * Dispatch to a sub-handler based on feed format.
      *
+     * @return array Headers and XML doc.
      */
     function fetchOutput_DOM_XML() {
         $headers = array();
@@ -29,9 +31,9 @@ class BlankFeed extends FeedMagick2_DOMBasePipeModule {
     }
 
     /**
-     *
+     * Build headers and XML doc for an Atom 1.0 feed.
      */
-    function buildRSS20Feed($headers, $doc) {
+    function buildRSS20Feed(&$headers, $doc) {
         $headers['Content-Type'] = 'application/rss+xml';
 
         $rss = $this->append($doc, 'rss', array( 'version'=>'2.0'));
@@ -50,10 +52,9 @@ class BlankFeed extends FeedMagick2_DOMBasePipeModule {
     }
 
     /**
-     *
+     * Build headers and XML doc for an RSS 2.0 feed.
      */
-    function buildAtomFeed($headers, $doc) {
-        
+    function buildAtomFeed(&$headers, $doc) {
         $headers['Content-Type'] = 'application/atom+xml';
 
         $atom = $this->append($doc, array(self::$ATOM_NS, 'feed'));

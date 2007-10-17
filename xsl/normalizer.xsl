@@ -411,7 +411,7 @@
         <xsl:variable name="tz_raw" select="substring($date, 27)" />
         <xsl:variable name="tz">
             <xsl:choose>
-                <xsl:when test="$tz_raw='GMT'">Z</xsl:when>
+                <xsl:when test="$tz_raw='GMT'">+00:00</xsl:when>
                 <xsl:when test="$tz_raw='EDT'">-04:00</xsl:when>
                 <xsl:when test="$tz_raw='EST'">-05:00</xsl:when>
                 <xsl:when test="$tz_raw='CDT'">-05:00</xsl:when>

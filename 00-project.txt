@@ -65,6 +65,7 @@
 ./bin/update-todo.sh
 ./conf/config.php
 ./conf/config.php-dist
+./docs/master.opml
 ./.htaccess
 ./index.php
 ./css/logger.css

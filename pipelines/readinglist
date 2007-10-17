@@ -3,7 +3,7 @@
     "description" : "Use an OPML outline containing a list of feeds to produce a single feed",
     "author"      : "l.m.orchard@pobox.com",
     "parameters"  : { 
-        "url" : { "type":"string", "label":"OPML feed", "default":"http:\/\/localhost\/~lorchard\/hot.opml" },
+        "url" : { "type":"string", "label":"OPML feed", "default":"http:\/\/localhost\/~lorchard\/FeedMagick2\/docs\/master.opml" },
         "format" : { "type":"string", "label":"Output feed format", "default":"rss" }
     },
     "pipeline"    : [
@@ -15,8 +15,6 @@
             "module" : "ReadingListBlender", 
             "parameters" : { 
                 "format"      : "{format}",
-                "title"       : "reading list feed",
-                "description" : "reading desc",
                 "link"        : "http://example.com"
             } 
         }

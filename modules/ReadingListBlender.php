@@ -44,66 +44,96 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
     public function processDoc($headers, $doc) {
 
         $format = $this->getParameter('format', 'rss');
-        $feeds = $this->extractFeedsFromOutline($doc);
+
+        list($list_meta, $feeds) = $this->parseReadingList($doc);
         $this->log->debug("Found ".count($feeds)." feeds in list");
 
         // Generate blank feed as a basis for the blend.
-        list($bf_headers, $doc) = $this->generateBlankFeed();
+        list($bf_headers, $doc) = $this->generateBlankFeed($list_meta);
         $container = $this->findElements($doc, self::$ITEM_CONTAINERS)->item(0);
 
         // Look up all the feeds for blending from incoming OPML feed.
         foreach ($feeds as $feed) {
             
             // Fetch feed from list.
-            list($feed_headers, $feed_body) = $this->fetchFeed($feed['xmlUrl']);
+            list($feed_headers, $feed_body) = 
+                $this->fetchFeed($feed['xmlUrl']);
 
             // Tidy feed if necessary and parse into DOM document.
             $sub_doc = $this->tidyAndParseFeed($feed_body);
             if ($sub_doc) {
+
+                // If the feed needs normalizing into the output format, do so.
                 $sub_doc = $this->normalizeSubFeed($sub_doc);
 
                 // Find and process all items found in this sub-feed.
                 $items = $this->findElements($sub_doc, self::$ITEMS);
-                if ($items->length) {
-                    for ($i=0; $i<$items->length; $i++) {
+                for ($i=0; $i<$items->length; $i++) {
 
-                        // Import and copy the item into the master feed.
-                        $item = $doc->importNode($items->item($i), TRUE);
-                        $container->appendChild($item);
+                    // Import and copy the item into the master feed.
+                    $item = $doc->importNode($items->item($i), TRUE);
+                    $container->appendChild($item);
 
-                        // Inject an element into the item indicating from 
-                        // where it came.
-                        if ($format == 'rss') {
-                            $this->append($item, 'source', 
-                                array('url' => $feed['xmlUrl']), $feed['text']);
-                        } else if ($format == 'atom') {
-                            // TODO: Copy more metadata from atom feeds?
-                            $source = $this->append($item, 
-                                array(self::$ATOM_NS, 'source'), NULL, '');
-                            $this->append($source, array(self::$ATOM_NS, 'link'), 
-                                array('rel'=>'via', 'href'=>$feed['xmlUrl']));
-                            $this->append($source, array(self::$ATOM_NS, 'title'), 
-                                NULL, $feed['text']);
+                    if ($format == 'rss') {
+                        
+                        $titles = $item->getElementsByTagName('title');
+                        if (isset($feed['text']) && $titles->length && $title = $titles->item(0)) {
+                            $title->insertBefore(
+                                $doc->createTextNode('['.$feed['text'].'] '),
+                                $title->firstChild
+                            );
                         }
 
-                        // Munge item titles?
+                        $this->append($item, 'source', 
+                            array('url' => $feed['xmlUrl']), $feed['text']);
 
+                    } else if ($format == 'atom') {
+
+                        $titles = $item->getElementsByTagNameNS(self::$ATOM_NS, 'title');
+                        if (isset($feed['text']) && $titles->length && $title = $titles->item(0)) {
+                            $title->insertBefore(
+                                $doc->createTextNode('['.$feed['text'].'] '),
+                                $title->firstChild
+                            );
+                        }
+                        
+                        // TODO: Copy more metadata from atom feeds?
+                        $source = $this->append($item, 
+                            array(self::$ATOM_NS, 'source'), NULL, '');
+                        $this->append($source, array(self::$ATOM_NS, 'link'), 
+                            array('rel'=>'via', 'href'=>$feed['xmlUrl']));
+                        $this->append($source, array(self::$ATOM_NS, 'title'), 
+                            NULL, $feed['text']);
+                    
                     }
+
+                    // Munge item titles?
+
                 }
             }
         }
 
         if ($format == 'rss') {
-            $normalizer = new XSLFilter($this->getParent(), $this->getId()."-normal-rss", array(
-                'xsl' => 'sort-rss-by-pubdate.xsl', 'format' => 'rss'
+            
+            list($headers, $doc) = 
+                $this->sortRSSByPubdate($feed_headers, $doc);
+            $limiter = new SortLimiter($this->getParent(), $this->getId()."-limiter", array(
+                'limit' => $this->getParameter('limit', '50')
             ));
-            list($headers, $doc) = $normalizer->processDoc($feed_headers, $doc);
+            list($headers, $doc) = $limiter->processDoc($feed_headers, $doc);
+
+        } else {
+
+            // TODO: Date sorting in Atom is buggy.  Fix this.
+            $limiter = new SortLimiter($this->getParent(), $this->getId()."-limiter", array(
+                'limit'     => $this->getParameter('limit', '50'),
+                'sortby'    => $this->getParameter('sortby', 'atom:published'),
+                'sortorder' => $this->getParameter('sordorder', 'desc')
+            ));
+            list($headers, $doc) = $limiter->processDoc($feed_headers, $doc);
+
         }
 
-        $limiter = new SortLimiter($this->getParent(), $this->getId()."-limiter", array(
-            'limit' => $this->getParameter('limit', '50')
-        ));
-        list($headers, $doc) = $limiter->processDoc($feed_headers, $doc);
 
         $headers = array(
             'Content-Type' => $bf_headers['Content-Type']
@@ -115,11 +145,22 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
     /**
      * Generate a blank starter feed in the appropriate format.
      */
-    public function generateBlankFeed() {
+    public function generateBlankFeed($list_meta) {
+        $params = array_merge($list_meta, $this->getParameters());
         $blank_feed = new BlankFeed(
-            $this->getParent(), $this->getId().'-blank', $this->getParameters()
+            $this->getParent(), $this->getId().'-blank', $params
         );
         return $blank_feed->fetchOutput_DOM_XML();
+    }
+
+    /**
+     *
+     */
+    public function sortRSSByPubdate(&$headers, $doc) {
+        $sorter = new XSLFilter($this->getParent(), $this->getId()."-normal-rss", array(
+            'xsl' => 'sort-rss-by-pubdate.xsl', 'format' => 'rss'
+        ));
+        return $sorter->processDoc($feed_headers, $doc);
     }
 
     /**
@@ -129,13 +170,25 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
      * @param string An OPML document
      * @return array List of associative arrays containing node attributes.
      */
-    public function extractFeedsFromOutline($doc) {
+    public function parseReadingList($doc) {
+
+        $head_data = array();
+        $heads = $doc->getElementsByTagName('head');
+        if ($heads->length && $attrs = $heads->item(0)->childNodes) {
+            for ($j=0; $j<$attrs->length; $j++) {
+                $attr = $attrs->item($j);
+                if ($attr->nodeType == 1) {
+                    $head_data[$attr->nodeName] = 
+                        $attr->firstChild->nodeValue;
+                }
+            }
+        }
+
         $data = array();
         $nodes = $doc->getElementsByTagName('outline');
         for ($i=0; $i<$nodes->length; $i++) {
-            $node = $nodes->item($i);
-            $attrs = $node->attributes;
             $extract = array();
+            $attrs = $nodes->item($i)->attributes;
             for ($j=0; $j<$attrs->length; $j++) {
                 $attr = $attrs->item($j);
                 $extract[$attr->name] = $attr->value;
@@ -143,7 +196,8 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
             if (array_key_exists('xmlUrl', $extract))
                 $data[] = $extract;
         }
-        return $data;
+
+        return array($head_data, $data);
     }
 
     /**

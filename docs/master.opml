@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="2.0">
+    <head>
+        <title>0xDECAFBAD</title>
+    </head>
+    <body>
+        <outline type="rss" text="blog" xmlUrl="http://decafbad.com/blog/feed" />
+        <outline type="rss" text="delicious" xmlUrl="http://del.icio.us/rss/deusx?fancy" />
+        <outline type="rss" text="digg" xmlUrl="http://digg.com/rss/deusx/index2.xml" />
+        <outline type="rss" text="twitter" xmlUrl="http://twitter.com/statuses/user_timeline/lmorchard.rss" />
+        <outline type="rss" text="flickr" xmlUrl="http://api.flickr.com/services/feeds/photos_public.gne?id=35034355597@N01&amp;format=rss_200" />
+        <outline type="rss" text="flickr favorites" xmlUrl="http://localhost/~lorchard/FeedMagick2/?pipeline=flickrfavorites&amp;user=deusx" />
+        <outline type="rss" text="livejournal" xmlUrl="http://deus-x.livejournal.com/data/rss" />
+        <outline type="rss" text="vox" xmlUrl="http://decafbad.vox.com/library/posts/atom.xml" />
+        <outline type="rss" text="cocomment" xmlUrl="http://www.cocomment.com/myrss2/lmorchard.rss" />
+        <outline type="rss" text="last.fm" xmlUrl="http://ws.audioscrobbler.com/1.0/user/deusx/recenttracks.rss" />
+    </body>
+</opml>
+
