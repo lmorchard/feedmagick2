@@ -5,6 +5,7 @@
     </head>
     <body>
         <outline type="rss" text="blog" xmlUrl="http://decafbad.com/blog/feed" />
+        <outline type="rss" text="trac" xmlUrl="http://decafbad.com/trac/timeline?milestone=on&amp;ticket=on&amp;ticket_details=on&amp;changeset=on&amp;wiki=on&amp;max=50&amp;daysback=90&amp;format=rss" />
         <outline type="rss" text="delicious" xmlUrl="http://del.icio.us/rss/deusx?fancy" />
         <outline type="rss" text="digg" xmlUrl="http://digg.com/rss/deusx/index2.xml" />
         <outline type="rss" text="twitter" xmlUrl="http://twitter.com/statuses/user_timeline/lmorchard.rss" />
