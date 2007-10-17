@@ -14,8 +14,8 @@
         { 
             "module" : "ReadingListBlender", 
             "parameters" : { 
-                "format"      : "{format}",
-                "link"        : "http://example.com"
+                "format" : "{format}",
+                "link"   : "http://example.com",
             } 
         }
     ]

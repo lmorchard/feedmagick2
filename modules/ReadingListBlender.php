@@ -76,8 +76,14 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
 
                     if ($format == 'rss') {
                         
-                        $titles = $item->getElementsByTagName('title');
-                        if (isset($feed['text']) && $titles->length && $title = $titles->item(0)) {
+                        if (isset($feed['text'])) {
+                            $titles = $item->getElementsByTagName('title');
+                            if ($titles->length) {
+                                $title = $titles->item(0);
+                            } else {
+                                $title = $doc->createElement('title');
+                                $item->insertBefore($title, $item->firstChild);
+                            }
                             $title->insertBefore(
                                 $doc->createTextNode('['.$feed['text'].'] '),
                                 $title->firstChild
@@ -89,8 +95,14 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
 
                     } else if ($format == 'atom') {
 
-                        $titles = $item->getElementsByTagNameNS(self::$ATOM_NS, 'title');
-                        if (isset($feed['text']) && $titles->length && $title = $titles->item(0)) {
+                        if (isset($feed['text'])) {
+                            $titles = $item->getElementsByTagNameNS(self::$ATOM_NS, 'title');
+                            if ($titles->length) {
+                                $title = $titles->item(0);
+                            } else {
+                                $title = $doc->createElementNS(self::$ATOM_NS, 'title');
+                                $item->insertBefore($title, $item->firstChild);
+                            }
                             $title->insertBefore(
                                 $doc->createTextNode('['.$feed['text'].'] '),
                                 $title->firstChild
