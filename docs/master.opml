@@ -10,7 +10,7 @@
         <outline type="rss" text="digg" xmlUrl="http://digg.com/rss/deusx/index2.xml" />
         <outline type="rss" text="twitter" xmlUrl="http://twitter.com/statuses/user_timeline/lmorchard.rss" />
         <outline type="rss" text="flickr" xmlUrl="http://api.flickr.com/services/feeds/photos_public.gne?id=35034355597@N01&amp;format=rss_200" />
-        <outline type="rss" text="flickr favorites" xmlUrl="http://localhost/~lorchard/FeedMagick2/?pipeline=flickrfavorites&amp;user=deusx" />
+        <outline type="rss" text="flickr favorites" xmlUrl="http://decafbad.com/2007/04/FeedMagick2/?pipeline=flickrfavorites&amp;user=deusx" />
         <outline type="rss" text="livejournal" xmlUrl="http://deus-x.livejournal.com/data/rss" />
         <outline type="rss" text="vox" xmlUrl="http://decafbad.vox.com/library/posts/atom.xml" />
         <outline type="rss" text="cocomment" xmlUrl="http://www.cocomment.com/myrss2/lmorchard.rss" />
