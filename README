@@ -16,6 +16,7 @@
 
     cp conf/config.php-dist conf/config.php
     chmod a+w logs
+    chmod a+w data
     # Edit .htaccess, change RewriteBase to reflect the path to your installation.
 
 ### Configuration
