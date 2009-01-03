@@ -6,6 +6,7 @@
  *
  * @param string url
  * @param string format [rss, atom]
+ * @param bool   munge_titles
  *
  * @name Blender
  * @package FeedMagick2
@@ -74,9 +75,11 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
                     $item = $doc->importNode($items->item($i), TRUE);
                     $container->appendChild($item);
 
+                    // TODO: Streamline this repetitive code for each format.
+
                     if ($format == 'rss') {
                         
-                        if (isset($feed['text'])) {
+                        if (!!($this->getParameter('munge_titles', TRUE)) && isset($feed['text'])) {
                             $titles = $item->getElementsByTagName('title');
                             if ($titles->length) {
                                 $title = $titles->item(0);
@@ -95,7 +98,7 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
 
                     } else if ($format == 'atom') {
 
-                        if (isset($feed['text'])) {
+                        if (!!($this->getParameter('munge_titles', TRUE)) && isset($feed['text'])) {
                             $titles = $item->getElementsByTagNameNS(self::$ATOM_NS, 'title');
                             if ($titles->length) {
                                 $title = $titles->item(0);

@@ -16,6 +16,7 @@
             "parameters" : { 
                 "format" : "{format}",
                 "link"   : "http://example.com",
+                "munge_titles" : false
             } 
         }
     ]

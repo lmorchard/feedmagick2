@@ -423,7 +423,7 @@ class FeedMagick2 {
      * Controller function to dispatch pipeline processing.
      */
     public function dispatchPipeline($pipeline_name='default') {
-
+        
         // Grab the desired pipeline by local file or URL.
         list($pipeline_headers, $pipeline_src) = $this->fetchFileOrWeb(
             $this->getConfig('paths/pipelines', "{$this->base_dir}/pipelines"),

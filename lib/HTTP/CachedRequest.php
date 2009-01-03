@@ -153,8 +153,13 @@ class HTTP_CachedRequest extends HTTP_Request {
     {
         $fn  = $this->_buildUrlCacheFilename($url);
         $dir = dirname($fn);
-        if (!is_dir($dir)) mkdir($dir, 0777, true);
-        file_put_contents($fn, serialize($data));
+        if (!is_dir($dir)) 
+            mkdir($dir, 0777, true);
+        if (is_writable($dir)) {
+            file_put_contents($fn, serialize($data));
+        } else {
+            error_log("HTTP cache not writable for $fn");
+        }
     }
 
     /**

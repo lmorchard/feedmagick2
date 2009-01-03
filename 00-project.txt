@@ -47,6 +47,7 @@
 ./xsl/lib/str.padding.function.xsl
 ./xsl/lib/str.replace.template.xsl
 ./xsl/normalizer.xsl
+./xsl/hatomizer.xsl
 ./xsl/scrapers/insertcredit.xsl
 ./xsl/scrapers/jbox.xsl
 ./xsl/scrapers/jlist.xsl

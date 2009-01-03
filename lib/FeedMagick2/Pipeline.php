@@ -21,14 +21,6 @@ require_once 'FeedMagick2/BasePipeModule.php';
  */
 class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
 
-    public function getSupportedInputs() {
-        if ($this->_pipe) {
-            return $this->getHead()->getSupportedInputs();
-        } else {
-            return array('Raw');
-        }
-    }
-
     /** Head of the pipe */
     private $_head;
     /** Tail of the pipe */
@@ -40,10 +32,23 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
     public function __construct($parent, $id=NULL, $options=array()) {
         parent::__construct($parent, $id, $options);
         if ($options) {
+
             if (array_key_exists('pipeline', $options)) {
                 // Accept a bare list of modules, or a full-blown pipeline spec with metadata.
                 $options = $options['pipeline'];
             } 
+
+            // HACK: Inject parameter defaults into GET vars where necessary.
+            // TODO: Maybe manipulating $_GET[] for parameters isn't the best idea.  Stop it.
+            $params_spec = $this->getParameter('parameters', array());
+            foreach ($params_spec as $name => $spec) {
+                if (!isset($_GET[$name]) && isset($spec['default'])) {
+                    $_GET[$name] = $spec['default'];
+                    $this->log->debug("Set default $name => {$spec['default']}");
+                }
+            }
+
+            // Construct the pipeline from instantiated modules.
             $this->_pipe = array();
             list($i, $prev_mod, $mod) = array(0, NULL, NULL);
             foreach ($options as $opt) {
@@ -52,9 +57,11 @@ class FeedMagick2_Pipeline extends FeedMagick2_BasePipeModule {
                     $this->getId()."-".(isset($opt['id']) ? $opt['id'] : 'seg'.($i++)), 
                     isset($opt['parameters']) ? $opt['parameters'] : array()
                 );
-                if ($prev_mod) $mod->setInputModule($prev_mod);
+                if ($prev_mod) 
+                    $mod->setInputModule($prev_mod);
                 array_push($this->_pipe, $prev_mod = $mod);
             }
+
         }
     }
 

@@ -35,6 +35,9 @@
             <xsl:when test="$format='rss'">
                 <xsl:call-template name="rss20.feed" />
             </xsl:when>
+            <xsl:when test="$format='hatom'">
+                <xsl:call-template name="hatom.feed" />
+            </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="atom10.feed" />
             </xsl:otherwise>
@@ -130,6 +133,54 @@
                 <xsl:value-of select="$entry.content"/>
             </description>
         </item>
+    </xsl:template>
+
+    <!-- hatom feed output shell template -->
+    <xsl:template name="hatom.feed">
+        <div class="hfeed" xmlns="http://www.w3.org/1999/xhtml">
+            <!--
+            <title><xsl:value-of select="$feed.title"/></title>
+            <subtitle><xsl:value-of select="$feed.description"/></subtitle>
+            <link rel="alternate" type="text/html" href="{$feed.link}" />
+            <published><xsl:value-of select="$feed.date" /></published>
+            <xsl:if test="$feed.author.name and $feed.author.email">
+                <author>
+                    <name><xsl:value-of select="$feed.author.name" /></name>
+                    <email><xsl:value-of select="$feed.author.email" /></email>
+                </author>
+            </xsl:if>
+            <xsl:call-template name="process_entries" />
+            -->
+        </div>
+    </xsl:template>
+    
+    <!-- hatom 1.0 entry output template -->
+    <xsl:template name="hatom.entry">
+        <xsl:param name="entry.title" select="''" />
+        <xsl:param name="entry.id" select="''" />
+        <xsl:param name="entry.author.name" select="''" />
+        <xsl:param name="entry.author.email" select="''" />
+        <xsl:param name="entry.date" select="''" />
+        <xsl:param name="entry.content" select="''" />
+        <xsl:param name="entry.link" select="''" />
+        <div class="hentry" id="hentry-{$entry.id}" xmlns="http://www.w3.org/1999/xhtml">
+            <h3 class="entry-title">
+                <a href="{$entry.link}" rel="bookmark"><xsl:value-of select="$entry.title" /></a>
+            </h3>
+            <abbr class="published" title="{$entry.date}"><xsl:value-of select="$entry.date" /></abbr>
+            <xsl:if test="$entry.author.name and $entry.author.email">
+                <address class="vcard author">
+                    <span class="fn"><xsl:value-of select="$entry.author.name" /></span>
+                    <!--
+                    <name><xsl:value-of select="$entry.author.name" /></name>
+                    <email><xsl:value-of select="$entry.author.email" /></email>
+                    -->
+                </address>
+            </xsl:if>
+            <div class="entry-content">
+                <xsl:value-of select="$entry.content" />
+            </div>
+        </div>
     </xsl:template>
 
     <!-- Extract feed title content -->
@@ -296,39 +347,37 @@
 
                 <xsl:when test="$format='rss'">
                     <xsl:call-template name="rss20.entry">
-                        <xsl:with-param name="entry.title" 
-                            select="$entry.title" />
-                        <xsl:with-param name="entry.id" 
-                            select="$entry.id" />
-                        <xsl:with-param name="entry.author.name" 
-                            select="$entry.author.name" />
-                        <xsl:with-param name="entry.author.email" 
-                            select="$entry.author.email" />
-                        <xsl:with-param name="entry.date" 
-                            select="$entry.date" />
-                        <xsl:with-param name="entry.content" 
-                            select="$entry.content" />
-                        <xsl:with-param name="entry.link" 
-                            select="$entry.link" />
+                        <xsl:with-param name="entry.title" select="$entry.title" />
+                        <xsl:with-param name="entry.id" select="$entry.id" />
+                        <xsl:with-param name="entry.author.name" select="$entry.author.name" />
+                        <xsl:with-param name="entry.author.email" select="$entry.author.email" />
+                        <xsl:with-param name="entry.date" select="$entry.date" />
+                        <xsl:with-param name="entry.content" select="$entry.content" />
+                        <xsl:with-param name="entry.link" select="$entry.link" />
+                    </xsl:call-template>
+                </xsl:when>
+
+                <xsl:when test="$format='hatom'">
+                    <xsl:call-template name="hatom.entry">
+                        <xsl:with-param name="entry.title" select="$entry.title" />
+                        <xsl:with-param name="entry.id" select="$entry.id" />
+                        <xsl:with-param name="entry.author.name" select="$entry.author.name" />
+                        <xsl:with-param name="entry.author.email" select="$entry.author.email" />
+                        <xsl:with-param name="entry.date" select="$entry.date" />
+                        <xsl:with-param name="entry.content" select="$entry.content" />
+                        <xsl:with-param name="entry.link" select="$entry.link" />
                     </xsl:call-template>
                 </xsl:when>
 
                 <xsl:otherwise>
                     <xsl:call-template name="atom10.entry">
-                        <xsl:with-param name="entry.title" 
-                            select="$entry.title" />
-                        <xsl:with-param name="entry.id" 
-                            select="$entry.id" />
-                        <xsl:with-param name="entry.author.name" 
-                            select="$entry.author.name" />
-                        <xsl:with-param name="entry.author.email" 
-                            select="$entry.author.email" />
-                        <xsl:with-param name="entry.date" 
-                            select="$entry.date" />
-                        <xsl:with-param name="entry.content" 
-                            select="$entry.content" />
-                        <xsl:with-param name="entry.link" 
-                            select="$entry.link" />
+                        <xsl:with-param name="entry.title" select="$entry.title" />
+                        <xsl:with-param name="entry.id" select="$entry.id" />
+                        <xsl:with-param name="entry.author.name" select="$entry.author.name" />
+                        <xsl:with-param name="entry.author.email" select="$entry.author.email" />
+                        <xsl:with-param name="entry.date" select="$entry.date" />
+                        <xsl:with-param name="entry.content" select="$entry.content" />
+                        <xsl:with-param name="entry.link" select="$entry.link" />
                     </xsl:call-template>
                 </xsl:otherwise>
 

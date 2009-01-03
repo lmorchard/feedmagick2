@@ -72,7 +72,8 @@ class FeedMagick2_BasePipeModule {
                     $slot_opt   = ($slot_parts) ? array_shift($slot_parts) : NULL;
 
                     // Try to get a value for this slot.
-                    $value = isset($_GET[$slot_name]) ? $_GET[$slot_name] : NULL;
+                    $value = (isset($_GET[$slot_name])) ? $_GET[$slot_name] : NULL;
+
                     if ($value) {
                         // {slot|u} - URL encode the value.
                         if ($slot_opt == 'u') $value = urlencode($value);
@@ -166,7 +167,13 @@ class FeedMagick2_BasePipeModule {
     public function fetchOutput_DOM_XML() {
         list($headers, $body) = $this->fetchOutput_Raw();
         $doc = new DOMDocument();
-        if ($body) $doc->loadXML($body);
+        $this->log->debug("Parsing $body");
+        try {
+            if ($body) $doc->loadXML($body);
+        } catch(Exception $e) {
+            # XML FAILURE
+            $this->log->err("XML Parsing error $body");
+        }
         return array($headers, $doc);
     }
 
