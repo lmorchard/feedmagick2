@@ -321,7 +321,7 @@ class FeedMagick2 {
             $headers = $req->getResponseHeader();
             $body    = $req->getResponseBody();
 
-            $this->log->debug("...was stale? ".$req->_is_stale." was cached? ".$req->_cache_hit);
+            // $this->log->debug("...was stale? ".$req->_is_stale." was cached? ".$req->_cache_hit);
         }
 
         return array($headers, $body);
