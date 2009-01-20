@@ -85,7 +85,7 @@ class HTTP_CachedRequest extends HTTP_Request {
         }
 
         // Only support returning cached data for GET method.
-        if ($conditionalGet && !empty($this->_response)) {
+        if ($conditionalGet) {
 
             // If the response code was a 304 and we have cached data, it's a hit.
             if ($cached && ( $this->getResponseCode() == 304 || !$is_stale ) ) {
