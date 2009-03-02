@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /~lorchard/FeedMagick2
+RewriteBase /2007/04/FeedMagick2
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php [L]

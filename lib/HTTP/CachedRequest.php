@@ -93,8 +93,8 @@ class HTTP_CachedRequest extends HTTP_Request {
                 $this->_cache_hit = true;
 
                 // Preserve the original headers and cookies.
-                $this->_response->_original_headers = $this->_response->_headers;
-                $this->_response->_original_cookies = $this->_response->_cookies;
+                $this->_response->_original_headers = @$this->_response->_headers;
+                $this->_response->_original_cookies = @$this->_response->_cookies;
 
                 // Drop in the cached request data.
                 $this->_response->_body    = $cached['body'];

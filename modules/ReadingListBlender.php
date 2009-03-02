@@ -175,7 +175,7 @@ class ReadingListBlender extends FeedMagick2_DOMBasePipeModule {
         $sorter = new XSLFilter($this->getParent(), $this->getId()."-normal-rss", array(
             'xsl' => 'sort-rss-by-pubdate.xsl', 'format' => 'rss'
         ));
-        return $sorter->processDoc($feed_headers, $doc);
+        return $sorter->processDoc($headers, $doc);
     }
 
     /**
